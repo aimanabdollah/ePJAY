@@ -8,8 +8,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Blank Page</li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item active">Perbelanjaan</li>
                 </ol>
             </div>
         </div>
@@ -39,11 +39,19 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         @if (session()->has('message'))
-                            <div class="alert alert-success alert-dismissible">
+                            {{-- <div class="alert alert-success alert-dismissible">
                                 {{ session()->get('message') }} <button type="button" class="close"
                                     data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
+                            </div> --}}
+
+
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-check"></i> Mesej!</h5>
+                                {{ session()->get('message') }}
                             </div>
                         @endif
                         <table id="example1" class="table table-bordered table-striped">
@@ -74,11 +82,10 @@
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ url('admin/expense/' . $expense->id) }}"
                                                     class="btn btn-primary  m-1"> <i class="nav-icon fas fa-eye"></i>
-                                                    Papar</a>
+                                                </a>
 
                                                 <a href="{{ route('expense.edit', ['expense' => $expense->id]) }}"
-                                                    class="btn btn-warning  m-1"> <i
-                                                        class="nav-icon fas fa-edit"></i>Edit</a>
+                                                    class="btn btn-warning  m-1"> <i class="nav-icon fas fa-edit"></i></a>
 
                                                 <form
                                                     action="{{ route('expense.destroy', ['expense' => $expense->id]) }}"
@@ -87,7 +94,7 @@
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger ml-1"
                                                         onclick="return confirm('Are you sure to delete this?')"><i
-                                                            class="nav-icon fas fa-trash"></i> Hapus</button>
+                                                            class="nav-icon fas fa-trash"></i></button>
                                                 </form>
 
                                             </div>

@@ -1,15 +1,15 @@
-@extends('layouts.staff-main', ['title'=>'Permohonan'])
+@extends('layouts.parent-main', ['title'=>'Anak Jagaan'])
 
 @section('content-header')
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Permohonan</h1>
+                <h1>Anak Jagaan</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
-                    <li class="breadcrumb-item active">Permohonan</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item active">Anak Jagaan</li>
                 </ol>
             </div>
         </div>
@@ -26,89 +26,15 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <div class="mr-auto">
-                            <h5>Maklumat Permohonan</h5>
+                            <h5>Maklumat Anak Jagaan</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/application') }}" class="btn btn-primary">
+                        <div class=""> <a href="{{ url('list-orphan') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form>
                         <fieldset disabled>
-
-                            <div class="btn btn-flat col-12" style="background-color: #138496">
-                                <div class="mr-auto" style="color: white">
-                                    <h6><b>Bahagian A: Maklumat Permohonan</b></h6>
-                                </div>
-                            </div>
-
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="nama_penuh_pemohon">Nama Penuh Pemohon</label>
-                                                    <div class="form-control">{{ $application->nama_penuh }}</div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="hubungan_pemohon">Hubungan Anak dengan Pemohon</label>
-                                                    <div class="form-control">{{ $application->hubungan_pemohon }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="pekerjaan_pemohon">Pekerjaan Pemohon</label>
-                                                    <div class="form-control">{{ $application->pekerjaan_pemohon }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="email_pemohon">Email</label>
-                                                    <div class="form-control">{{ $application->email_pemohon }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="no_tel_pemohon">No. Telefon</label>
-                                                    <div class="form-control">{{ $application->no_tel_pemohon }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="row">
-                                        <div class="col-md-6">
-
-                                        </div>
-                                        <div class="col-md-6" style="margin-bottom: 12pt">
-                                            <label for="exampleInputEmail1">Status</label>
-                                            <select class="form-control" name=state aria-label="Default select example">
-                                                <option selected>Sila Pilih Status Permohonan</option>
-                                                <option value="Kehilangan Ibu">Lulus</option>
-                                                <option value="Kehilangan Bapa">Tidak Berjaya</option>
-                                            </select>
-                                        </div>
-                                    </div> --}}
-                                    </div>
-
-
-                                </div>
-                            </div>
-
                             <div class="btn btn-flat col-12" style="background-color: #138496">
                                 <div class="mr-auto" style="color: white">
                                     <h6><b>Bahagian A: Maklumat Kanak-Kanak</b></h6>
@@ -249,7 +175,7 @@
 
                             <div class="btn btn-flat col-12" style="background-color: #138496">
                                 <div class="mr-auto" style="color: white">
-                                    <h6><b>Bahagian C: Maklumat Ibu Bapa</b></h6>
+                                    <h6><b>Bahagian B: Maklumat Ibu Bapa</b></h6>
                                 </div>
                             </div>
 
@@ -276,8 +202,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="id">No. Telefon Ayah</label>
-                                                    <div class="form-control">{{ $application->no_telefon_ayah }}
-                                                    </div>
+                                                    <div class="form-control">{{ $application->no_telefon_ayah }}</div>
                                                 </div>
 
                                             </div>
@@ -294,8 +219,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="id">Pendapatan Ayah</label>
-                                                    <div class="form-control">{{ $application->pendapatan_ayah }}
-                                                    </div>
+                                                    <div class="form-control">{{ $application->pendapatan_ayah }}</div>
                                                 </div>
 
                                             </div>
@@ -313,8 +237,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="id">No. Kad Pengenalan Ayah</label>
-                                                    <div class="form-control">
-                                                        {{ $application->no_kad_pengenalan_ibu }}
+                                                    <div class="form-control">{{ $application->no_kad_pengenalan_ibu }}
                                                     </div>
                                                 </div>
 
@@ -393,87 +316,23 @@
                                 </div>
                             </div>
 
-                        </fieldset>
-                    </form>
 
-                    <div class="btn btn-flat col-12" style="background-color: #138496">
-                        <div class="mr-auto" style="color: white">
-                            <h6><b>Bahagian D: Pengesahan Permohonan</b></h6>
-                        </div>
-                    </div>
+                            <!-- /.card-body -->
 
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="exampleInputEmail1">Status Permohonan</label>
-                                <select class="form-control" name="status_permohonan" id="status_permohonan"
-                                    aria-label="Default select example">
-                                    <option selected>Sila Pilih Status Permohonan</option>
-                                    <option value="Dalam Proses"
-                                        {{ old('status_permohonan') ?? $application->status_permohonan == 'Dalam Proses' ? 'selected' : '' }}>
-                                        Dalam Proses
-                                    </option>
-                                    <option value="Berjaya"
-                                        {{ old('status_permohonan') ?? $application->status_permohonan == 'Berjaya' ? 'selected' : '' }}>
-                                        Berjaya
-                                    </option>
-                                    <option value="Tidak Berjaya"
-                                        {{ old('status_permohonan') ?? $application->status_permohonan == 'Tidak Berjaya' ? 'selected' : '' }}>
-                                        Tidak Berjaya
-                                    </option>
-                                </select>
-                                @error('jantina')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                            <div class="card-footer d-flex justify-content-end">
+
                             </div>
 
-
-                            @if ($application->status_permohonan == 'Dalam Proses')
-                                <div class="col-md-6 status" id="Dalam_Proses">
-                                    <label for="exampleInputEmail1"></label>
-                                </div>
-                            @elseif ($application->status_permohonan == 'Berjaya')
-                                <div class="col-md-6 status" id="Berjaya">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Tarikh Daftar</label>
-                                        <input type="date"
-                                            class="form-control @error('tarikh_daftar') is-invalid @enderror"
-                                            id="tarikh_daftar" name="tarikh_daftar" value="{{ old('tarikh_daftar') }}"
-                                            placeholder="">
-                                        @error('tarikh_daftar')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @elseif ($application->status_permohonan == 'Tidak Berjaya')
-                                <div class="col-md-6 status" id="Tidak_Berjaya">
-                                    <label for="exampleInputEmail1">Ulasan</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                </div>
-                            @endif
-
-                        </div>
-                    </div>
+                    </form>
                 </div>
-
-
-                <!-- /.card-body -->
-
-                <div class="card-footer d-flex justify-content-end">
-
-                </div>
-
-
-                </form>
             </div>
+            <!-- /.card-body -->
+
+            <!-- /.card -->
         </div>
-        <!-- /.card-body -->
-
-        <!-- /.card -->
-    </div>
 
 
-    <!-- /.col -->
+        <!-- /.col -->
     </div>
 
 
@@ -495,26 +354,8 @@
 
 @push('js')
     <script>
-        // $(document).ready(function() {
-        //     $('.status').hide();
-        //     $('#Dalam_Proses').show();
-        //     $('#status_permohonan').change(function() {
-        //         $('.status').hide();
-        //         $('#' + $(this).val()).show();
-        //     })
-        // });
-        $(document).ready(function() {
-            $("#status_permohonan").change(function() {
-                $(this).find("option:selected").each(function() {
-                    var optionValue = $(this).attr("value");
-                    if (optionValue) {
-                        $(".status").not("." + optionValue).hide();
-                        $("." + optionValue).show();
-                    } else {
-                        $(".status").hide();
-                    }
-                });
-            }).change();
+        $(function() {
+            bsCustomFileInput.init();
         });
     </script>
 @endpush

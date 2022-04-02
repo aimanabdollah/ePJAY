@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.parent-main', ['title'=>'Permohonan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -27,23 +27,15 @@
                         <div class="mr-auto">
                             <h5>Senarai Permohonan</h5>
                         </div>
-                        {{-- <div class=""> <a href="{{ url('admin/application/add-application') }}"
+                        {{-- <div class="p-2"> <a href="{{ url('admin/orphan/add-orphan') }}"
                                 class="btn btn-success">
-                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
-                            </a></div> --}}
-
+                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak
+                                Jagaan</a></div> --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+
                         @if (session()->has('message'))
-                            {{-- <div class="alert alert-success alert-dismissible">
-                                {{ session()->get('message') }} <button type="button" class="close"
-                                    data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div> --}}
-
-
                             <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert"
                                     aria-hidden="true">×</button>
@@ -51,24 +43,20 @@
                                 {{ session()->get('message') }}
                             </div>
                         @endif
+
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>ID Permohonan</th>
-                                    <th>Nama Pemohon</th>
-                                    <th>No. Telefon</th>
-                                    {{-- <th>Nama Anak Jagaan</th> --}}
-                                    <th>
-                                        <center>
-                                            Tarikh Permohonan</center>
-                                    </th>
-                                    <th>
-                                        <center>Status Permohonan</center>
-                                    </th>
+                                    <th>Nama Anak Jagaan</th>
+                                    <th>No. Kad Pengenalan</th>
+                                    <th>Tarikh Permohonan</th>
+                                    <th>Status</th>
                                     <th>
                                         <center>Tindakan</center>
                                     </th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,18 +73,10 @@
 
                                         <td class="align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">{{ $application->id_permohonan }}</td>
-                                        <td class="align-middle">{{ $application->nama_penuh_pemohon }}</td>
-                                        <td class="align-middle">{{ $application->no_tel_pemohon }}</td>
-                                        {{-- <td class="align-middle">{{ $application->nama_penuh }}</td> --}}
-                                        <td class="align-middle">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                {{ $date }}
-                                            </div>
-                                        </td>
-                                        {{-- <td><span
-                                                class="badge p-2 badge-pill badge-warning">{{ $application->status_permohonan }}</span>
-                                        </td> --}}
-                                        <td class="align-middle">
+                                        <td class="align-middle">{{ $application->nama_penuh }}</td>
+                                        <td class="align-middle">{{ $application->no_kad_pengenalan }}</td>
+                                        <td class="align-middle">{{ $date }}</td>
+                                        <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 @if ($application->status_permohonan == 'Dalam Proses')
                                                     <span
@@ -109,15 +89,17 @@
                                                         class="badge p-2 badge-pill badge-danger">{{ $application->status_permohonan }}</span>
                                                 @endif
                                             </div>
-
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <a href="{{ url('admin/application/' . $application->id) }}"
-                                                    class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i>
-                                                </a>
-                                            </div>
+
                                         </td>
+                                        {{-- <td>
+                                        <center>
+                                            <a href=" {{ url('admin/application/view-application') }}"
+                                                class="btn-sm btn-primary p-2 m-1"> <i class="nav-icon fas fa-eye"></i>
+                                                Papar</a>
+                                        </center>
+                                    </td> --}}
                                     </tr>
                                 @empty
                                     <td colspan="7" class="text-center">Tiada rekod permohonan</td>

@@ -20,7 +20,7 @@
 @section('content')
     <!-- Small box (stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
@@ -35,13 +35,13 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>53<sup style="font-size: 20px"></sup></h3>
 
-                    <p>Jumlah Permohonan Lulus</p>
+                    <p>Jumlah Permohonan Berjaya</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -50,11 +50,11 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-secondary">
+            <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>RM 1500</h3>
+                    <h3>0</h3>
 
                     <p>Jumlah Permohonan Tidak Berjaya</p>
                 </div>
@@ -65,7 +65,7 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
@@ -78,12 +78,12 @@
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div> --}}
         <!-- ./col -->
     </div>
 
 
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header ui-sortable-handle" style="cursor: move;">
             <h3 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
@@ -129,10 +129,10 @@
                 </div>
             </div>
         </div><!-- /.card-body -->
-    </div>
+    </div> --}}
 
     <!-- Default box -->
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header">
             <h3 class="card-title">Title</h3>
 
@@ -155,7 +155,7 @@
             Footer
         </div>
         <!-- /.card-footer-->
-    </div>
+    </div> --}}
 
     <!-- /.card -->
 @endsection

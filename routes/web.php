@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\OrphanController;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,8 +82,9 @@ Route::delete('admin/orphan/{orphan}', [OrphanController::class,'destroy'])->nam
 // Route::get('admin/finance/add-expense', [HomeController::class, 'adminAddExpense'])->name('admin.home')->middleware('is_admin');
 // Route::get('admin/finance/edit-expense', [HomeController::class, 'adminEditExpense'])->name('admin.home')->middleware('is_admin');
 
-Route::get('admin/application', [HomeController::class, 'adminApplication'])->name('admin.home')->middleware('is_admin');
-Route::get('admin/application/view-application', [HomeController::class, 'adminViewApplication'])->name('admin.home')->middleware('is_admin');
+//Route::get('admin/application', [HomeController::class, 'adminApplication'])->name('admin.home')->middleware('is_admin');
+Route::get('admin/application', [ApplicationController::class, 'viewApplication'])->name('application.index')->middleware('is_admin');
+//Route::get('admin/application/view-application', [HomeController::class, 'adminViewApplication'])->name('admin.home')->middleware('is_admin');
 
 //Route::get('admin/orphan', [HomeController::class, 'adminOrphan'])->name('admin.home')->middleware('is_admin');
 //Route::get('admin/orphan/add-orphan', [HomeController::class, 'adminAddOrphan'])->name('admin.home')->middleware('is_admin');
@@ -90,3 +92,14 @@ Route::get('admin/orphan/edit-orphan', [HomeController::class, 'adminEditOrphan'
 Route::get('admin/orphan/view-orphan', [HomeController::class, 'adminViewOrphan'])->name('admin.home')->middleware('is_admin');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('application', [ApplicationController::class, 'index'])->name('application.index');
+Route::get('add-application', [ApplicationController::class, 'create'])->name('application.create');
+Route::post('application', [ApplicationController::class, 'store'])->name('application.store');
+Route::get('list-orphan', [ApplicationController::class, 'orphanList'])->name('application.orphanList');
+Route::get('list-orphan/{orphan}', [ApplicationController::class, 'orphanShow'])->name('application.orphanShow');
+
+
+Route::get('admin/application/{application}', [ApplicationController::class, 'show'])->name('application.show')->middleware('is_admin');
+
+//Route::get('/home', [HomeController::class, 'index'])->name('user.dashboard');

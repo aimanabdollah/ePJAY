@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orphan;
+use App\Models\Application;
 use Illuminate\Http\Request;
 
 // use Illuminate\Support\Facades\File;
@@ -11,7 +11,7 @@ class OrphanController extends Controller
 {
      public function index()
     {
-        $orphan = Orphan::all();
+        $orphan = Application::where('status_permohonan', 'Berjaya')->get();
         return view('staff.orphan.orphan-list', compact('orphan'));
     }
 
@@ -74,7 +74,7 @@ class OrphanController extends Controller
   
 
         // CARA ELOQUENT ORM
-        $orphan = new Orphan();
+        $orphan = new Application();
 
         if($request->hasFile('gambar'))
         {
@@ -114,6 +114,8 @@ class OrphanController extends Controller
         $orphan->poskod = $validateData['poskod'];
         $orphan->bandar = $validateData['bandar'];
         $orphan->negeri = $validateData['negeri'];
+        $orphan->status_permohonan = 'Berjaya';
+        $orphan->id_anak_jagaan = 'AKG'.rand(111111,999999);
 
         $orphan->no_kad_pengenalan = $validateData['no_kad_pengenalan'];
         $orphan->no_telefon = $validateData['no_telefon'];
@@ -150,18 +152,18 @@ class OrphanController extends Controller
           ->with('message', "Rekod berjaya ditambah");
      }
 
-    public function show(Orphan $orphan)
+    public function show(Application $orphan)
     {
         // depedency injection
          return view('staff.orphan.orphan-view',['orphan' => $orphan]);
     }
 
-    public function edit(Orphan $orphan)
+    public function edit(Application $orphan)
     {
         return view('staff.orphan.orphan-edit',['orphan' => $orphan]);
     }
 
-    public function update(Request $request, Orphan $orphan)
+    public function update(Request $request, Application $orphan)
     {
        // dump($request->all());
        // dump($orphan);
@@ -307,7 +309,7 @@ class OrphanController extends Controller
          ->with('message', "Rekod berjaya dikemaskini");
     }
 
-    public function destroy(Orphan $orphan)
+    public function destroy(Application $orphan)
     {
         $orphan->delete();
         return redirect('/admin/orphan')->with('message', "Rekod berjaya dihapus");
