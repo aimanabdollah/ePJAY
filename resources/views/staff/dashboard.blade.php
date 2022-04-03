@@ -24,7 +24,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>150</h3>
+                    <h3>{{ $application }}</h3>
 
                     <p>Jumlah Permohonan Diterima</p>
                 </div>
@@ -40,7 +40,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px"></sup></h3>
+                    <h3>{{ $orphan }}<sup style="font-size: 20px"></sup></h3>
 
                     <p>Jumlah Anak Jagaan</p>
                 </div>
@@ -56,7 +56,7 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
                 <div class="inner">
-                    <h3>RM 1500</h3>
+                    <h3>RM {{ $income }}</h3>
 
                     <p>Jumlah Pendapatan</p>
                 </div>
@@ -72,7 +72,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>RM 2000.00</h3>
+                    <h3>RM {{ $expense }}</h3>
 
                     <p>Jumlah Perbelanjaan</p>
                 </div>

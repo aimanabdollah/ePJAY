@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
   
 use Illuminate\Http\Request;
+use App\Models\Expense;
+use App\Models\Income;
+use App\Models\Application;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
    
 class HomeController extends Controller
 {
@@ -21,9 +26,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+  
+
     public function index()
     {
-        return view('parent.dashboard');
+        $application = Application::where('id_pemohon', Auth::id())->count();
+        $successApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Berjaya')->count();
+        $failApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Tidak Berjaya')->count();
+        $pendingApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Dalam Proses')->count();
+        
+        return view('parent.dashboard', compact('application', 'successApp', 'failApp', 'pendingApp'));
     }
   
     /**
@@ -31,10 +43,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function adminHome()
     {
-         //return view('adminHome');
-        return view('staff.dashboard');
+        $income = Income::all()->sum('amount_tpn');
+        $expense = Expense::all()->sum('amount_tbj');
+        $orphan = Application::where('status_permohonan', 'Berjaya')->count();
+        $application = Application::whereNotNull('id_pemohon')->count();
+        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application'));
     }
 
     public function adminFinance()
