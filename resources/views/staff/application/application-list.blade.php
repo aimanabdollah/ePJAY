@@ -109,13 +109,15 @@
                                                         class="badge p-2 badge-pill badge-danger">{{ $application->status_permohonan }}</span>
                                                 @endif
                                             </div>
-
                                         </td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <a href="{{ url('admin/application/' . $application->id) }}"
+                                                {{-- <a href="{{ url('admin/application/' . $application->id) }}"
                                                     class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i>
-                                                </a>
+                                                </a> --}}
+
+                                                <a href="{{ route('application.edit', ['application' => $application->id]) }}"
+                                                    class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>

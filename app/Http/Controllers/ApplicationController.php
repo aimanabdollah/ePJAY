@@ -182,4 +182,27 @@ class ApplicationController extends Controller
     {
          return view('parent.orphan.orphan-view',['application' => $orphan]);
     }
+
+    public function edit(Application $application)
+    {
+        return view('staff.application.application-view',['application' => $application]);
+    }
+
+    public function update(Request $request, Application $application)
+    {
+       // dump($request->all());
+       // dump($orphan);
+
+        $validateData = $request->validate([
+             'status_permohonan'   => '',
+        ]);
+
+       
+        $application->status_permohonan = $validateData['status_permohonan'];
+ 
+        $application->update();
+
+        return redirect('/admin/application')
+         ->with('message', "Rekod berjaya dikemaskini");
+    }
 }

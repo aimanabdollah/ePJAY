@@ -37,12 +37,6 @@ Auth::routes();
 
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
 
-//Route::get('admin/finance', [HomeController::class, 'adminFinance'])->name('admin.home')->middleware('is_admin');
-
-// Route::get('admin/finance/list-income', [HomeController::class, 'adminListIncome'])->name('admin.home')->middleware('is_admin');
-// Route::get('admin/finance/add-income', [HomeController::class, 'adminAddIncome'])->name('admin.home')->middleware('is_admin');
-// Route::get('admin/finance/edit-income', [HomeController::class, 'adminEditIncome'])->name('admin.home')->middleware('is_admin');
-
 Route::get('admin/income', [IncomeController::class, 'index'])->name('income.index')->middleware('is_admin');
 Route::get('admin/income/add-income', [IncomeController::class, 'create'])->name('income.create')->middleware('is_admin');
 Route::post('admin/income', [IncomeController::class, 'store'])->name('income.store')->middleware('is_admin');
@@ -67,39 +61,29 @@ Route::get('admin/orphan/{orphan}/edit', [OrphanController::class, 'edit'])->nam
 Route::patch('admin/orphan/{orphan}', [OrphanController::class,'update'])->name('orphan.update')->middleware('is_admin');
 Route::delete('admin/orphan/{orphan}', [OrphanController::class,'destroy'])->name('orphan.destroy')->middleware('is_admin');
 
-// Route::get('/mahasiswas', [MahasiswaController::class,'index'])
-// ->name('mahasiswas.index');
-
-// Route::get('/mahasiswas/create', [MahasiswaController::class,'create'])
-// ->name('mahasiswas.create');
-
-// Route::post('/mahasiswas', [MahasiswaController::class,'store'])
-// ->name('mahasiswas.store');
-
-
-
-// Route::get('admin/finance/list-expense', [HomeController::class, 'adminListExpense'])->name('admin.home')->middleware('is_admin');
-// Route::get('admin/finance/add-expense', [HomeController::class, 'adminAddExpense'])->name('admin.home')->middleware('is_admin');
-// Route::get('admin/finance/edit-expense', [HomeController::class, 'adminEditExpense'])->name('admin.home')->middleware('is_admin');
-
-//Route::get('admin/application', [HomeController::class, 'adminApplication'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/application', [ApplicationController::class, 'viewApplication'])->name('application.index')->middleware('is_admin');
-//Route::get('admin/application/view-application', [HomeController::class, 'adminViewApplication'])->name('admin.home')->middleware('is_admin');
+//Route::get('admin/application/{application}', [ApplicationController::class, 'show'])->name('application.show')->middleware('is_admin');
 
-//Route::get('admin/orphan', [HomeController::class, 'adminOrphan'])->name('admin.home')->middleware('is_admin');
-//Route::get('admin/orphan/add-orphan', [HomeController::class, 'adminAddOrphan'])->name('admin.home')->middleware('is_admin');
-Route::get('admin/orphan/edit-orphan', [HomeController::class, 'adminEditOrphan'])->name('admin.home')->middleware('is_admin');
-Route::get('admin/orphan/view-orphan', [HomeController::class, 'adminViewOrphan'])->name('admin.home')->middleware('is_admin');
+Route::get('admin/application/{application}/edit', [ApplicationController::class, 'edit'])->name('application.edit')->middleware('is_admin');
+Route::patch('admin/application/{application}', [ApplicationController::class,'update'])->name('application.update')->middleware('is_admin');
+
+
+
+
+
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('application', [ApplicationController::class, 'index'])->name('application.index');
 Route::get('add-application', [ApplicationController::class, 'create'])->name('application.create');
 Route::post('application', [ApplicationController::class, 'store'])->name('application.store');
+
 Route::get('list-orphan', [ApplicationController::class, 'orphanList'])->name('application.orphanList');
 Route::get('list-orphan/{orphan}', [ApplicationController::class, 'orphanShow'])->name('application.orphanShow');
 
 
-Route::get('admin/application/{application}', [ApplicationController::class, 'show'])->name('application.show')->middleware('is_admin');
 
-//Route::get('/home', [HomeController::class, 'index'])->name('user.dashboard');
+

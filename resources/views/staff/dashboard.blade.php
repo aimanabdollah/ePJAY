@@ -63,7 +63,7 @@
                 <div class="icon">
                     <i class="nav-icon fas fa-money-bill"></i>
                 </div>
-                <a href="{{ url('admin/finance') }}" class="small-box-footer">More info <i
+                <a href="{{ url('admin/income') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 <div class="icon">
                     <i class="nav-icon fas fa-money-bill"></i>
                 </div>
-                <a href="{{ url('admin/finance') }}" class="small-box-footer">More info <i
+                <a href="{{ url('admin/expense') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>

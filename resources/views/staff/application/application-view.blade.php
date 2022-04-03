@@ -51,7 +51,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="nama_penuh_pemohon">Nama Penuh Pemohon</label>
-                                                    <div class="form-control">{{ $application->nama_penuh }}</div>
+                                                    <div class="form-control">{{ $application->nama_penuh_pemohon }}
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -396,75 +397,84 @@
                         </fieldset>
                     </form>
 
-                    <div class="btn btn-flat col-12" style="background-color: #138496">
-                        <div class="mr-auto" style="color: white">
-                            <h6><b>Bahagian D: Pengesahan Permohonan</b></h6>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="exampleInputEmail1">Status Permohonan</label>
-                                <select class="form-control" name="status_permohonan" id="status_permohonan"
-                                    aria-label="Default select example">
-                                    <option selected>Sila Pilih Status Permohonan</option>
-                                    <option value="Dalam Proses"
-                                        {{ old('status_permohonan') ?? $application->status_permohonan == 'Dalam Proses' ? 'selected' : '' }}>
-                                        Dalam Proses
-                                    </option>
-                                    <option value="Berjaya"
-                                        {{ old('status_permohonan') ?? $application->status_permohonan == 'Berjaya' ? 'selected' : '' }}>
-                                        Berjaya
-                                    </option>
-                                    <option value="Tidak Berjaya"
-                                        {{ old('status_permohonan') ?? $application->status_permohonan == 'Tidak Berjaya' ? 'selected' : '' }}>
-                                        Tidak Berjaya
-                                    </option>
-                                </select>
-                                @error('jantina')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                    <form action="{{ route('application.update', ['application' => $application->id]) }}"
+                        enctype="multipart/form-data" method="POST">
+                        @method('PATCH')
+                        @csrf
+                        <div class="btn btn-flat col-12" style="background-color: #138496">
+                            <div class="mr-auto" style="color: white">
+                                <h6><b>Bahagian D: Pengesahan Permohonan</b></h6>
                             </div>
-
-
-                            @if ($application->status_permohonan == 'Dalam Proses')
-                                <div class="col-md-6 status" id="Dalam_Proses">
-                                    <label for="exampleInputEmail1"></label>
-                                </div>
-                            @elseif ($application->status_permohonan == 'Berjaya')
-                                <div class="col-md-6 status" id="Berjaya">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Tarikh Daftar</label>
-                                        <input type="date"
-                                            class="form-control @error('tarikh_daftar') is-invalid @enderror"
-                                            id="tarikh_daftar" name="tarikh_daftar" value="{{ old('tarikh_daftar') }}"
-                                            placeholder="">
-                                        @error('tarikh_daftar')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @elseif ($application->status_permohonan == 'Tidak Berjaya')
-                                <div class="col-md-6 status" id="Tidak_Berjaya">
-                                    <label for="exampleInputEmail1">Ulasan</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                </div>
-                            @endif
-
                         </div>
-                    </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Status Permohonan</label>
+                                    <select class="form-control" name="status_permohonan" id="status_permohonan"
+                                        aria-label="Default select example">
+                                        <option selected>Sila Pilih Status Permohonan</option>
+                                        <option value="Dalam Proses"
+                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Dalam Proses' ? 'selected' : '' }}>
+                                            Dalam Proses
+                                        </option>
+                                        <option value="Berjaya"
+                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Berjaya' ? 'selected' : '' }}>
+                                            Berjaya
+                                        </option>
+                                        <option value="Tidak Berjaya"
+                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Tidak Berjaya' ? 'selected' : '' }}>
+                                            Tidak Berjaya
+                                        </option>
+                                    </select>
+                                    @error('status_permohonan')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+
+                                @if ($application->status_permohonan == 'Dalam Proses')
+                                    <div class="col-md-6 status" id="Dalam_Proses">
+                                        <label for="exampleInputEmail1"></label>
+                                    </div>
+                                @elseif ($application->status_permohonan == 'Berjaya')
+                                    <div class="col-md-6 status" id="Berjaya">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tarikh Daftar</label>
+                                            <input type="date"
+                                                class="form-control @error('tarikh_daftar') is-invalid @enderror"
+                                                id="tarikh_daftar" name="tarikh_daftar"
+                                                value="{{ old('tarikh_daftar') }}" placeholder="">
+                                            @error('tarikh_daftar')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                @elseif ($application->status_permohonan == 'Tidak Berjaya')
+                                    <div class="col-md-6 status" id="Tidak_Berjaya">
+                                        <label for="exampleInputEmail1">Ulasan</label>
+                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    </div>
+                                @endif
+
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success"> <i class="nav-icon fas fa-edit"></i>
+                                Kemaksini</button>
+                        </div>
+                    </form>
+
+
+
                 </div>
 
 
                 <!-- /.card-body -->
 
-                <div class="card-footer d-flex justify-content-end">
-
-                </div>
 
 
-                </form>
+
+
             </div>
         </div>
         <!-- /.card-body -->

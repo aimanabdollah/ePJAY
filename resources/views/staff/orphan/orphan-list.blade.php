@@ -96,10 +96,6 @@
                                                 </form>
 
                                             </div>
-
-
-
-
                                         </td>
                                     </tr>
                                 @empty

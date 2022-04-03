@@ -168,7 +168,6 @@ class OrphanController extends Controller
        // dump($request->all());
        // dump($orphan);
 
-        
         $validateData = $request->validate([
              'nama_penuh' => '',
              'nama_sekolah'   => '',
