@@ -74,7 +74,7 @@
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ url('list-orphan/' . $application->id) }}"
                                                     class="btn btn-primary  m-1"> <i class="nav-icon fas fa-eye"></i>
-                                                    Papar</a>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>

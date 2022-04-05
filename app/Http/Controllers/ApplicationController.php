@@ -23,6 +23,24 @@ class ApplicationController extends Controller
 
     }
 
+    public function viewTawaran(Application $application)
+    {
+        return view('parent.tawaran',['application' => $application]);
+    }
+
+    public function viewKeputusan(Application $application)
+    {
+        return view('parent.keputusan',['application' => $application]);
+    }
+
+
+    public function printTawaran()
+    {
+        // $application = Application::whereNotNull('id_pemohon')->get();
+         return view('parent.tawaran-print');
+
+    }
+
     public function orphanList()
     {
         $application = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Berjaya')->get();
@@ -183,6 +201,11 @@ class ApplicationController extends Controller
          return view('parent.orphan.orphan-view',['application' => $orphan]);
     }
 
+    public function applicationShow(Application $application)
+    {
+         return view('parent.application.application-view',['application' => $application]);
+    }
+
     public function edit(Application $application)
     {
         return view('staff.application.application-view',['application' => $application]);
@@ -195,10 +218,15 @@ class ApplicationController extends Controller
 
         $validateData = $request->validate([
              'status_permohonan'   => '',
+             'tarikh_daftar'   => '',
+             'ulasan'   => '',
         ]);
 
        
         $application->status_permohonan = $validateData['status_permohonan'];
+        $application->tarikh_daftar = $validateData['tarikh_daftar'];
+        $application->ulasan = $validateData['ulasan'];
+        $application->tarikh_masuk = date("Y-m-d");
  
         $application->update();
 

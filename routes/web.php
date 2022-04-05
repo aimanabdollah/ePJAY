@@ -80,6 +80,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('application', [ApplicationController::class, 'index'])->name('application.index');
 Route::get('add-application', [ApplicationController::class, 'create'])->name('application.create');
 Route::post('application', [ApplicationController::class, 'store'])->name('application.store');
+Route::get('application/{application}', [ApplicationController::class, 'applicationShow'])->name('application.show');
+
+Route::get('tawaran/{application}', [ApplicationController::class, 'viewTawaran'])->name('application.tawaran');
+//Route::get('tawaran', [ApplicationController::class, 'viewTawaran'])->name('application.tawaran');
+Route::get('tawaran-print', [ApplicationController::class, 'printTawaran'])->name('application.printtawaran');
+
+Route::get('keputusan/{application}', [ApplicationController::class, 'viewKeputusan'])->name('application.keputusan');
+
 
 Route::get('list-orphan', [ApplicationController::class, 'orphanList'])->name('application.orphanList');
 Route::get('list-orphan/{orphan}', [ApplicationController::class, 'orphanShow'])->name('application.orphanShow');

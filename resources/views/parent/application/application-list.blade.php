@@ -70,36 +70,46 @@
                                         
                                     @endphp
                                     <tr>
-
                                         <td class="align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">{{ $application->id_permohonan }}</td>
                                         <td class="align-middle">{{ $application->nama_penuh }}</td>
                                         <td class="align-middle">{{ $application->no_kad_pengenalan }}</td>
                                         <td class="align-middle">{{ $date }}</td>
-                                        <td>
+                                        <td class="align-middle">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                @if ($application->status_permohonan == 'Dalam Proses')
-                                                    <span
-                                                        class="badge p-2 badge-pill badge-warning">{{ $application->status_permohonan }}</span>
+                                                @if ($application->status_permohonan == 'Dalam_Proses')
+                                                    <span class="badge p-2 badge-pill badge-warning">Dalam Proses</span>
                                                 @elseif ($application->status_permohonan == 'Berjaya')
-                                                    <span
-                                                        class="badge p-2 badge-pill badge-success">{{ $application->status_permohonan }}</span>
-                                                @elseif ($application->status_permohonan == 'Tidak Berjaya')
-                                                    <span
-                                                        class="badge p-2 badge-pill badge-danger">{{ $application->status_permohonan }}</span>
+                                                    <span class="badge p-2 badge-pill badge-success">Berjaya</span>
+                                                @elseif ($application->status_permohonan == 'Tidak_Berjaya')
+                                                    <span class="badge p-2 badge-pill badge-danger">Tidak Berjaya</span>
                                                 @endif
                                             </div>
                                         </td>
-                                        <td>
 
+                                        <td>
+                                            <center>
+                                                {{-- <a href=" {{ url('admin/application/view-application') }}"
+                                                    class="btn-sm btn-primary p-2 m-1"> <i class="nav-icon fas fa-eye"></i>
+                                                    Papar</a> --}}
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    @if ($application->status_permohonan == 'Dalam_Proses')
+                                                        <a href="{{ url('application/' . $application->id) }}"
+                                                            class="btn-sm btn-primary m-1"><i
+                                                                class="nav-icon fas fa-eye"></i>
+                                                        </a>
+                                                    @elseif ($application->status_permohonan == 'Berjaya')
+                                                        <a href="{{ url('tawaran/' . $application->id) }}"
+                                                            class="btn-sm btn-primary m-1"><i class="fas fa-print"></i>
+                                                        </a>
+                                                    @elseif ($application->status_permohonan == 'Tidak_Berjaya')
+                                                        <a href="{{ url('keputusan/' . $application->id) }}"
+                                                            class="btn-sm btn-primary m-1"><i class="fas fa-print"></i>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </center>
                                         </td>
-                                        {{-- <td>
-                                        <center>
-                                            <a href=" {{ url('admin/application/view-application') }}"
-                                                class="btn-sm btn-primary p-2 m-1"> <i class="nav-icon fas fa-eye"></i>
-                                                Papar</a>
-                                        </center>
-                                    </td> --}}
                                     </tr>
                                 @empty
                                     <td colspan="7" class="text-center">Tiada rekod permohonan</td>

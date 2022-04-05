@@ -98,15 +98,12 @@
                                         </td> --}}
                                         <td class="align-middle">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                @if ($application->status_permohonan == 'Dalam Proses')
-                                                    <span
-                                                        class="badge p-2 badge-pill badge-warning">{{ $application->status_permohonan }}</span>
+                                                @if ($application->status_permohonan == 'Dalam_Proses')
+                                                    <span class="badge p-2 badge-pill badge-warning">Dalam Proses</span>
                                                 @elseif ($application->status_permohonan == 'Berjaya')
-                                                    <span
-                                                        class="badge p-2 badge-pill badge-success">{{ $application->status_permohonan }}</span>
-                                                @elseif ($application->status_permohonan == 'Tidak Berjaya')
-                                                    <span
-                                                        class="badge p-2 badge-pill badge-danger">{{ $application->status_permohonan }}</span>
+                                                    <span class="badge p-2 badge-pill badge-success">Berjaya</span>
+                                                @elseif ($application->status_permohonan == 'Tidak_Berjaya')
+                                                    <span class="badge p-2 badge-pill badge-danger">Tidak Berjaya</span>
                                                 @endif
                                             </div>
                                         </td>

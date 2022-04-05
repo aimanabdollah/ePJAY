@@ -32,8 +32,8 @@ class HomeController extends Controller
     {
         $application = Application::where('id_pemohon', Auth::id())->count();
         $successApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Berjaya')->count();
-        $failApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Tidak Berjaya')->count();
-        $pendingApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Dalam Proses')->count();
+        $failApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Tidak_Berjaya')->count();
+        $pendingApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Dalam_Proses')->count();
         
         return view('parent.dashboard', compact('application', 'successApp', 'failApp', 'pendingApp'));
     }

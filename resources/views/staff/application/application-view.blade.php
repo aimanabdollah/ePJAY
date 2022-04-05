@@ -413,16 +413,16 @@
                                     <select class="form-control" name="status_permohonan" id="status_permohonan"
                                         aria-label="Default select example">
                                         <option selected>Sila Pilih Status Permohonan</option>
-                                        <option value="Dalam Proses"
-                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Dalam Proses' ? 'selected' : '' }}>
+                                        <option value="Dalam_Proses"
+                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Dalam_Proses' ? 'selected' : '' }}>
                                             Dalam Proses
                                         </option>
                                         <option value="Berjaya"
                                             {{ old('status_permohonan') ?? $application->status_permohonan == 'Berjaya' ? 'selected' : '' }}>
                                             Berjaya
                                         </option>
-                                        <option value="Tidak Berjaya"
-                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Tidak Berjaya' ? 'selected' : '' }}>
+                                        <option value="Tidak_Berjaya"
+                                            {{ old('status_permohonan') ?? $application->status_permohonan == 'Tidak_Berjaya' ? 'selected' : '' }}>
                                             Tidak Berjaya
                                         </option>
                                     </select>
@@ -431,30 +431,37 @@
                                     @enderror
                                 </div>
 
+                                <div class="col-md-6 Dalam_Proses status" id="dalam_proses">
+                                    <div>
 
-                                @if ($application->status_permohonan == 'Dalam Proses')
-                                    <div class="col-md-6 status" id="Dalam_Proses">
-                                        <label for="exampleInputEmail1"></label>
                                     </div>
-                                @elseif ($application->status_permohonan == 'Berjaya')
-                                    <div class="col-md-6 status" id="Berjaya">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Tarikh Daftar</label>
-                                            <input type="date"
-                                                class="form-control @error('tarikh_daftar') is-invalid @enderror"
-                                                id="tarikh_daftar" name="tarikh_daftar"
-                                                value="{{ old('tarikh_daftar') }}" placeholder="">
-                                            @error('tarikh_daftar')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+
+                                </div>
+                                <div class="col-md-6 Berjaya status" id="berjaya">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tarikh Daftar</label>
+                                        <input type="date"
+                                            class="form-control @error('tarikh_daftar') is-invalid @enderror"
+                                            id="tarikh_daftar" name="tarikh_daftar"
+                                            value="{{ old('tarikh_daftar') ?? $application->tarikh_daftar }}"
+                                            placeholder="">
+                                        @error('tarikh_daftar')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                @elseif ($application->status_permohonan == 'Tidak Berjaya')
-                                    <div class="col-md-6 status" id="Tidak_Berjaya">
-                                        <label for="exampleInputEmail1">Ulasan</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                    </div>
-                                @endif
+                                </div>
+                                <div class="col-md-6 Tidak_Berjaya status" id="tidak_berjaya">
+                                    <label for="exampleInputEmail1">Ulasan</label>
+
+                                    <input type="text" class="form-control @error('ulasan') is-invalid @enderror"
+                                        id="ulasan" name="ulasan" value="{{ old('ulasan') ?? $application->ulasan }}"
+                                        placeholder="">
+                                    @error('ulasan')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
+
+                                </div>
 
                             </div>
                         </div>
@@ -505,14 +512,6 @@
 
 @push('js')
     <script>
-        // $(document).ready(function() {
-        //     $('.status').hide();
-        //     $('#Dalam_Proses').show();
-        //     $('#status_permohonan').change(function() {
-        //         $('.status').hide();
-        //         $('#' + $(this).val()).show();
-        //     })
-        // });
         $(document).ready(function() {
             $("#status_permohonan").change(function() {
                 $(this).find("option:selected").each(function() {
