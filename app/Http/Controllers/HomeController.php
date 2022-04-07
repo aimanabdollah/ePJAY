@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\Income;
+use App\Models\Transaction;
 use App\Models\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -46,11 +47,31 @@ class HomeController extends Controller
 
     public function adminHome()
     {
-        $income = Income::all()->sum('amount_tpn');
-        $expense = Expense::all()->sum('amount_tbj');
+        $income = Transaction::where('jenis', 'Pendapatan')->sum('jumlah_tpn');
+        $expense = Transaction::where('jenis', 'Perbelanjaan')->sum('jumlah_tbj');
         $orphan = Application::where('status_permohonan', 'Berjaya')->count();
         $application = Application::whereNotNull('id_pemohon')->count();
-        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application'));
+
+
+         $amountByMonth = DB::select(DB::raw('select DATE_FORMAT(tarikh, "%Y-%m") AS day_date, SUM(jumlah_tpn) AS jumlah_tpn, SUM(jumlah_tbj) AS jumlah_tbj
+         FROM transactions GROUP BY day_date ORDER BY day_date ASC'));
+
+     
+         $data1 = "";
+         foreach ($amountByMonth as $val) {
+             $data1.="['".$val->day_date."', ".$val->jumlah_tpn.", ".$val->jumlah_tbj."],";
+         }
+         $amountLine = $data1;
+
+         $data2 = "";
+         foreach ($amountByMonth as $val) {
+             $data2.="['".$val->day_date."', ".$val->jumlah_tpn."],";
+         }
+         $amountLine2 = $data2;
+
+        // dd($amountLine);
+
+        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine'));
     }
 
     public function adminFinance()

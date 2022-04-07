@@ -56,13 +56,25 @@
                                         <label for="kategori">Kategori</label>
                                         <select class="form-control" name="kategori" id="kategori">
                                             <option>Sila Pilih Kategori</option>
-                                            <option value="Sumbangan"
-                                                {{ (old('kategori') ?? $expense->category_tbj) == 'Sumbangan' ? 'selected' : '' }}>
-                                                Sumbangan
+                                            <option value="Sewaan Kediaman"
+                                                {{ (old('kategori') ?? $expense->kategori) == 'Sewaan Kediaman' ? 'selected' : '' }}>
+                                                Sewaan Kediaman
                                             </option>
-                                            <option value="Lain-lain"
-                                                {{ (old('kategori') ?? $expense->category_tbj) == 'Lain-lain' ? 'selected' : '' }}>
-                                                Lain-lain
+                                            <option value="Pengangkutan"
+                                                {{ (old('kategori') ?? $expense->kategori) == 'Pengangkutan' ? 'selected' : '' }}>
+                                                Pengangkutan
+                                            </option>
+                                            <option value="Kesihatan"
+                                                {{ (old('kategori') ?? $expense->kategori) == 'Kesihatan' ? 'selected' : '' }}>
+                                                Kesihatan
+                                            </option>
+                                            <option value="Makanan dan minuman"
+                                                {{ (old('kategori') ?? $expense->kategori) == 'Makanan dan minuman' ? 'selected' : '' }}>
+                                                Makanan dan minuman
+                                            </option>
+                                            <option value="Utiliti"
+                                                {{ (old('kategori') ?? $expense->kategori) == 'Utiliti' ? 'selected' : '' }}>
+                                                Utiliti
                                             </option>
                                         </select>
                                         @error('kategori')
@@ -77,7 +89,7 @@
                                         <label for="catatan">Catatan</label>
                                         <input type="text" class="form-control @error('catatan') is-invalid @enderror"
                                             id="catatan" name="catatan"
-                                            value="{{ old('catatan') ?? $expense->notes_tbj }}">
+                                            value="{{ old('catatan') ?? $expense->catatan }}">
                                         @error('catatan')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -90,7 +102,7 @@
                                     <div class="form-group">
                                         <label for="tarikh">Tarikh</label>
                                         <input type="date" class="form-control @error('tarikh') is-invalid @enderror"
-                                            id="tarikh" name="tarikh" value="{{ old('tarikh') ?? $expense->date_tbj }}">
+                                            id="tarikh" name="tarikh" value="{{ old('tarikh') ?? $expense->tarikh }}">
                                         @error('tarikh')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -100,7 +112,7 @@
                                         <label for="jumlah">Jumlah Perbelanjaan</label>
                                         <input type="number" class="form-control @error('jumlah') is-invalid @enderror"
                                             id="jumlah" name="jumlah"
-                                            value="{{ old('jumlah') ?? $expense->amount_tbj }}">
+                                            value="{{ old('jumlah') ?? $expense->jumlah_tbj }}">
                                         @error('jumlah')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

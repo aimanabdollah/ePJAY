@@ -57,12 +57,20 @@
                                         <select class="form-control" name="kategori" id="kategori">
                                             <option>Sila Pilih Kategori</option>
                                             <option value="Sumbangan"
-                                                {{ (old('kategori') ?? $income->category_tpn) == 'Sumbangan' ? 'selected' : '' }}>
+                                                {{ (old('kategori') ?? $income->kategori) == 'Sumbangan' ? 'selected' : '' }}>
                                                 Sumbangan
                                             </option>
-                                            <option value="Lain-lain"
-                                                {{ (old('kategori') ?? $income->category_tpn) == 'Lain-lain' ? 'selected' : '' }}>
-                                                Lain-lain
+                                            <option value="Elaun"
+                                                {{ (old('kategori') ?? $income->kategori) == 'Elaun' ? 'selected' : '' }}>
+                                                Elaun
+                                            </option>
+                                            <option value="Komisyen Jualan"
+                                                {{ (old('kategori') ?? $income->kategori) == 'Komisyen Jualan' ? 'selected' : '' }}>
+                                                Komisyen Jualan
+                                            </option>
+                                            <option value="Simpanan Tunai"
+                                                {{ (old('kategori') ?? $income->kategori) == 'Simpanan Tunai' ? 'selected' : '' }}>
+                                                Simpanan Tunai
                                             </option>
                                         </select>
                                         @error('kategori')
@@ -76,8 +84,7 @@
                                     <div class="form-group">
                                         <label for="catatan">Catatan</label>
                                         <input type="text" class="form-control @error('catatan') is-invalid @enderror"
-                                            id="catatan" name="catatan"
-                                            value="{{ old('catatan') ?? $income->notes_tpn }}">
+                                            id="catatan" name="catatan" value="{{ old('catatan') ?? $income->catatan }}">
                                         @error('catatan')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -90,7 +97,7 @@
                                     <div class="form-group">
                                         <label for="tarikh">Tarikh</label>
                                         <input type="date" class="form-control @error('tarikh') is-invalid @enderror"
-                                            id="tarikh" name="tarikh" value="{{ old('tarikh') ?? $income->date_tpn }}">
+                                            id="tarikh" name="tarikh" value="{{ old('tarikh') ?? $income->tarikh }}">
                                         @error('tarikh')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -99,7 +106,7 @@
                                     <div class="form-group">
                                         <label for="jumlah">Jumlah Pendapatan</label>
                                         <input type="number" class="form-control @error('jumlah') is-invalid @enderror"
-                                            id="jumlah" name="jumlah" value="{{ old('jumlah') ?? $income->amount_tpn }}">
+                                            id="jumlah" name="jumlah" value="{{ old('jumlah') ?? $income->jumlah_tpn }}">
                                         @error('jumlah')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

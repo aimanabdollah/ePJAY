@@ -74,10 +74,10 @@
 
                                         <td class="align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">{{ $income->id_trans_tpn }}</td>
-                                        <td class="align-middle">{{ $income->category_tpn }}</td>
-                                        <td class="align-middle">{{ $income->notes_tpn }}</td>
-                                        <td class="align-middle">RM {{ $income->amount_tpn }}</td>
-                                        <td class="align-middle">{{ $income->date_tpn }}</td>
+                                        <td class="align-middle">{{ $income->kategori }}</td>
+                                        <td class="align-middle">{{ $income->catatan }}</td>
+                                        <td class="align-middle">RM {{ $income->jumlah_tpn }}</td>
+                                        <td class="align-middle">{{ $income->tarikh }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ url('admin/income/' . $income->id) }}"

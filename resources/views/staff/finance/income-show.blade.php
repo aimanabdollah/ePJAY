@@ -46,12 +46,12 @@
 
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <div class="form-control">{{ $income->category_tpn }}</div>
+                                    <div class="form-control">{{ $income->kategori }}</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="catatan">Catatan</label>
-                                    <div class="form-control">{{ $income->notes_tpn }}</div>
+                                    <div class="form-control">{{ $income->catatan }}</div>
                                 </div>
 
                             </div>
@@ -60,12 +60,12 @@
 
                                 <div class="form-group">
                                     <label for="tarikh">Tarikh</label>
-                                    <div class="form-control">{{ $income->date_tpn }}</div>
+                                    <div class="form-control">{{ $income->tarikh }}</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="jumlah">Jumlah Pendapatan</label>
-                                    <div class="form-control">RM {{ $income->amount_tpn }}</div>
+                                    <div class="form-control">RM {{ $income->jumlah_tpn }}</div>
 
                                 </div>
 

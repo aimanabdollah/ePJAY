@@ -46,12 +46,12 @@
 
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <div class="form-control">{{ $expense->category_tbj }}</div>
+                                    <div class="form-control">{{ $expense->kategori }}</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="catatan">Catatan</label>
-                                    <div class="form-control">{{ $expense->notes_tbj }}</div>
+                                    <div class="form-control">{{ $expense->catatan }}</div>
                                 </div>
 
                             </div>
@@ -60,12 +60,12 @@
 
                                 <div class="form-group">
                                     <label for="tarikh">Tarikh</label>
-                                    <div class="form-control">{{ $expense->date_tbj }}</div>
+                                    <div class="form-control">{{ $expense->tarikh }}</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="jumlah">Jumlah Perbelanjaan</label>
-                                    <div class="form-control">RM {{ $expense->amount_tbj }}</div>
+                                    <div class="form-control">RM {{ $expense->jumlah_tbj }}</div>
 
                                 </div>
 

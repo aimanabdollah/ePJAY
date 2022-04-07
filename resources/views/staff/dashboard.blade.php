@@ -87,7 +87,7 @@
     </div>
 
 
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header ui-sortable-handle" style="cursor: move;">
             <h3 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
@@ -133,10 +133,32 @@
                 </div>
             </div>
         </div><!-- /.card-body -->
+    </div> --}}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Analisis Jumlah Pendapatan dan Perbelanjaan</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body" id="curve_chart" style="height: 300px"></div>
+        {{-- <div class="col-lg-6" style="margin-top: 3%">
+            <div class="card card-stats" id="curve_chart" style="height: 300px"></div>
+        </div> --}}
+        <!-- /.card-body -->
+        {{-- <div class="card-footer">
+            Footer
+        </div> --}}
+        <!-- /.card-footer-->
     </div>
 
     <!-- Default box -->
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header">
             <h3 class="card-title">Title</h3>
 
@@ -159,7 +181,7 @@
             Footer
         </div>
         <!-- /.card-footer-->
-    </div>
+    </div> --}}
 
     <!-- /.card -->
 @endsection
@@ -184,5 +206,35 @@
 
             });
         });
+
+        // LINE CHART FOR TOTAL SALES BY MONTH
+        google.charts.load('current', {
+            packages: ['corechart', 'line']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Bulan', 'Pendapatan', 'Perbelanjaan'],
+                <?php echo $amountLine; ?>
+            ]);
+            var options = {
+                title: '',
+                curveType: 'function',
+                hAxis: {
+                    title: 'Bulan'
+                },
+                vAxis: {
+                    title: 'Jumlah (RM)'
+                },
+                animation: {
+                    "startup": true,
+                    duration: 1000,
+                    easing: 'out'
+                }
+            };
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            chart.draw(data, options);
+        }
     </script>
 @endpush

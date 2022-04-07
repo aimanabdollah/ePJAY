@@ -74,10 +74,10 @@
 
                                         <td class="align-middle">{{ $loop->iteration }}</td>
                                         <td class="align-middle">{{ $expense->id_trans_tbj }}</td>
-                                        <td class="align-middle">{{ $expense->category_tbj }}</td>
-                                        <td class="align-middle">{{ $expense->notes_tbj }}</td>
-                                        <td class="align-middle">RM {{ $expense->amount_tbj }}</td>
-                                        <td class="align-middle">{{ $expense->date_tbj }}</td>
+                                        <td class="align-middle">{{ $expense->kategori }}</td>
+                                        <td class="align-middle">{{ $expense->catatan }}</td>
+                                        <td class="align-middle">RM {{ $expense->jumlah_tbj }}</td>
+                                        <td class="align-middle">{{ $expense->tarikh }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ url('admin/expense/' . $expense->id) }}"

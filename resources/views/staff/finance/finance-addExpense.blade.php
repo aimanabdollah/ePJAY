@@ -46,13 +46,24 @@
                                         <select class="form-control" name="kategori" id="kategori"
                                             aria-label="Default select example">
                                             <option selected>Sila Pilih Kategori</option>
-                                            <option value="Sumbangan"
-                                                {{ old('kategori') == 'Sumbangan' ? 'selected' : '' }}>
-                                                Sumbangan
+                                            <option value="Sewaan Kediaman"
+                                                {{ old('kategori') == 'Sewaan Kediaman' ? 'selected' : '' }}>
+                                                Sewaan Kediaman
                                             </option>
-                                            <option value="Lain-lain"
-                                                {{ old('kategori') == 'Lain-lain' ? 'selected' : '' }}>
-                                                Lain-lain
+                                            <option value="Pengangkutan"
+                                                {{ old('kategori') == 'Pengangkutan' ? 'selected' : '' }}>
+                                                Pengangkutan
+                                            </option>
+                                            <option value="Kesihatan"
+                                                {{ old('kategori') == 'Kesihatan' ? 'selected' : '' }}>
+                                                Kesihatan
+                                            </option>
+                                            <option value="Makanan dan minuman"
+                                                {{ old('kategori') == 'Makanan dan minuman' ? 'selected' : '' }}>
+                                                Makanan dan minuman
+                                            </option>
+                                            <option value="Utiliti" {{ old('kategori') == 'Utiliti' ? 'selected' : '' }}>
+                                                Utiliti
                                             </option>
                                         </select>
                                         @error('kategori')

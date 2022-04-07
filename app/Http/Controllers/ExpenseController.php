@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
     public function index()
     {
-         $expense = Expense::all();
+        $expense = Transaction::where('jenis', 'Perbelanjaan')->get();
          return view('staff.finance.finance-listExpense', compact('expense'));
 
     }
@@ -29,13 +30,14 @@ class ExpenseController extends Controller
          ]);
 
         // CARA ELOQUENT ORM
-          $expense = new Expense();
+          $expense = new Transaction();
         
-          $expense->category_tbj = $validateData['kategori'];
-          $expense->notes_tbj = $validateData['catatan'];
-          $expense->amount_tbj = $validateData['jumlah'];
-          $expense->date_tbj = $validateData['tarikh'];
+          $expense->kategori = $validateData['kategori'];
+          $expense->catatan = $validateData['catatan'];
+          $expense->jumlah_tbj = $validateData['jumlah'];
+          $expense->tarikh = $validateData['tarikh'];
           $expense->id_trans_tbj = 'TBJ'.rand(111111,999999);
+           $expense->jenis = 'Perbelanjaan';
 
           $expense->save();
       
@@ -43,7 +45,7 @@ class ExpenseController extends Controller
          ->with('message', "Rekod berjaya ditambah");
      }
 
-    public function show(Expense $expense)
+    public function show(Transaction $expense)
     {
         // dd($mahasiswa);
 
@@ -56,12 +58,12 @@ class ExpenseController extends Controller
     }
 
 
-    public function edit(Expense $expense)
+    public function edit(Transaction $expense)
     {
         return view('staff.finance.finance-editExpense',['expense' => $expense]);
     }
 
-    public function update(Request $request, Expense $expense)
+    public function update(Request $request, Transaction $expense)
     {
        // dump($request->all());
        // dump($income);
@@ -75,10 +77,10 @@ class ExpenseController extends Controller
          ]);
 
         //Mahasiswa::where('id',$mahasiswa->id)->update($validateData);
-          $expense->category_tbj = $validateData['kategori'];
-          $expense->notes_tbj = $validateData['catatan'];
-          $expense->amount_tbj = $validateData['jumlah'];
-          $expense->date_tbj = $validateData['tarikh'];
+          $expense->kategori = $validateData['kategori'];
+          $expense->catatan = $validateData['catatan'];
+          $expense->jumlah_tbj = $validateData['jumlah'];
+          $expense->tarikh = $validateData['tarikh'];
 
           $expense->update();
 
@@ -89,7 +91,7 @@ class ExpenseController extends Controller
         // ->with('pesan', "Update data {$validateData['nama']} berhasil");
     }
 
-    public function destroy(Expense $expense)
+    public function destroy(Transaction $expense)
     {
         $expense->delete();
         return redirect('/admin/expense')->with('message', "Rekod berjaya dihapus");

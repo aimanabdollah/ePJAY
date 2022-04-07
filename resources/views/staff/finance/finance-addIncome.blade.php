@@ -49,9 +49,16 @@
                                                 {{ old('kategori') == 'Sumbangan' ? 'selected' : '' }}>
                                                 Sumbangan
                                             </option>
-                                            <option value="Lain-lain"
-                                                {{ old('kategori') == 'Lain-lain' ? 'selected' : '' }}>
-                                                Lain-lain
+                                            <option value="Elaun" {{ old('kategori') == 'Elaun' ? 'selected' : '' }}>
+                                                Elaun
+                                            </option>
+                                            <option value="Komisyen Jualan"
+                                                {{ old('kategori') == 'Komisyen Jualan' ? 'selected' : '' }}>
+                                                Komisyen Jualan
+                                            </option>
+                                            <option value="Simpanan Tunai"
+                                                {{ old('kategori') == 'Simpanan Tunai' ? 'selected' : '' }}>
+                                                Simpanan Tunai
                                             </option>
                                         </select>
                                         @error('kategori')

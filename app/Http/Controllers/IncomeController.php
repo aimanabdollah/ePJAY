@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Income;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
     public function index()
     {
-         $income = Income::all();
+        $income = Transaction::where('jenis', 'Pendapatan')->get();
          return view('staff.finance.finance-listIncome', compact('income'));
 
     }
@@ -30,13 +31,14 @@ class IncomeController extends Controller
          ]);
 
         // CARA ELOQUENT ORM
-          $income = new Income();
+          $income = new Transaction();
         
-          $income->category_tpn = $validateData['kategori'];
-          $income->notes_tpn = $validateData['catatan'];
-          $income->amount_tpn = $validateData['jumlah'];
-          $income->date_tpn = $validateData['tarikh'];
+          $income->kategori = $validateData['kategori'];
+          $income->catatan = $validateData['catatan'];
+          $income->jumlah_tpn = $validateData['jumlah'];
+          $income->tarikh = $validateData['tarikh'];
           $income->id_trans_tpn = 'TPN'.rand(111111,999999);
+          $income->jenis = 'Pendapatan';
 
           $income->save();
       
@@ -44,7 +46,7 @@ class IncomeController extends Controller
          ->with('message', "Rekod berjaya ditambah");
      }
 
-    public function show(Income $income)
+    public function show(Transaction $income)
     {
         // dd($mahasiswa);
 
@@ -57,12 +59,12 @@ class IncomeController extends Controller
     }
 
 
-    public function edit(Income $income)
+    public function edit(Transaction $income)
     {
         return view('staff.finance.finance-editIncome',['income' => $income]);
     }
 
-    public function update(Request $request, Income $income)
+    public function update(Request $request, Transaction $income)
     {
        // dump($request->all());
        // dump($income);
@@ -76,10 +78,10 @@ class IncomeController extends Controller
          ]);
 
         //Mahasiswa::where('id',$mahasiswa->id)->update($validateData);
-          $income->category_tpn = $validateData['kategori'];
-          $income->notes_tpn = $validateData['catatan'];
-          $income->amount_tpn = $validateData['jumlah'];
-          $income->date_tpn = $validateData['tarikh'];
+          $income->kategori = $validateData['kategori'];
+          $income->catatan = $validateData['catatan'];
+          $income->jumlah_tpn = $validateData['jumlah'];
+          $income->tarikh = $validateData['tarikh'];
 
           $income->update();
 
@@ -90,7 +92,7 @@ class IncomeController extends Controller
         // ->with('pesan', "Update data {$validateData['nama']} berhasil");
     }
 
-    public function destroy(Income $income)
+    public function destroy(Transaction $income)
     {
         $income->delete();
         return redirect('/admin/income')->with('message', "Rekod berjaya dihapus");
