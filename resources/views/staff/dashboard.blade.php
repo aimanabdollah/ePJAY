@@ -134,7 +134,7 @@
             </div>
         </div><!-- /.card-body -->
     </div> --}}
-    <div class="card">
+    <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Analisis Jumlah Pendapatan dan Perbelanjaan</h3>
             <div class="card-tools">
@@ -146,16 +146,17 @@
                 </button>
             </div>
         </div>
-        <div class="card-body" id="curve_chart" style="height: 300px"></div>
-        {{-- <div class="col-lg-6" style="margin-top: 3%">
-            <div class="card card-stats" id="curve_chart" style="height: 300px"></div>
-        </div> --}}
-        <!-- /.card-body -->
-        {{-- <div class="card-footer">
-            Footer
-        </div> --}}
-        <!-- /.card-footer-->
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4" id="curve_chart" style="height: 200pt"></div>
+                <div class="col-4" id="piechart"></div>
+                <div class="col-4" id="piechart2"></div>
+            </div>
+
+        </div>
     </div>
+
 
     <!-- Default box -->
     {{-- <div class="card">
@@ -211,15 +212,15 @@
         google.charts.load('current', {
             packages: ['corechart', 'line']
         });
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart1);
 
-        function drawChart() {
+        function drawChart1() {
             var data = google.visualization.arrayToDataTable([
                 ['Bulan', 'Pendapatan', 'Perbelanjaan'],
                 <?php echo $amountLine; ?>
             ]);
             var options = {
-                title: '',
+                title: 'Carta Garis Jumlah Mengikut Bulan',
                 curveType: 'function',
                 hAxis: {
                     title: 'Bulan'
@@ -234,6 +235,49 @@
                 }
             };
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Kategori', 'Jumlah'],
+                <?php echo $incomeCate; ?>
+            ]);
+
+            var options = {
+                title: 'Carta Pie Bagi Kategori Pendapatan'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart2);
+
+        function drawChart2() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Kategori', 'Jumlah'],
+                <?php echo $expenseCate; ?>
+            ]);
+
+            var options = {
+                title: 'Carta Pie Bagi Kategori Perbelanjaan'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
             chart.draw(data, options);
         }
     </script>

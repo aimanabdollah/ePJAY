@@ -99,7 +99,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <td colspan="7" class="text-center">Tiada rekod anak jagaan</td>
+                                    <td colspan="8" class="text-center">Tiada rekod anak jagaan</td>
                                 @endforelse
                             </tbody>
                         </table>

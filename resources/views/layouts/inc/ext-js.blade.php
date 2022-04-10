@@ -26,5 +26,4 @@
 
    <!-- ChartJS -->
    <script src="{{ url('/adminlte/plugins/chart.js/Chart.min.js') }}"></script>
-
    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

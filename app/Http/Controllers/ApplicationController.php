@@ -138,7 +138,7 @@ class ApplicationController extends Controller
         
         $application->id_permohonan = 'PMH'.rand(111111,999999);
         $application->id_anak_jagaan = 'AKG'.rand(111111,999999);
-        $application->status_permohonan = 'Dalam Proses';
+        $application->status_permohonan = 'Dalam_Proses';
 
         $application->id_pemohon = Auth::user()->id;
 

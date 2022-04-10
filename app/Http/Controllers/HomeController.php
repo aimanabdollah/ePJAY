@@ -56,22 +56,31 @@ class HomeController extends Controller
          $amountByMonth = DB::select(DB::raw('select DATE_FORMAT(tarikh, "%Y-%m") AS day_date, SUM(jumlah_tpn) AS jumlah_tpn, SUM(jumlah_tbj) AS jumlah_tbj
          FROM transactions GROUP BY day_date ORDER BY day_date ASC'));
 
-     
          $data1 = "";
          foreach ($amountByMonth as $val) {
              $data1.="['".$val->day_date."', ".$val->jumlah_tpn.", ".$val->jumlah_tbj."],";
          }
          $amountLine = $data1;
 
-         $data2 = "";
-         foreach ($amountByMonth as $val) {
-             $data2.="['".$val->day_date."', ".$val->jumlah_tpn."],";
+        $groupIncome = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tpn) as jumlah_tpn from transactions where jenis = "Pendapatan" GROUP BY kategori'));
+        $data2 = "";
+        foreach ($groupIncome as $val) {
+             $data2.="['".$val->kategori."', ".$val->jumlah_tpn."],";
          }
-         $amountLine2 = $data2;
+         $incomeCate = $data2;
 
-        // dd($amountLine);
+        $groupExpense = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tbj) as jumlah_tbj from transactions where jenis = "Perbelanjaan" GROUP BY kategori'));
+        $data3 = "";
+        foreach ($groupExpense as $val) {
+             $data3.="['".$val->kategori."', ".$val->jumlah_tbj."],";
+         }
+         $expenseCate = $data3;
 
-        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine'));
+         //dd($expenseCate);
+
+     
+
+        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate'));
     }
 
     public function adminFinance()

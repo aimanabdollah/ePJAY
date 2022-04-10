@@ -65,8 +65,14 @@
 
                                 <div class="form-group">
                                     <label for="jumlah">Jumlah Perbelanjaan</label>
-                                    <div class="form-control">RM {{ $expense->jumlah_tbj }}</div>
-
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                RM
+                                            </div>
+                                        </div>
+                                        <div class="form-control">{{ $expense->jumlah_tbj }}</div>
+                                    </div>
                                 </div>
 
                             </div>

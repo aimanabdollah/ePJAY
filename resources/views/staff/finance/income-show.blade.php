@@ -65,7 +65,14 @@
 
                                 <div class="form-group">
                                     <label for="jumlah">Jumlah Pendapatan</label>
-                                    <div class="form-control">RM {{ $income->jumlah_tpn }}</div>
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                RM
+                                            </div>
+                                        </div>
+                                        <div class="form-control">{{ $income->jumlah_tpn }}</div>
+                                    </div>
 
                                 </div>
 

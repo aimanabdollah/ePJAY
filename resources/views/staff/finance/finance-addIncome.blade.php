@@ -92,12 +92,20 @@
 
                                     <div class="form-group">
                                         <label for="jumlah">Jumlah Pendapatan</label>
-                                        <input type="number" class="form-control @error('jumlah') is-invalid @enderror"
-                                            id="jumlah" name="jumlah" value="{{ old('jumlah') }}"
-                                            placeholder="Masukkan Jumlah Pendapatan">
-                                        @error('jumlah')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    RM
+                                                </div>
+                                            </div>
+                                            <input type="number" class="form-control @error('jumlah') is-invalid @enderror"
+                                                id="jumlah" name="jumlah" step=0.01 value="{{ old('jumlah') }}"
+                                                placeholder="Masukkan Jumlah Pendapatan">
+                                            @error('jumlah')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
                                     </div>
 
                                 </div>
