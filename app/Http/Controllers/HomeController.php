@@ -78,9 +78,47 @@ class HomeController extends Controller
 
          //dd($expenseCate);
 
-     
+        $groupGender = DB::select(DB::raw('SELECT jantina, COUNT(jantina) AS jumlah 
+                                           FROM applications WHERE status_permohonan="Berjaya" 
+                                           AND deleted_at IS NULL GROUP BY jantina'));
+        $data4 = "";
+        foreach ($groupGender as $val) {
+              $data4.="['".$val->jantina."', ".$val->jumlah."],";
+        }
+        $genderCate = $data4;
 
-        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate'));
+ 
+        $groupAge = DB::select(DB::raw(' SELECT CASE WHEN umur < 7 THEN "A: 6 Tahun dan ke bawah"
+                                                     WHEN umur >= 7 && umur <=12  THEN "B: 7 - 12 Tahun"
+                                                     WHEN umur >= 13 && umur <=17 THEN "C: 13 - 17 Tahun"
+                                                     ELSE "D: 18 Tahun dan ke atas"
+                                         END AS kategori, COUNT(umur) AS jumlah 
+                                         FROM applications WHERE status_permohonan="Berjaya"
+                                         AND deleted_at IS NULL GROUP BY kategori
+                                         ORDER BY kategori ASC'));
+
+        $data5 = "";
+        foreach ($groupAge as $val) {
+              $data5.="['".$val->kategori."', ".$val->jumlah."],";
+        }
+        $ageCate = $data5; 
+        
+        $groupStatus = DB::select(DB::raw(' SELECT CASE WHEN status_permohonan = "Dalam_Proses" THEN "Dalam Proses"
+                                                        WHEN status_permohonan = "Tidak_Berjaya"  THEN "Tidak Berjaya"  
+                                                        ELSE "Berjaya"
+                                         END AS status_permohonan, COUNT(status_permohonan) AS jumlah 
+                                         FROM applications WHERE id_permohonan IS NOT NULL
+                                         GROUP BY status_permohonan'));
+
+        $data6 = "";
+        foreach ($groupStatus as $val) {
+              $data6.="['".$val->status_permohonan."', ".$val->jumlah."],";
+        }
+        $statusCate = $data6;
+
+        //dd($statusCate);
+
+        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate', 'genderCate', 'ageCate', 'statusCate'));
     }
 
     public function adminFinance()

@@ -136,7 +136,7 @@
     </div> --}}
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Analisis Jumlah Pendapatan dan Perbelanjaan</h3>
+            <h3 class="card-title">Analisis Maklumat Pendapatan dan Perbelanjaan</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -152,6 +152,52 @@
                 <div class="col-4" id="curve_chart" style="height: 200pt"></div>
                 <div class="col-4" id="piechart"></div>
                 <div class="col-4" id="piechart2"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Analisis Maklumat Anak Jagaan</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6" id="ageCategory" style="height: 200pt"></div>
+                {{-- <div class="col-4" id="piechart"></div> --}}
+                <div class="col-6" id="piechart3"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Analisis Maklumat Permohonan</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6" id="ageCategory" style="height: 200pt"></div>
+                {{-- <div class="col-4" id="piechart"></div> --}}
+                <div class="col-6" id="piechart4"></div>
             </div>
 
         </div>
@@ -220,7 +266,7 @@
                 <?php echo $amountLine; ?>
             ]);
             var options = {
-                title: 'Carta Garis Jumlah Mengikut Bulan',
+                title: 'Jumlah Pendapatan dan Perbelanjaan Mengikut Bulan',
                 curveType: 'function',
                 hAxis: {
                     title: 'Bulan'
@@ -252,7 +298,7 @@
             ]);
 
             var options = {
-                title: 'Carta Pie Bagi Kategori Pendapatan'
+                title: 'Peratusan Jumlah Pendapatan Mengikut Kategori'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -273,10 +319,88 @@
             ]);
 
             var options = {
-                title: 'Carta Pie Bagi Kategori Perbelanjaan'
+                title: 'Peratusan Jumlah Perbelanjaan Mengikut Kategori'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+            chart.draw(data, options);
+        }
+
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart3);
+
+        function drawChart3() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Jantina', 'Jumlah'],
+                <?php echo $genderCate; ?>
+            ]);
+
+            var options = {
+                title: 'Peratusan Jumlah Anak Jagaan Mengikut Jantina'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+            chart.draw(data, options);
+        }
+
+
+
+        google.charts.load('current', {
+            packages: ['corechart', 'bar']
+        });
+        google.charts.setOnLoadCallback(ageCategory);
+
+        function ageCategory() {
+            var data = google.visualization.arrayToDataTable([
+                ['Umur', 'Jumlah'],
+                <?php echo $ageCate; ?>
+            ]);
+            var options = {
+                title: 'Jumlah Anak Jagaan Mengikut Umur',
+                animation: {
+                    "startup": true,
+                    duration: 3000,
+                    easing: 'out'
+                },
+                colors: ['green'],
+                // chartArea: {
+                //     width: '50%'
+                // },
+                hAxis: {
+                    title: '',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: ''
+                }
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('ageCategory'));
+            chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(statusCategory);
+
+        function statusCategory() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Jumlah'],
+                <?php echo $statusCate; ?>
+            ]);
+
+            var options = {
+                title: 'Peratusan Jumlah Permohonan Mengikut Status'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
 
             chart.draw(data, options);
         }

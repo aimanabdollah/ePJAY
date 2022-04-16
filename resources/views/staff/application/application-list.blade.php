@@ -113,8 +113,11 @@
                                                     class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i>
                                                 </a> --}}
 
-                                                <a href="{{ route('application.edit', ['application' => $application->id]) }}"
-                                                    class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i></a>
+                                                {{-- <a href="{{ route('application.edit', ['application' => $application->id]) }}"
+                                                    class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i></a> --}}
+
+                                                <a href="" class="btn btn-info  m-1"><i
+                                                        class="nav-icon fas fa-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -157,8 +160,8 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "searching": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "searching": false,
+                // "buttons": ["copy", "csv", "excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>

@@ -27,8 +27,11 @@
                         <div class="mr-auto">
                             <h5>Senarai Anak Jagaan</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/orphan/add-orphan') }}"
+                        {{-- <div class=""> <a href="{{ url('admin/orphan/add-orphan') }}"
                                 class="btn btn-success">
+                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
+                            </a></div> --}}
+                        <div class=""> <a href="" class="btn btn-success">
                                 <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
                             </a></div>
 

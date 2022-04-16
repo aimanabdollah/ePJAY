@@ -1,4 +1,4 @@
-@extends('layouts.parent-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.parent-main', ['title'=>'Permohonan'])
 
 @section('content-header')
     <div class="container-fluid">
