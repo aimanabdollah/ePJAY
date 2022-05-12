@@ -92,8 +92,9 @@
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger ml-1"
-                                                        onclick="return confirm('Are you sure to delete this?')"><i
+                                                        onclick="return confirm('Adakah anda pasti untuk menghapus rekod ini?')"><i
                                                             class="nav-icon fas fa-trash"></i></button>
+
                                                 </form>
 
                                             </div>

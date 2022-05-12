@@ -13,6 +13,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    @include('sweetalert::alert')
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -47,7 +48,15 @@
 
     </div>
     <!-- ./wrapper -->
+    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    @if (session('status'))
+        <script>
+            swal("{{ session('status') }}");
+        </script>
+    @endif --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     @include('layouts.inc.ext-js')
     @stack('js')
 

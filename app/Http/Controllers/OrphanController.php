@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 // use Illuminate\Support\Facades\File;
 
@@ -27,7 +28,7 @@ class OrphanController extends Controller
              'nama_penuh' => '',
              'nama_sekolah'   => '',
              'tarikh_lahir' => '',
-             'umur'   => 'numeric|min:0|max:99999999',
+             'umur'   => '',
              'alamat'   => '',
              'poskod'   => '',
              'bandar'   => '',
@@ -56,13 +57,13 @@ class OrphanController extends Controller
              'no_kad_pengenalan_ayah' => 'digits:12',
              'no_telefon_ayah'    => '',
              'pekerjaan_ayah'   => '',
-             'pendapatan_ayah'   => 'numeric|min:0|max:99999999',
+             'pendapatan_ayah'   => '',
 
              'nama_penuh_ibu' => '',
              'no_kad_pengenalan_ibu' => 'digits:12',
              'no_telefon_ibu'    => '',
              'pekerjaan_ibu'   => '',
-             'pendapatan_ibu'   => 'numeric|min:0|max:99999999',
+             'pendapatan_ibu'   => '',
 
          ]);
 
@@ -146,10 +147,17 @@ class OrphanController extends Controller
         $orphan->no_telefon_ibu = $validateData['no_telefon_ibu'];
         $orphan->pekerjaan_ibu = $validateData['pekerjaan_ibu'];
         $orphan->pendapatan_ibu = $validateData['pendapatan_ibu']; 
-        $orphan->save();
- 
-        return redirect('/admin/orphan')
-          ->with('message', "Rekod berjaya ditambah");
+
+        $saveOrphan = $orphan->save();
+         
+        if ($saveOrphan) {
+                Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
+                return redirect('/admin/orphan');
+        }
+        else {
+                Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
+                return redirect('/admin/orphan');
+        }
      }
 
     public function show(Application $orphan)
@@ -172,7 +180,7 @@ class OrphanController extends Controller
              'nama_penuh' => '',
              'nama_sekolah'   => '',
              'tarikh_lahir' => '',
-             'umur'   => 'required|numeric|min:0|max:99999999',
+             'umur'   => '',
              'alamat'   => '',
              'poskod'   => '',
              'bandar'   => '',
@@ -197,13 +205,13 @@ class OrphanController extends Controller
              'no_kad_pengenalan_ayah' => 'required|digits:12|unique:orphans,no_kad_pengenalan_ayah,'.$orphan->id,
              'no_telefon_ayah'    => '',
              'pekerjaan_ayah'   => '',
-             'pendapatan_ayah'   => 'required|numeric|min:0|max:99999999',
+             'pendapatan_ayah'   => '',
 
              'nama_penuh_ibu' => '',
              'no_kad_pengenalan_ibu' => 'required|digits:12|unique:orphans,no_kad_pengenalan_ibu,'.$orphan->id,
              'no_telefon_ibu'    => '',
              'pekerjaan_ibu'   => '',
-             'pendapatan_ibu'   => 'required|numeric|min:0|max:99999999',
+             'pendapatan_ibu'   => '',
         ]);
 
         // if($request->hasFile('gambar'))
@@ -302,16 +310,23 @@ class OrphanController extends Controller
         $orphan->pekerjaan_ibu = $validateData['pekerjaan_ibu'];
         $orphan->pendapatan_ibu = $validateData['pendapatan_ibu']; 
 
-        $orphan->update();
-
-        return redirect('/admin/orphan')
-         ->with('message', "Rekod berjaya dikemaskini");
-    }
+        $updateOrphan = $orphan->update();
+         
+        if ($updateOrphan) {
+                Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
+                return redirect('/admin/orphan');
+        }
+        else {
+                Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
+                return redirect('/admin/orphan');
+        }
+     }
 
     public function destroy(Application $orphan)
     {
         $orphan->delete();
-        return redirect('/admin/orphan')->with('message', "Rekod berjaya dihapus");
+        Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
+        return redirect('/admin/orphan');
     }
 
 

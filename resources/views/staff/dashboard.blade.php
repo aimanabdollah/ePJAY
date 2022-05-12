@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    <div class="card card-primary">
+    {{-- <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Analisis Maklumat Permohonan</h3>
             <div class="card-tools">
@@ -196,12 +196,11 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-6" id="ageCategory" style="height: 200pt"></div>
-                {{-- <div class="col-4" id="piechart"></div> --}}
                 <div class="col-6" id="piechart4"></div>
             </div>
 
         </div>
-    </div>
+    </div> --}}
 
 
     <!-- Default box -->

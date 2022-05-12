@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expense;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ExpenseController extends Controller
 {
@@ -37,12 +38,18 @@ class ExpenseController extends Controller
           $expense->jumlah_tbj = $validateData['jumlah'];
           $expense->tarikh = $validateData['tarikh'];
           $expense->id_trans_tbj = 'TBJ'.rand(111111,999999);
-           $expense->jenis = 'Perbelanjaan';
+          $expense->jenis = 'Perbelanjaan';
 
-          $expense->save();
-      
-          return redirect('/admin/expense')
-         ->with('message', "Rekod berjaya ditambah");
+          $saveExpense = $expense->save();
+         
+          if ($saveExpense) {
+                Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
+                return redirect('/admin/expense');
+          }
+          else {
+                Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
+                return redirect('/admin/expense');
+           }
      }
 
     public function show(Transaction $expense)
@@ -82,10 +89,16 @@ class ExpenseController extends Controller
           $expense->jumlah_tbj = $validateData['jumlah'];
           $expense->tarikh = $validateData['tarikh'];
 
-          $expense->update();
-
-        return redirect('/admin/expense')
-         ->with('message', "Rekod berjaya dikemaskini");
+          $updateExpense = $expense->update();
+         
+          if ($updateExpense) {
+                Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
+                return redirect('/admin/expense');
+          }
+          else {
+                Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
+                return redirect('/admin/expense');
+           }
 
         // return redirect()->route('mahasiswas.index')
         // ->with('pesan', "Update data {$validateData['nama']} berhasil");
@@ -94,6 +107,7 @@ class ExpenseController extends Controller
     public function destroy(Transaction $expense)
     {
         $expense->delete();
-        return redirect('/admin/expense')->with('message', "Rekod berjaya dihapus");
+        Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
+        return redirect('/admin/expense');
     }
 }

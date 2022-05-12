@@ -164,7 +164,7 @@ class ApplicationController extends Controller
        // $application->path_gambar = $path;
 
 
-        $application->tarikh_daftar = $validateData['tarikh_daftar'];
+        //$application->tarikh_daftar = $validateData['tarikh_daftar'];
         // $application->tarikh_keluar = $validateData['tarikh_keluar'];
         // $application->sijil_lahir = $validateData['sijil_lahir'];
         // $application->sijil_kematian = $validateData['sijil_kematian'];

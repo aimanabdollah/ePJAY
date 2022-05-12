@@ -370,7 +370,7 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <label for="tarikh_daftar">Tarikh Daftar</label>
                                                 <input type="date"
                                                     class="form-control @error('tarikh_daftar') is-invalid @enderror"
@@ -380,7 +380,7 @@
                                                 @error('tarikh_daftar')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
                                         </div>
                                         <div class="col-md-6">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Income;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class IncomeController extends Controller
 {
@@ -40,10 +41,16 @@ class IncomeController extends Controller
           $income->id_trans_tpn = 'TPN'.rand(111111,999999);
           $income->jenis = 'Pendapatan';
 
-          $income->save();
-      
-          return redirect('/admin/income')
-         ->with('message', "Rekod berjaya ditambah");
+          $saveIncome = $income->save();
+         
+          if ($saveIncome) {
+                Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
+                return redirect('/admin/income');
+          }
+          else {
+                Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
+                return redirect('/admin/income');
+           }
      }
 
     public function show(Transaction $income)
@@ -83,10 +90,20 @@ class IncomeController extends Controller
           $income->jumlah_tpn = $validateData['jumlah'];
           $income->tarikh = $validateData['tarikh'];
 
-          $income->update();
+          $updateIncome = $income->update();
+         
+          if ($updateIncome) {
+                Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
+                return redirect('/admin/income');
+          }
+          else {
+                Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
+                return redirect('/admin/income');
+           }
 
-        return redirect('/admin/income')
-         ->with('message', "Rekod berjaya dikemaskini");
+
+        // return redirect('/admin/income')
+        //  ->with('status', "Rekod berjaya dikemaskini");
 
         // return redirect()->route('mahasiswas.index')
         // ->with('pesan', "Update data {$validateData['nama']} berhasil");
@@ -95,6 +112,7 @@ class IncomeController extends Controller
     public function destroy(Transaction $income)
     {
         $income->delete();
-        return redirect('/admin/income')->with('message', "Rekod berjaya dihapus");
+        Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
+        return redirect('/admin/income');
     }
 }

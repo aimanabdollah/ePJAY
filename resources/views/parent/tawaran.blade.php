@@ -65,9 +65,9 @@
                             Daripada:
                             <address>
                                 <strong>Rumah Bakti Dato' Harun</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                Phone: (60) 123-5432<br>
+                                KM 11, Jln, Ulu Kelang<br>
+                                68000 Ampang Jaya, Selangor<br>
+                                Phone: 0342568880<br>
                                 Email: rumahbaktidatoharun@gmail.com
                             </address>
                         </div>

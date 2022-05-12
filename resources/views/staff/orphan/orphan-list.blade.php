@@ -27,13 +27,13 @@
                         <div class="mr-auto">
                             <h5>Senarai Anak Jagaan</h5>
                         </div>
-                        {{-- <div class=""> <a href="{{ url('admin/orphan/add-orphan') }}"
+                        <div class=""> <a href="{{ url('admin/orphan/add-orphan') }}"
                                 class="btn btn-success">
                                 <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
-                            </a></div> --}}
-                        <div class=""> <a href="" class="btn btn-success">
-                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
                             </a></div>
+                        {{-- <div class=""> <a href="" class="btn btn-success">
+                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
+                            </a></div> --}}
 
                     </div>
                     <!-- /.card-header -->
@@ -63,7 +63,7 @@
                                     <th>No. K/P</th>
                                     <th>Jantina</th>
                                     <th>Umur</th>
-                                    <th>Tarikh Daftar</th>
+                                    {{-- <th>Tarikh Daftar</th> --}}
                                     <th>
                                         <center>Tindakan</center>
                                     </th>
@@ -79,7 +79,7 @@
                                         <td class="align-middle">{{ $orphan->no_kad_pengenalan }}</td>
                                         <td class="align-middle">{{ $orphan->jantina }}</td>
                                         <td class="align-middle">{{ $orphan->umur }} Tahun</td>
-                                        <td class="align-middle">{{ $orphan->tarikh_daftar }}</td>
+                                        {{-- <td class="align-middle">{{ $orphan->tarikh_daftar }}</td> --}}
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ url('admin/orphan/' . $orphan->id) }}"
@@ -94,7 +94,7 @@
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger ml-1"
-                                                        onclick="return confirm('Are you sure to delete this?')"><i
+                                                        onclick="return confirm('Adakah anda pasti untuk menghapus rekod ini?')"><i
                                                             class="nav-icon fas fa-trash"></i></button>
                                                 </form>
 
@@ -140,8 +140,8 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "searching": false,
-                // "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "searching": true,
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>

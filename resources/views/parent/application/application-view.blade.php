@@ -209,19 +209,19 @@
 
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                {{-- <div class="form-group">
                                                     <label for="id">Tarikh Daftar</label>
                                                     <div class="form-control">{{ $application->tarikh_daftar }}</div>
-                                                </div>
+                                                </div> --}}
 
                                             </div>
 
                                             <div class="col-md-6">
 
-                                                <div class="form-group">
+                                                {{-- <div class="form-group">
                                                     <label for="id">Tarikh Keluar</label>
                                                     <div class="form-control">{{ $application->tarikh_keluar }}</div>
-                                                </div>
+                                                </div> --}}
 
                                             </div>
                                         </div>

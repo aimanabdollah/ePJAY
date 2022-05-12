@@ -113,11 +113,11 @@
                                                     class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i>
                                                 </a> --}}
 
-                                                {{-- <a href="{{ route('application.edit', ['application' => $application->id]) }}"
-                                                    class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i></a> --}}
+                                                <a href="{{ route('application.edit', ['application' => $application->id]) }}"
+                                                    class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i></a>
 
-                                                <a href="" class="btn btn-info  m-1"><i
-                                                        class="nav-icon fas fa-edit"></i></a>
+                                                {{-- <a href="" class="btn btn-info  m-1"><i
+                                                        class="nav-icon fas fa-edit"></i></a> --}}
                                             </div>
                                         </td>
                                     </tr>
