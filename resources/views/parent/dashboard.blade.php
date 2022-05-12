@@ -20,13 +20,13 @@
 @section('content')
     <!-- Small box (stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3>{{ $application }}</h3>
 
-                    <p>Jumlah Permohonan Dibuat</p>
+                    <p>Jumlah Permohonan Dihantar</p>
                 </div>
                 <div class="icon">
                     <i class="nav-icon fas fa-inbox"></i>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
@@ -50,13 +50,13 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>{{ $successApp }}</h3>
 
-                    <p>Jumlah Permohonan Berjaya</p>
+                    <p>Jumlah Permohonan Diluluskan</p>
                 </div>
                 <div class="icon">
                     <i class="nav-icon fas fa-check"></i>
@@ -65,21 +65,43 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>{{ $failApp }}</h3>
 
-                    <p>Jumlah Permohonan Tidak Berjaya</p>
+                    <p>Jumlah Permohonan Tidak Diluluskan</p>
                 </div>
                 <div class="icon">
                     <i class="nav-icon fas fa-times"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div> --}}
         <!-- ./col -->
+    </div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Analisis Maklumat Permohonan</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6" id="chartApplication" style="height: 200pt"></div>
+                <div class="col-6" id="piechart4"></div>
+            </div>
+
+        </div>
     </div>
 
 
@@ -180,5 +202,76 @@
 
             });
         });
+
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(statusCategory);
+
+        function statusCategory() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Jumlah'],
+                <?php echo $statusCate1; ?>
+            ]);
+
+            var options = {
+                title: 'Peratusan Jumlah Permohonan Mengikut Status',
+                pieHole: 0.3
+            };
+
+            if (data.getNumberOfRows() == 0) {
+                $("#piechart4").append("Maaf, tiada rekod untuk dipaparkan")
+            } else {
+                var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+                chart.draw(data, options);
+            }
+
+            // var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+
+            // chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {
+            packages: ['corechart', 'bar']
+        });
+        google.charts.setOnLoadCallback(chartApplication);
+
+        function chartApplication() {
+            var data = google.visualization.arrayToDataTable([
+                ['Bulan', 'Jumlah'],
+                <?php echo $chartApplication; ?>
+            ]);
+            var options = {
+                title: 'Jumlah Permohonan Dihantar Mengikut Bulan',
+                animation: {
+                    "startup": true,
+                    duration: 3000,
+                    easing: 'out'
+                },
+                colors: ['purple'],
+                // chartArea: {
+                //     width: '50%'
+                // },
+                hAxis: {
+                    title: 'Bulan',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Jumlah'
+                }
+            };
+            if (data.getNumberOfRows() == 0) { // if you have no data, add a data point and make the series transparent
+                data.addRow([new Date(), 0])
+                options.series = {
+                    0: {
+                        color: 'transparent'
+                    }
+                }
+            }
+            var chart = new google.visualization.ColumnChart(document.getElementById('chartApplication'));
+            chart.draw(data, options);
+        }
     </script>
 @endpush

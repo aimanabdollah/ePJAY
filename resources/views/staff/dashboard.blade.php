@@ -134,9 +134,10 @@
             </div>
         </div><!-- /.card-body -->
     </div> --}}
+
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Analisis Maklumat Pendapatan dan Perbelanjaan</h3>
+            <h3 class="card-title">Analisis Maklumat Permohonan</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -149,9 +150,8 @@
 
         <div class="card-body">
             <div class="row">
-                <div class="col-4" id="curve_chart" style="height: 200pt"></div>
-                <div class="col-4" id="piechart"></div>
-                <div class="col-4" id="piechart2"></div>
+                <div class="col-6" id="chartApplication" style="height: 200pt"></div>
+                <div class="col-6" id="piechart4"></div>
             </div>
 
         </div>
@@ -180,9 +180,11 @@
         </div>
     </div>
 
-    {{-- <div class="card card-primary">
+
+
+    <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Analisis Maklumat Permohonan</h3>
+            <h3 class="card-title">Analisis Maklumat Pendapatan dan Perbelanjaan</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -195,12 +197,13 @@
 
         <div class="card-body">
             <div class="row">
-                <div class="col-6" id="ageCategory" style="height: 200pt"></div>
-                <div class="col-6" id="piechart4"></div>
+                <div class="col-4" id="curve_chart" style="height: 200pt"></div>
+                <div class="col-4" id="piechart"></div>
+                <div class="col-4" id="piechart2"></div>
             </div>
 
         </div>
-    </div> --}}
+    </div>
 
 
     <!-- Default box -->
@@ -297,7 +300,8 @@
             ]);
 
             var options = {
-                title: 'Peratusan Jumlah Pendapatan Mengikut Kategori'
+                title: 'Peratusan Jumlah Pendapatan Mengikut Kategori',
+                pieHole: 0.3
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -318,7 +322,8 @@
             ]);
 
             var options = {
-                title: 'Peratusan Jumlah Perbelanjaan Mengikut Kategori'
+                title: 'Peratusan Jumlah Perbelanjaan Mengikut Kategori',
+                pieHole: 0.3
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
@@ -339,7 +344,8 @@
             ]);
 
             var options = {
-                title: 'Peratusan Jumlah Anak Jagaan Mengikut Jantina'
+                title: 'Peratusan Jumlah Anak Jagaan Mengikut Jantina',
+                pieHole: 0.3
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
@@ -396,11 +402,46 @@
             ]);
 
             var options = {
-                title: 'Peratusan Jumlah Permohonan Mengikut Status'
+                title: 'Peratusan Jumlah Permohonan Mengikut Status',
+                pieHole: 0.3
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
 
+            chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {
+            packages: ['corechart', 'bar']
+        });
+        google.charts.setOnLoadCallback(chartApplication);
+
+        function chartApplication() {
+            var data = google.visualization.arrayToDataTable([
+                ['Bulan', 'Jumlah'],
+                <?php echo $chartApplication; ?>
+            ]);
+            var options = {
+                title: 'Jumlah Permohonan Diterima Mengikut Bulan',
+                animation: {
+                    "startup": true,
+                    duration: 3000,
+                    easing: 'out'
+                },
+                colors: ['purple'],
+                // chartArea: {
+                //     width: '50%'
+                // },
+                hAxis: {
+                    title: 'Bulan',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Jumlah'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('chartApplication'));
             chart.draw(data, options);
         }
     </script>

@@ -35,8 +35,44 @@ class HomeController extends Controller
         $successApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Berjaya')->count();
         $failApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Tidak_Berjaya')->count();
         $pendingApp = Application::where('id_pemohon', Auth::id())->where('status_permohonan', 'Dalam_Proses')->count();
+
+       
+        $user = auth()->id();
+
+        $groupStatus2 = DB::table('applications')
+            ->select('id_pemohon', 'status_permohonan', DB::raw('CASE WHEN status_permohonan = "Dalam_Proses" THEN "Dalam Proses"
+                                                        WHEN status_permohonan = "Tidak_Berjaya"  THEN "Tidak Berjaya"  
+                                                        ELSE "Berjaya"
+                                         END AS status_permohonan, COUNT(status_permohonan) AS jumlah'))
+            ->where('id_pemohon', $user)
+            ->groupBy(DB::raw('status_permohonan'))
+            ->get();
+
         
-        return view('parent.dashboard', compact('application', 'successApp', 'failApp', 'pendingApp'));
+        $data1 = "";
+        foreach ($groupStatus2 as $val) {
+              $data1.="['".$val->status_permohonan."', ".$val->jumlah."],";
+        }
+        $statusCate1 = $data1;
+
+     
+       // dd($statusCate1);
+
+        $amountApplication = DB::table('applications')
+            ->select('id_pemohon', DB::raw('DATE_FORMAT(created_at, "%m/%Y") AS day_date, COUNT(status_permohonan) AS jumlah'))
+            ->where('id_pemohon', $user)
+            ->groupBy(DB::raw('DATE_FORMAT(created_at, "%m/%Y") ORDER BY day_date ASC'))
+            ->get();
+
+        
+        $data2 = "";
+        foreach ($amountApplication as $val) {
+              $data2.="['".$val->day_date."', ".$val->jumlah."],";
+        }
+        $chartApplication = $data2;
+
+        
+        return view('parent.dashboard', compact('application', 'successApp', 'failApp', 'pendingApp', 'statusCate1', 'chartApplication'));
     }
   
     /**
@@ -53,7 +89,7 @@ class HomeController extends Controller
         $application = Application::whereNotNull('id_pemohon')->count();
 
 
-         $amountByMonth = DB::select(DB::raw('select DATE_FORMAT(tarikh, "%Y-%m") AS day_date, SUM(jumlah_tpn) AS jumlah_tpn, SUM(jumlah_tbj) AS jumlah_tbj
+         $amountByMonth = DB::select(DB::raw('select DATE_FORMAT(tarikh, "%m/%Y") AS day_date, SUM(jumlah_tpn) AS jumlah_tpn, SUM(jumlah_tbj) AS jumlah_tbj
          FROM transactions GROUP BY day_date ORDER BY day_date ASC'));
 
          $data1 = "";
@@ -116,9 +152,18 @@ class HomeController extends Controller
         }
         $statusCate = $data6;
 
-        //dd($statusCate);
+         $amountApplication = DB::select(DB::raw('select DATE_FORMAT(created_at, "%m/%Y") AS day_date, COUNT(status_permohonan) AS jumlah
+         FROM applications WHERE id_permohonan IS NOT NULL GROUP BY day_date'));
 
-        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate', 'genderCate', 'ageCate', 'statusCate'));
+         $data7 = "";
+         foreach ($amountApplication as $val) {
+               $data7.="['".$val->day_date."', ".$val->jumlah."],";
+         }
+         $chartApplication = $data7;
+
+        //dd($chartApplication);
+
+        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate', 'genderCate', 'ageCate', 'statusCate', 'chartApplication'));
     }
 
     public function adminFinance()
