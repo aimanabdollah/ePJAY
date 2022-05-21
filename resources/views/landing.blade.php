@@ -47,7 +47,7 @@
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="" class="logo d-flex align-items-center">
                 <img src="/landing/assets/img/logo-rbdh.png" alt="">
                 <span>RBDH</span>
             </a>
@@ -59,7 +59,7 @@
                     <li><a class="nav-link scrollto" href="#features"> Matlamat</a></li>
                     <li><a class="nav-link scrollto" href="#faq"> Soalan Lazim</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Hubungi Kami</a></li>
-                    <li><a class="getstarted scrollto" href="{{ url('/login') }}">Sistem ePJAY</a></li>
+                    <li><a class="getstarted scrollto" href="{{ url('/login') }}">Log Masuk</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -73,10 +73,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
-                    <h1 data-aos="fade-up">Selamat Datang!</h1>
-                    <h1 data-aos="fade-up">Rumah Bakti Dato' Harun</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">Diuruskan oleh Pertubuhan Pendidikan Anak-Anak Yatim
-                        Selangor</h2>
+                    <h1 data-aos="fade-up">Selamat Datang !</h1>
+                    <h1 data-aos="fade-up">Pusat Jagaan Anak Yatim</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="400">Rumah Bakti Dato' Harun</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
                             <a href="#about"
@@ -88,7 +87,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="/landing/assets/img/herooo.png" class="img-fluid rounded-lg" alt="">
+                    <img src="/landing/assets/img/herooo.png" class="img-fluid rounded-lg animated" alt="">
                 </div>
             </div>
         </div>
@@ -103,7 +102,8 @@
                 <div class="row gx-0">
 
                     <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up"
-                        data-aos-delay="200">
+                        data-aos-delay="200"
+                        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                         <div class="content">
                             <h3>Mengenai Kami</h3>
                             <h2>Rumah Bakti Dato' Harun</h2>
@@ -122,7 +122,7 @@
                                 Sebagai mengenang jasa Y.Bhg Allahyarham Dato’ Haji Harun Idris, ahli-ahli Pertubuhan
                                 Pendidikan
                                 Anak-Anak Yatim Selangor telah bersetuju menukarkan nama Rumah Bakti Hulu Kelang (RBHK)
-                                kepada Rumah Bakti Dato' Harun (RBDH)
+                                kepada Rumah Bakti Dato' Harun (RBDH).
                             </p>
                             {{-- <div class="text-center text-lg-start">
                                 <a href="#"
@@ -135,7 +135,8 @@
                     </div>
 
                     <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                        <img src="/landing/assets/img/heroo.png" class="img-fluid rounded-lg" alt="">
+                        <img src="/landing/assets/img/heroo.png" class="img-fluid" alt=""
+                            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     </div>
 
                 </div>
@@ -302,9 +303,9 @@
                                 </h2>
                                 <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                                     <div class="accordion-body">
-                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus
-                                        laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor
-                                        rhoncus dolor purus non.
+                                        Pusat jagaan ini bernama Rumah Bakti Dato' Harun (dulu dikenali sebagai Rumah
+                                        Bakti Hulu Kelang) dan telah dikendalikan oleh Pertubuhan Pendidikan Anak-Anak
+                                        Yatim Selangor. Pusat jagaan ini telah ditubuhkan pada 16 Ogos 1966.
                                     </div>
                                 </div>
                             </div>
@@ -318,10 +319,9 @@
                                 </h2>
                                 <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                                     <div class="accordion-body">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
-                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
-                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                        Tujuan penubuhan pusat jagaan ini adalah untuk memberi kemudahan dan tempat
+                                        perlindungan kepada anak-anak yatim disamping memupuk sahsiah dan membina jati
+                                        diri mereka.
                                     </div>
                                 </div>
                             </div>
@@ -336,10 +336,8 @@
                                 </h2>
                                 <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                                     <div class="accordion-body">
-                                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci.
-                                        Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl
-                                        suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis
-                                        convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                        Ya, pusat jagaan ini telah berdaftar dengan Jabatan Kebajikan Masyarakat
+                                        Malaysia dibawah Akta Pusat Jagaan 1993.
                                     </div>
                                 </div>
                             </div>
@@ -378,15 +376,13 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq2-content-1">
-                                        6. Adakah pusat jagaan ini mengambil anak yatim sahaja ?
+                                        5. Adakah pusat jagaan ini mengambil anak yatim sahaja ?
                                     </button>
                                 </h2>
                                 <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                                     <div class="accordion-body">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id
-                                        interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus
-                                        scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-                                        Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                        Ya, pusat jagaan ini hanya mengambil anak yatim sahaja yang berumur dalam 7
+                                        hingga 14 tahun.
                                     </div>
                                 </div>
                             </div>
@@ -395,16 +391,32 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq2-content-2">
-                                        7. Apakah syarat permohonan untuk saya menghantar anak yatim ke pusat jagaan ini
+                                        6. Apakah syarat permohonan untuk saya menghantar anak yatim ke pusat jagaan ini
                                         ?
                                     </button>
                                 </h2>
                                 <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                                     <div class="accordion-body">
-                                        Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim
-                                        suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan.
-                                        Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit
-                                        turpis cursus in
+                                        Berikut merupakan syarat-syarat permohonan:
+
+                                        <ul>
+                                            <li>Permohonan hendaklah dilakukan secara dalam talian melalui <a
+                                                    href="/login">sistem ePJAY</a>
+                                            </li>
+                                            <li> Anak-anak berwarganegara Malaysia</li>
+
+                                            <li> Anak-anak yang kematian bapa atau kedua-duanya (ibu dan bapa)</li>
+                                            <li> Anak-anak yang bersedia ke sekolah berumur antara 7 hingga 14 tahun
+                                            </li>
+                                            <li> Anak-anak yang sihat tubuh badan dan tidak cacat setelah mendapat
+                                                pengesahan
+                                                doktor</li>
+                                            <li> Keluarga yang miskin dan tiada waris yang terdekat yang bersedia
+                                                menanggungnya</li>
+                                            <li> Anak-anak yang mempunyai minat dan kesungguhan untuk melanjutkan
+                                                pelajaran
+                                                dan memperbaiki kehidupan serta keluarga pada masa hadapan.</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -413,17 +425,18 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq2-content-3">
-                                        8. Bagaimanakah saya ingin mengetahui bahawa permohonan saya untuk menghantar ke
+                                        7. Bagaimanakah saya ingin mengetahui bahawa permohonan saya untuk menghantar ke
                                         pusat jagaan ini lulus atau tidak ?
                                     </button>
                                 </h2>
                                 <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                                     <div class="accordion-body">
-                                        Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies
-                                        leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet.
-                                        Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu
-                                        scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla
-                                        phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+                                        Setiap permohonan yang telah diterima akan diproses dalam
+                                        tempoh 1 hingga 2
+                                        minggu. Kami akan maklumkan kepada pemohon sekiranya maklumat tambahan
+                                        diperlukan dan apabila permohonan diluluskan, kami akan hubungi pemohon supaya
+                                        mencetak surat tawaran melalui <a href="/login">sistem ePJAY</a> untuk dibawa
+                                        pada hari pendaftaran.
                                     </div>
                                 </div>
                             </div>
@@ -447,12 +460,12 @@
 
                 <header class="section-header">
                     <p>HUBUNGI KAMI</p><br>
-                    <h5>Maklum balas anda akan kami proses dalam tempoh 24 jam</h5>
+                    <h5><b>Waktu Operasi:</b> 8:30 pagi - 5:30 petang</h5>
                 </header>
 
                 <div class="row gy-4">
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <form action="forms/contact.php" method="post" class="php-email-form">
                             <div class="row gy-4">
 
@@ -485,7 +498,17 @@
 
                             </div>
                         </form>
+                    </div>
 
+                    <div class="col-lg-6">
+                        {{-- <iframe class="mb-4 mb-lg-0"
+                            src="https://www.google.com/maps/d/u/0/embed?mid=1shfaX_SDBEqAf6UNljyyOck3CGg&ie=UTF8&hl=en&msa=0&ll=2.9300120000000054%2C101.791077&spn=0.171437%2C0.171318&z=12&output=embed"
+                            frameborder="0" style="border: 0; width: 100%; height: 384px" allowfullscreen></iframe> --}}
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d63740.22206508709!2d101.68607303930973!3d3.156843411534255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x31cc398ef7bff347%3A0x960db01e0b957185!2srumah%20bakti%20dato&#39;%20harun!3m2!1d3.1939374999999997!2d101.7637288!5e0!3m2!1sen!2smy!4v1653125857090!5m2!1sen!2smy"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                 </div>
