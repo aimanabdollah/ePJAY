@@ -60,6 +60,9 @@ class ApplicationController extends Controller
 
              'nama_penuh_pemohon' => '',
              'no_tel_pemohon'   => '',
+             'email_pemohon'   => '',
+             'hubungan_pemohon'   => '',
+             'pekerjaan_pemohon'   => '',
           
             'nama_penuh' => '',
              'nama_sekolah'   => '',
@@ -144,6 +147,9 @@ class ApplicationController extends Controller
 
         $application->nama_penuh_pemohon = $validateData['nama_penuh_pemohon'];
         $application->no_tel_pemohon = $validateData['no_tel_pemohon'];
+        $application->email_pemohon = $validateData['email_pemohon'];
+        $application->pekerjaan_pemohon = $validateData['pekerjaan_pemohon'];
+        $application->hubungan_pemohon = $validateData['hubungan_pemohon'];
         
         $application->nama_penuh = $validateData['nama_penuh'];
         $application->nama_sekolah = $validateData['nama_sekolah'];
