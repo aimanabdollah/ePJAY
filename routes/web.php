@@ -19,13 +19,13 @@ use App\Http\Controllers\ApplicationController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
 // Route::get('/', function () {
-//     return view('landing');
+//     return view('auth.login');
 // });
+
+Route::get('/', function () {
+    return view('landing');
+});
 
 
 
@@ -38,7 +38,7 @@ Route::get('/staff/orphan', function () {
 });
 Auth::routes();
 
-//Route::get('/', [HomeController::class, 'landing'])->name('landing.view');
+// Route::get('/test', [HomeController::class, 'landing'])->name('landing.view');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
 
 Route::get('admin/income', [IncomeController::class, 'index'])->name('income.index')->middleware('is_admin');

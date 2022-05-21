@@ -233,5 +233,6 @@ class HomeController extends Controller
     {
         return view('staff.orphan.orphan-view');
     }
+
     
 }
