@@ -33,6 +33,29 @@
 
     <link rel="stylesheet" href="{{ url('/landing/assets/css/style.css') }}">
 
+    <style>
+        div.hero-img {
+            position: relative;
+            -webkit-animation: glide 1s ease-in-out alternate infinite;
+
+            -webkit-animation: glide 1s ease-in-out alternate infinite;
+        }
+
+        @-webkit-keyframes glide {
+            from {
+                left: 0px;
+                top: 0px;
+            }
+
+            to {
+                left: 0px;
+                top: 24px;
+            }
+
+        }
+
+    </style>
+
     <!-- =======================================================
   * Template Name: FlexStart - v1.9.0
   * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
@@ -598,7 +621,7 @@
 
         <div class="container">
             <div class="copyright"><b>Hak Cipta Terpelihara
-                    &copy; 2022 Rumah Bakti Dato' Harun</b>.
+                    2022 &copy; Muhammad Aiman Abdollah</b>.
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->

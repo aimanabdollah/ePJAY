@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
   
 use Illuminate\Http\Request;
 use App\Models\Expense;
-use App\Models\Income;
+use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Application;
 use Illuminate\Support\Facades\DB;
@@ -166,6 +166,14 @@ class HomeController extends Controller
         return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate', 'genderCate', 'ageCate', 'statusCate', 'chartApplication'));
     }
 
+    public function userList()
+    {
+        $user = User::whereNotNull('id')->get(); 
+        return view('staff.user.user-list', compact('user'));
+    }
+
+   
+   
     public function adminFinance()
     {
         return view('staff.finance.finance');

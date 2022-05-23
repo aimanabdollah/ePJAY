@@ -40,6 +40,7 @@ Auth::routes();
 
 // Route::get('/test', [HomeController::class, 'landing'])->name('landing.view');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
+Route::get('admin/user', [HomeController::class, 'userList'])->name('user.index')->middleware('is_admin');
 
 Route::get('admin/income', [IncomeController::class, 'index'])->name('income.index')->middleware('is_admin');
 Route::get('admin/income/add-income', [IncomeController::class, 'create'])->name('income.create')->middleware('is_admin');

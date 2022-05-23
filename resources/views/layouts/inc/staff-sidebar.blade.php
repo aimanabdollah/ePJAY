@@ -86,6 +86,16 @@
                        </ul>
                    </li>
 
+                   <li class="nav-item" {{ Request::is('user*') ? 'active' : '' }}>
+                       <a href="{{ url('admin/user') }}" class="nav-link">
+                           <i class="nav-icon fas fa-user-alt"></i>
+                           <p>
+                               Pengguna
+                           </p>
+                       </a>
+                   </li>
+
+
                    <li class="nav-item">
                        <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();    document.getElementById('logout-form').submit();">
