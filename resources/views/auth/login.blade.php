@@ -19,6 +19,12 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('/adminlte/dist/css/adminlte.min.css') }}">
 
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <link rel="icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
+    <link rel="apple-touch-icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
+
 
 </head>
 
@@ -28,9 +34,10 @@
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <div class="d-flex justify-content-center align-items-center">
-                    <img id="" src="{{ asset('assets/img/logo-sistem.png') }}" alt="preview image"
-                        class="" style="max-height: 50px;">
+                    <img id="" src="/landing/assets/img/logo-rbdh.png" alt="preview image" class=""
+                        style="max-height: 50px;">
                     <a href="#" style=" margin: 8px;" class="h1"><b>ePJAY</b></a>
+
                 </div>
                 <h6 style="margin-top: 12px">
                     Sistem Pengurusan Pusat Jagaan Anak Yatim

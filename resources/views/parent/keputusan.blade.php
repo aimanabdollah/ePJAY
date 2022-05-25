@@ -1,4 +1,4 @@
-@extends('layouts.parent-main', ['title'=>'Tawaran Permohonan'])
+@extends('layouts.parent-main', ['title' => 'Tawaran Permohonan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -54,6 +54,7 @@
                         <div class="col-12">
                             <h4>
                                 {{-- <i class="fas fa-globe"></i> AdminLTE, Inc. --}}
+                                <img src="/landing/assets/img/logo-rbdh.png" alt="">
                                 <small class="float-right">Tarikh: {{ $date3 }}</small>
                             </h4>
                         </div>

@@ -1,17 +1,23 @@
-@extends('layouts.parent-main', ['title'=>'Tawaran Permohonan'])
+@extends('layouts.parent-main', ['title' => 'Tawaran Permohonan'])
 
 @section('content-header')
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Tawaran Permohonan</h1>
+                <h1>Keputusan Permohonan</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ url('home') }}">Halaman Utama</a></li>
-                    <li class="breadcrumb-item active">Tawaran Permohonan</li>
+                    <li class="breadcrumb-item active">Keputusan Permohonan</li>
                 </ol>
             </div>
+        </div>
+        <div class="callout callout-info">
+            <h5><i class="fas fa-info"></i> Tahniah!</h5>
+
+            Permohonan anda sudah diluluskan. <strong>Pastikan anda cetak surat tawaran ini untuk dibawa bersama pada hari
+                pendaftaran.</strong>
         </div>
     </div><!-- /.container-fluid -->
 @endsection
@@ -53,7 +59,7 @@
                     <div class="row">
                         <div class="col-12">
                             <h4>
-                                {{-- <i class="fas fa-globe"></i> AdminLTE, Inc. --}}
+                                <img src="/landing/assets/img/logo-rbdh.png" alt="">
                                 <small class="float-right">Tarikh: {{ $date3 }}</small>
                             </h4>
                         </div>
@@ -153,7 +159,7 @@
                         ucapan terima kasih.
                     </p>
 
-                    <p>Sekian,
+                    <p>Sekian.
                     </p>
 
                     <p><b>"BERKHIDMAT UNTUK NEGARA"</b>

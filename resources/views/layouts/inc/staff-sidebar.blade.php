@@ -1,8 +1,7 @@
    <aside class="main-sidebar sidebar-dark-primary elevation-4">
        <!-- Brand Logo -->
        <a href="" class="brand-link">
-           <img src="{{ asset('assets/img/logo-sistem.png') }}" class="brand-image img-circle elevation-3"
-               style="opacity: .8">
+           <img src="/landing/assets/img/logo-rbdh.png" class="brand-image img-circle elevation-3" style="opacity: .8">
            <span class="brand-text">ePJAY</span>
        </a>
 

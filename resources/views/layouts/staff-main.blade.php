@@ -9,6 +9,12 @@
     @include('layouts.inc.ext-css')
     @stack('css')
 
+    <link href="" rel="icon">
+    <link href="" rel="apple-touch-icon">
+
+    <link rel="icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
+    <link rel="apple-touch-icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
+
 
 </head>
 
