@@ -66,8 +66,7 @@
                             class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
                             placeholder="Email" required />
 
-
-                        @error('matric_no')
+                        @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -82,6 +81,13 @@
                         <input name="password" type="password"
                             class="form-control @error('password') is-invalid @enderror" placeholder="Kata Laluan"
                             required />
+
+                        {{-- <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-eye-slash" id="togglePassword"></span>
+                            </div>
+                        </div> --}}
+
 
 
 

@@ -40,7 +40,14 @@ Auth::routes();
 
 // Route::get('/test', [HomeController::class, 'landing'])->name('landing.view');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.dashboard')->middleware('is_admin');
+
 Route::get('admin/user', [HomeController::class, 'userList'])->name('user.index')->middleware('is_admin');
+Route::get('admin/user/add-user', [HomeController::class, 'userCreate'])->name('user.create')->middleware('is_admin');
+Route::post('admin/user', [HomeController::class, 'userStore'])->name('user.store')->middleware('is_admin');
+// Route::get('admin/user/{user}', [HomeController::class, 'show'])->name('user.show')->middleware('is_admin');
+// Route::get('admin/user/{user}/edit', [HomeController::class, 'edit'])->name('user.edit')->middleware('is_admin');
+// Route::patch('admin/user/{user}', [HomeController::class,'update'])->name('user.update')->middleware('is_admin');
+// Route::delete('admin/user/{user}', [HomeController::class,'destroy'])->name('user.destroy')->middleware('is_admin');
 
 Route::get('admin/income', [IncomeController::class, 'index'])->name('income.index')->middleware('is_admin');
 Route::get('admin/income/add-income', [IncomeController::class, 'create'])->name('income.create')->middleware('is_admin');

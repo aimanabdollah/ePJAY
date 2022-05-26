@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Dashboard'])
+@extends('layouts.staff-main', ['title' => 'Dashboard'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -20,7 +20,7 @@
 @section('content')
     <!-- Small box (stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
@@ -34,9 +34,21 @@
                 <a href="{{ url('admin/application') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
+        </div> --}}
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="nav-icon fas fa-inbox"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Jumlah Permohonan</span>
+                    <span class="info-box-number">
+                        <h3>{{ $application }}</h3>
+                    </span>
+                </div>
+
+            </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
@@ -50,11 +62,49 @@
                 <a href="{{ url('admin/orphan') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
+        </div> --}}
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-success elevation-1"><i class="nav-icon fas fa-user-alt"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Jumlah Anak Jagaan</span>
+                    <span class="info-box-number">
+                        <h3>{{ $orphan }}</h3>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-secondary elevation-1"><i class="nav-icon fas fa-money-bill"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Jumlah Pendapatan</span>
+                    <span class="info-box-number">
+                        <h3>RM {{ $income }}</h3>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-danger elevation-1"><i class="nav-icon fas fa-money-bill"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Jumlah Perbelanjaan</span>
+                    <span class="info-box-number">
+                        <h3>RM {{ $expense }}</h3>
+                    </span>
+                </div>
+
+            </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-secondary">
+            {{-- <div class="small-box bg-secondary">
                 <div class="inner">
                     <h3>RM {{ $income }}</h3>
 
@@ -65,10 +115,10 @@
                 </div>
                 <a href="{{ url('admin/income') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
-            </div>
+            </div> --}}
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
@@ -82,7 +132,7 @@
                 <a href="{{ url('admin/expense') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div> --}}
         <!-- ./col -->
     </div>
 

@@ -45,10 +45,6 @@ class LoginController extends Controller
         $this->validate($request, [
             'email' => ['required'],
             'password' => ['required', 'min:6', 'max:10'],
-
-            
-      
-            
         ]);
    
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))

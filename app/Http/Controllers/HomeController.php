@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Models\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
    
 class HomeController extends Controller
 {
@@ -171,13 +172,42 @@ class HomeController extends Controller
         $user = User::whereNotNull('id')->get(); 
         return view('staff.user.user-list', compact('user'));
     }
-
    
-   
-    public function adminFinance()
+    public function userCreate()
     {
-        return view('staff.finance.finance');
+        return view('staff.user.user-add');
     }
+
+    public function userStore(Request $request)
+    {
+         $validateData = $request->validate([
+             'kategori' => 'required',
+             'name' => 'required',
+             'email'    => 'required',
+             'num_phone'   => 'required',
+             'password'   => 'required',
+         ]);
+
+        // CARA ELOQUENT ORM
+          $user = new User();
+        
+          $user->is_admin = $validateData['kategori'];
+          $user->name = $validateData['name'];
+          $user->email = $validateData['email'];
+          $user->num_phone = $validateData['num_phone'];
+          $user->password = $validateData['password'];
+    
+          $saveUser = $user->save();
+         
+          if ($saveUser) {
+                Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
+                return redirect('/admin/user');
+          }
+          else {
+                Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
+                return redirect('/admin/user');
+           }
+     }
 
     public function adminAddIncome()
     {
