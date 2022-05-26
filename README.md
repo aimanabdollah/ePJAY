@@ -22,7 +22,41 @@ Pihak Kakitangan
 -   Mengurus Maklumat Pendapatan/Perbelanjaan
 -   Melihat Paparan Dashboard
 
-# Senarai Dokumen Sistem
+# Reka Bentuk Antara Muka Sistem
+
+<table>
+  <tr>
+    <td>Laman Utama</td>
+    <td>Log Masuk</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/landing.png" width=600 height=250></td>
+    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/log-masuk.png" width=600 height=250></td>
+  
+  </tr>
+ </table>
+ <table>
+  <tr>
+     <td>Dashboard</td>
+     <td>Kemaskini Maklumat Anak Jagaan</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/dashboard.png" width=600 height=250></td>
+    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/kemaskini-anak-jagaan.png" width=600 height=250></td>
+  </tr>
+ </table>
+  <table>
+  <tr>
+      <td>Senarai Permohonan</td>
+     <td>Keputusan Permohonan</td>
+  </tr>
+  <tr>
+   <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/senarai-permohonan.png" width=600 height=250></td>
+    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/keputusan-permohonan.png" width=600 height=250></td>
+  </tr>
+ </table>
+
+# Dokumen Sistem
 
 Berikut merupakan senarai dokumen yang telah dihasilkan sepanjang pembangunan sistem ini:
 
