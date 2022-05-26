@@ -30,8 +30,8 @@ Pihak Kakitangan
     <td>Log Masuk</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/landing.png" width=600 height=250></td>
-    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/log-masuk.png" width=600 height=250></td>
+    <td><img src="public/assets/interface/landing.png" width=600 height=250></td>
+    <td><img src="public/assets/interface/log-masuk.png" width=600 height=250></td>
   
   </tr>
  </table>
@@ -41,8 +41,8 @@ Pihak Kakitangan
      <td>Kemaskini Maklumat Anak Jagaan</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/dashboard.png" width=600 height=250></td>
-    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/kemaskini-anak-jagaan.png" width=600 height=250></td>
+    <td><img src="public/assets/interface/dashboard.png" width=600 height=250></td>
+    <td><img src="public/assets/interface/kemaskini-anak-jagaan.png" width=600 height=250></td>
   </tr>
  </table>
   <table>
@@ -51,8 +51,8 @@ Pihak Kakitangan
      <td>Keputusan Permohonan</td>
   </tr>
   <tr>
-   <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/senarai-permohonan.png" width=600 height=250></td>
-    <td><img src="https://github.com/aimanabdollah/ePJAY/blob/master/public/assets/interface/keputusan-permohonan.png" width=600 height=250></td>
+   <td><img src="public/assets/interface/senarai-permohonan.png" width=600 height=250></td>
+    <td><img src="public/assets/interface/keputusan-permohonan.png" width=600 height=250></td>
   </tr>
  </table>
 
