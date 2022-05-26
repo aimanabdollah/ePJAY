@@ -12,8 +12,8 @@
     <link href="" rel="icon">
     <link href="" rel="apple-touch-icon">
 
-    <link rel="icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
-    <link rel="apple-touch-icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
+    <link rel="icon" href="{{ url('/assets/img/logo-sistem.png') }}">
+    <link rel="apple-touch-icon" href="{{ url('/assets/img/logo-sistem.png') }}">
 
 
 </head>

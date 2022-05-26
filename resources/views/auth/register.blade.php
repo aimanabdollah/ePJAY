@@ -22,8 +22,8 @@
     <link href="" rel="icon">
     <link href="" rel="apple-touch-icon">
 
-    <link rel="icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
-    <link rel="apple-touch-icon" href="{{ url('/landing/assets/img/logo-rbdh.png') }}">
+    <link rel="icon" href="{{ url('/assets/img/logo-sistem.png') }}">
+    <link rel="apple-touch-icon" href="{{ url('/assets/img/logo-sistem.png') }}">
 </head>
 
 <body class="hold-transition login-page" style=" background-image: url(https://wallpaperaccess.com/full/2314950.jpg);">
@@ -32,7 +32,7 @@
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <div class="d-flex justify-content-center align-items-center">
-                    <img id="" src="/landing/assets/img/logo-rbdh.png" alt="preview image" class=""
+                    <img id="" src="/assets/img/logo-sistem.png" alt="preview image" class=""
                         style="max-height: 50px;">
                     <a href="#" style=" margin: 8px;" class="h1"><b>ePJAY</b></a>
                 </div>
