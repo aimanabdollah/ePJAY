@@ -57,6 +57,9 @@
     @include('layouts.inc.ext-js')
     @stack('js')
 
+
+
+
 </body>
 
 </html>

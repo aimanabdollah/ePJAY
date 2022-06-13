@@ -1,4 +1,4 @@
-@extends('layouts.parent-main', ['title'=>'Permohonan'])
+@extends('layouts.parent-main', ['title' => 'Permohonan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Permohonan</li>
                 </ol>
             </div>
@@ -39,7 +39,7 @@
                             <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert"
                                     aria-hidden="true">×</button>
-                                <h5><i class="icon fas fa-check"></i> Mesej!</h5>
+                                <h5><i class="icon fas fa-check"></i> Berjaya!</h5>
                                 {{ session()->get('message') }}
                             </div>
                         @endif
@@ -99,11 +99,11 @@
                                                                 class="nav-icon fas fa-eye"></i>
                                                         </a>
                                                     @elseif ($application->status_permohonan == 'Berjaya')
-                                                        <a href="{{ url('tawaran/' . $application->id) }}"
+                                                        <a href="{{ url('application/tawaran/' . $application->id) }}"
                                                             class="btn-sm btn-primary m-1"><i class="fas fa-print"></i>
                                                         </a>
                                                     @elseif ($application->status_permohonan == 'Tidak_Berjaya')
-                                                        <a href="{{ url('keputusan/' . $application->id) }}"
+                                                        <a href="{{ url('application/keputusan/' . $application->id) }}"
                                                             class="btn-sm btn-primary m-1"><i class="fas fa-print"></i>
                                                         </a>
                                                     @endif
@@ -138,7 +138,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

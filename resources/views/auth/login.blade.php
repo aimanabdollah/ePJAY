@@ -45,7 +45,20 @@
             </div>
 
             <div class="card-body">
-                <p class="login-box-msg">Log Masuk</p>
+                <p class="login-box-msg"><b>Log Masuk</b></p>
+
+                @if (session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible" style="background-color: #f8d7da; color:black">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+
+                {{-- @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif --}}
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf

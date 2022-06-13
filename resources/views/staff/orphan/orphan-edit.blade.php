@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.staff-main', ['title' => 'Anak Jagaan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Anak Jagaan</li>
                 </ol>
             </div>
@@ -27,8 +27,11 @@
                     <div class="card-header d-flex align-items-center">
                         <div class="mr-auto">
                             <h5>Edit Anak Jagaan</h5>
+                            <em>
+                                <h6>Maklumat bertanda <i style="color: red">(*)</i> wajib dimasukkan</h6>
+                            </em>
                         </div>
-                        <div class=""> <a href="{{ url('admin/orphan') }}" class="btn btn-primary">
+                        <div class=""> <a href="{{ url('admin-orphan') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
                     <!-- /.card-header -->
@@ -50,7 +53,7 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="nama_penuh">Nama Penuh</label>
+                                        <label for="nama_penuh">Nama Penuh<i style="color: red">*</i></label>
                                         <input type="text" class="form-control @error('nama_penuh') is-invalid @enderror"
                                             id="nama_penuh" name="nama_penuh"
                                             value="{{ old('nama_penuh') ?? $orphan->nama_penuh }}"
@@ -75,7 +78,7 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="tarikh_lahir">Tarikh Lahir</label>
+                                                <label for="tarikh_lahir">Tarikh Lahir<i style="color: red">*</i></label>
                                                 <input type="date"
                                                     class="form-control @error('tarikh_lahir') is-invalid @enderror"
                                                     id="tarikh_lahir" name="tarikh_lahir"
@@ -89,8 +92,8 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="umur">Umur</label>
-                                                <input type="number" step="1"
+                                                <label for="umur">Umur<i style="color: red">*</i></label>
+                                                <input type="text" step="1"
                                                     class="form-control @error('umur') is-invalid @enderror" id="umur"
                                                     name="umur" value="{{ old('umur') ?? $orphan->umur }}"
                                                     placeholder="Masukkan Umur">
@@ -103,7 +106,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="alamat">Alamat Tempat Tinggal</label>
+                                        <label for="alamat">Alamat Tempat Tinggal<i style="color: red">*</i></label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                                             id="alamat" name="alamat" value="{{ old('alamat') ?? $orphan->alamat }}"
                                             placeholder="Masukkan Alamat">
@@ -191,7 +194,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="no_kad_pengenalan">No. Kad Pengenalan</label>
+                                                <label for="no_kad_pengenalan">No. Kad Pengenalan<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('no_kad_pengenalan') is-invalid @enderror"
                                                     id="no_kad_pengenalan" name="no_kad_pengenalan"
@@ -221,7 +225,7 @@
 
 
                                         <div class="col-md-6" style="margin-bottom: 12pt">
-                                            <label for="exampleInputEmail1">Jantina</label>
+                                            <label for="exampleInputEmail1">Jantina<i style="color: red">*</i></label>
                                             <select class="form-control" name="jantina" id="jantina"
                                                 aria-label="Default select example">
                                                 <option selected>Sila Pilih Jantina</option>
@@ -241,7 +245,7 @@
 
 
                                         <div class="col-md-6" style="margin-bottom: 12pt">
-                                            <label for="exampleInputEmail1">Status</label>
+                                            <label for="exampleInputEmail1">Status<i style="color: red">*</i></label>
                                             <select class="form-control" name="status" id="status"
                                                 aria-label="Default select example">
                                                 <option selected>Sila Pilih Status</option>
@@ -269,7 +273,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="tarikh_daftar">Tarikh Daftar</label>
+                                                <label for="tarikh_daftar">Tarikh Daftar<i style="color: red">*</i></label>
                                                 <input type="date"
                                                     class="form-control @error('tarikh_daftar') is-invalid @enderror"
                                                     id="tarikh_daftar" name="tarikh_daftar"
@@ -300,7 +304,7 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="gambar">Gambar</label>
+                                                <label for="gambar">Gambar<i style="color: red">*</i></label>
                                                 <div>
                                                     <img id="preview-image"
                                                         src="{{ asset('assets/orphan-img/' . $orphan->gambar) }}"
@@ -314,7 +318,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="gambar" style="color: white">Gambar</label>
+                                                <label for="gambar" style="color: white">Gambar
+                                                </label>
                                                 <input type="file" name="gambar" id="gambar" class="form-control"
                                                     placeholder="Sila Pilih Gambar">
                                                 @error('gambar')
@@ -347,7 +352,7 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="nama_penuh_ayah">Nama Penuh Ayah</label>
+                                        <label for="nama_penuh_ayah">Nama Penuh Ayah<i style="color: red">*</i></label>
                                         <input type="text"
                                             class="form-control @error('nama_penuh_ayah') is-invalid @enderror"
                                             id="nama_penuh_ayah" name="nama_penuh_ayah"
@@ -361,7 +366,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="no_kad_pengenalan_ayah">No. Kad Pengenalan Ayah</label>
+                                                <label for="no_kad_pengenalan_ayah">No. Kad Pengenalan Ayah<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('no_kad_pengenalan_ayah') is-invalid @enderror"
                                                     id="no_kad_pengenalan_ayah" name="no_kad_pengenalan_ayah"
@@ -425,7 +431,7 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="nama_penuh_ayah">Nama Penuh Ibu</label>
+                                        <label for="nama_penuh_ayah">Nama Penuh Ibu<i style="color: red">*</i></label>
                                         <input type="text"
                                             class="form-control @error('nama_penuh_ibu') is-invalid @enderror"
                                             id="nama_penuh_ibu" name="nama_penuh_ibu"
@@ -439,7 +445,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="no_kad_pengenalan_ibu">No. Kad Pengenalan Ibu</label>
+                                                <label for="no_kad_pengenalan_ibu">No. Kad Pengenalan Ibu<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('no_kad_pengenalan_ibu') is-invalid @enderror"
                                                     id="no_kad_pengenalan_ibu" name="no_kad_pengenalan_ibu"
@@ -516,7 +523,7 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Sijil Lahir Anak</label>
+                                        <label for="exampleInputFile">Sijil Lahir Anak<i style="color: red">*</i></label>
                                         <div id="file_input">
                                             <a href="{{ asset('assets/sijil_lahir/' . $orphan->sijil_lahir) }}"
                                                 class="btn-link text-secondary"><i
@@ -537,7 +544,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Sijil Kematian</label>
+                                        <label for="exampleInputFile">Sijil Kematian<i style="color: red">*</i></label>
                                         <div id="file_input">
                                             <a href="{{ asset('assets/sijil_kematian/' . $orphan->sijil_kematian) }}"
                                                 class="btn-link text-secondary"><i
@@ -586,7 +593,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

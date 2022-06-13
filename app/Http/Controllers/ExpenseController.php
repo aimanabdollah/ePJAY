@@ -11,7 +11,7 @@ class ExpenseController extends Controller
 {
     public function index()
     {
-        $expense = Transaction::where('jenis', 'Perbelanjaan')->get();
+        $expense = Transaction::where('jenis', 'Perbelanjaan')->orderBy('created_at','desc')->get();
          return view('staff.finance.finance-listExpense', compact('expense'));
 
     }
@@ -44,11 +44,11 @@ class ExpenseController extends Controller
          
           if ($saveExpense) {
                 Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
-                return redirect('/admin/expense');
+                return redirect('/admin-expense');
           }
           else {
                 Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
-                return redirect('/admin/expense');
+                return redirect('/admin-expense');
            }
      }
 
@@ -93,11 +93,11 @@ class ExpenseController extends Controller
          
           if ($updateExpense) {
                 Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
-                return redirect('/admin/expense');
+                return redirect('/admin-expense');
           }
           else {
                 Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
-                return redirect('/admin/expense');
+                return redirect('/admin-expense');
            }
 
         // return redirect()->route('mahasiswas.index')
@@ -108,6 +108,6 @@ class ExpenseController extends Controller
     {
         $expense->delete();
         Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
-        return redirect('/admin/expense');
+        return redirect('/admin-expense');
     }
 }

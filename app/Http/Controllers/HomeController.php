@@ -64,7 +64,7 @@ class HomeController extends Controller
             ->where('id_pemohon', $user)
             ->groupBy(DB::raw('DATE_FORMAT(created_at, "%m/%Y") ORDER BY day_date ASC'))
             ->get();
-
+        
         
         $data2 = "";
         foreach ($amountApplication as $val) {
@@ -98,6 +98,8 @@ class HomeController extends Controller
              $data1.="['".$val->day_date."', ".$val->jumlah_tpn.", ".$val->jumlah_tbj."],";
          }
          $amountLine = $data1;
+
+         
 
         $groupIncome = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tpn) as jumlah_tpn from transactions where jenis = "Pendapatan" GROUP BY kategori'));
         $data2 = "";

@@ -11,7 +11,7 @@ class IncomeController extends Controller
 {
     public function index()
     {
-        $income = Transaction::where('jenis', 'Pendapatan')->get();
+        $income = Transaction::where('jenis', 'Pendapatan')->orderBy('created_at','desc')->get();
          return view('staff.finance.finance-listIncome', compact('income'));
 
     }
@@ -45,11 +45,11 @@ class IncomeController extends Controller
          
           if ($saveIncome) {
                 Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
-                return redirect('/admin/income');
+                return redirect('/admin-income');
           }
           else {
                 Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
-                return redirect('/admin/income');
+                return redirect('/admin-income');
            }
      }
 
@@ -94,11 +94,11 @@ class IncomeController extends Controller
          
           if ($updateIncome) {
                 Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
-                return redirect('/admin/income');
+                return redirect('/admin-income');
           }
           else {
                 Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
-                return redirect('/admin/income');
+                return redirect('/admin-income');
            }
 
 
@@ -113,6 +113,6 @@ class IncomeController extends Controller
     {
         $income->delete();
         Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
-        return redirect('/admin/income');
+        return redirect('/admin-income');
     }
 }

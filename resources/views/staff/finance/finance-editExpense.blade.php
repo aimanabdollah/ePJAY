@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Kewangan'])
+@extends('layouts.staff-main', ['title' => 'Kewangan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Perbelanjaan</li>
                 </ol>
             </div>
@@ -28,7 +28,7 @@
                         <div class="mr-auto">
                             <h5>Edit Perbelanjaan</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/expense') }}" class="btn btn-primary">
+                        <div class=""> <a href="{{ url('admin-expense') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
                     <!-- /.card-header -->
@@ -165,7 +165,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

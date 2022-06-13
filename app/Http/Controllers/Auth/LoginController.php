@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
    
 class LoginController extends Controller
 {
@@ -50,13 +51,16 @@ class LoginController extends Controller
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->is_admin == 1) {
-                return redirect()->route('admin.dashboard');
-            }else{
-                return redirect()->route('home');
+                // Alert::success('Selamat Datang!', 'Anda melog masuk sebagai pihak kakitangan');
+                return redirect('admin-home');
             }
-        }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+             else if (auth()->user()->is_admin !== 1) {
+                // Alert::success('Selamat Datang!', 'Anda melog masuk sebagai penjaga');
+                return redirect('home');
+            }
+        } else {
+            session()->flash('error', 'Log masuk gagal. Sila cuba lagi');
+            return redirect()->route('login');
         }
     }
 }

@@ -12,7 +12,7 @@ class OrphanController extends Controller
 {
      public function index()
     {
-        $orphan = Application::where('status_permohonan', 'Berjaya')->get();
+        $orphan = Application::where('status_permohonan', 'Berjaya')->orderBy('created_at','desc')->get();
         return view('staff.orphan.orphan-list', compact('orphan'));
     }
 
@@ -21,25 +21,25 @@ class OrphanController extends Controller
         return view('staff.orphan.orphan-add');
     }
 
-    public function store(Request $request)
-     {
+    public function store(Request $request, Application $orphan)
+    {
          $validateData = $request->validate([
 
-             'nama_penuh' => '',
-             'nama_sekolah'   => '',
-             'tarikh_lahir' => '',
-             'umur'   => '',
-             'alamat'   => '',
-             'poskod'   => '',
-             'bandar'   => '',
-             'negeri'   => '',
+             'nama_penuh' => 'required',
+             'nama_sekolah'   => 'required',
+             'tarikh_lahir' => 'required',
+             'umur'   => 'required|numeric|min:1',
+             'alamat'   => 'required',
+             'poskod'   => 'required|digits:5',
+             'bandar'   => 'required',
+             'negeri'   => 'required',
 
-             'no_kad_pengenalan' => 'digits:12',
+             'no_kad_pengenalan' => 'required|digits:12|unique:applications,no_kad_pengenalan,'.$orphan->id,
              'no_telefon'    => '',
-             'jantina'   => '',
-             'status'   => '',          
+             'jantina'   => 'required',
+             'status'   => 'required', 
           
-             'tarikh_daftar'   => '',
+             'tarikh_daftar'   => 'required',
             //  'tarikh_keluar'   => '',
 
             //'gambar' => 'required',
@@ -53,13 +53,13 @@ class OrphanController extends Controller
             //  'id_anak_jagaan'   => '',
             //  'id_pemohon'   => '',   
 
-             'nama_penuh_ayah' => '',
+             'nama_penuh_ayah' => 'required',
              'no_kad_pengenalan_ayah' => 'digits:12',
              'no_telefon_ayah'    => '',
              'pekerjaan_ayah'   => '',
              'pendapatan_ayah'   => '',
 
-             'nama_penuh_ibu' => '',
+             'nama_penuh_ibu' => 'required',
              'no_kad_pengenalan_ibu' => 'digits:12',
              'no_telefon_ibu'    => '',
              'pekerjaan_ibu'   => '',
@@ -152,18 +152,17 @@ class OrphanController extends Controller
          
         if ($saveOrphan) {
                 Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
-                return redirect('/admin/orphan');
+                return redirect('/admin-orphan');
         }
         else {
                 Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
-                return redirect('/admin/orphan');
+                return redirect('/admin-orphan');
         }
      }
 
     public function show(Application $orphan)
     {
-        // depedency injection
-         return view('staff.orphan.orphan-view',['orphan' => $orphan]);
+        return view('staff.orphan.orphan-view',['orphan' => $orphan]);
     }
 
     public function edit(Application $orphan)
@@ -177,72 +176,47 @@ class OrphanController extends Controller
        // dump($orphan);
 
         $validateData = $request->validate([
+
+            // VALIDATION MAKLUMAT ANAK JAGAAN
+
              'nama_penuh' => '',
              'nama_sekolah'   => '',
              'tarikh_lahir' => '',
-             'umur'   => '',
+             'umur'   => 'required|numeric|min:1',
              'alamat'   => '',
-             'poskod'   => '',
+             'poskod'   => 'required|digits:5',
              'bandar'   => '',
              'negeri'   => '',
 
-             'no_kad_pengenalan' => 'required|digits:12|unique:orphans,no_kad_pengenalan,'.$orphan->id,
+             'no_kad_pengenalan' => 'required|digits:12|unique:applications,no_kad_pengenalan,'.$orphan->id,
              'no_telefon'    => '',
              'jantina'   => '',
              'status'   => '',          
           
              'tarikh_daftar'   => '',
-              'tarikh_keluar'   => '',
+             'tarikh_keluar'   => '',
 
-            //'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            //  'sijil_lahir'   => '',
-            //  'sijil_kematian'   => '',  
-             
-            //  'id_anak_jagaan'   => '',
-            //  'id_pemohon'   => '',   
+             // VALIDATION MAKLUMAT IBU BAPA
 
              'nama_penuh_ayah' => '',
-             'no_kad_pengenalan_ayah' => 'required|digits:12|unique:orphans,no_kad_pengenalan_ayah,'.$orphan->id,
+             'no_kad_pengenalan_ayah' => 'required|digits:12',
              'no_telefon_ayah'    => '',
              'pekerjaan_ayah'   => '',
              'pendapatan_ayah'   => '',
 
              'nama_penuh_ibu' => '',
-             'no_kad_pengenalan_ibu' => 'required|digits:12|unique:orphans,no_kad_pengenalan_ibu,'.$orphan->id,
+             'no_kad_pengenalan_ibu' => 'required|digits:12',
              'no_telefon_ibu'    => '',
              'pekerjaan_ibu'   => '',
              'pendapatan_ibu'   => '',
         ]);
 
-        // if($request->hasFile('gambar'))
-        // {
-        //         $path = 'assets/uploads/category/'.$orphan->gambar;
-        //         if(File::exists($path))
-        //         {
-        //             File::delete($path);
 
-        //         }
-        //         $file = $request->file('gambar');
-        //         $ext = $file->getClientOriginalExtension();
-        //         $filename = time(). '.'.$ext;
-        //         $file->move('assets/uploads/category',$filename);
-        //         $orphan->gambar = $filename;
-        // }
- 
-        // if($request->hasFile('gambar'))
-        // {
-        //     $file = $request->file('gambar');
-        //     $ext = $file->getClientOriginalExtension();
-        //     $filename = time(). '.'.$ext;
-        //     $file->move('assets/orphan-img',$filename);
-        //     $orphan->gambar = $filename;
+        // VALIDATION GAMBAR
 
-        // }
-
-       //$post = Post::find($id);
         if($request->hasFile('gambar')){
             $request->validate([
-              'gambar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+              'gambar' => 'image|mimes:jpg,png,jpeg|max:2048',
             ]);
 
             $file = $request->file('gambar');
@@ -251,6 +225,8 @@ class OrphanController extends Controller
             $file->move('assets/orphan-img',$filename);
             $orphan->gambar = $filename;
         }
+
+        // VALIDATION SIJIL LAHIR
 
         if($request->hasFile('sijil_lahir')){
             $request->validate([
@@ -263,6 +239,8 @@ class OrphanController extends Controller
             $file->move('assets/sijil_lahir',$filename);
             $orphan->sijil_lahir = $filename;
         }
+
+        // VALIDATION SIJIL KEMATIAN
 
         if($request->hasFile('sijil_kematian')){
             $request->validate([
@@ -289,15 +267,9 @@ class OrphanController extends Controller
         $orphan->no_telefon = $validateData['no_telefon'];
         $orphan->jantina = $validateData['jantina'];
         $orphan->status = $validateData['status'];
-
         $orphan->tarikh_daftar = $validateData['tarikh_daftar'];
         $orphan->tarikh_keluar = $validateData['tarikh_keluar'];
-        // $orphan->sijil_lahir = $validateData['sijil_lahir'];
-        // $orphan->sijil_kematian = $validateData['sijil_kematian'];
-
-        // $orphan->id_anak_jagaan = $validateData['id_anak_jagaan'];
-        // $orphan->id_pemohon = $validateData['id_pemohon'];
-
+       
         $orphan->nama_penuh_ayah = $validateData['nama_penuh_ayah'];
         $orphan->no_kad_pengenalan_ayah = $validateData['no_kad_pengenalan_ayah'];
         $orphan->no_telefon_ayah = $validateData['no_telefon_ayah'];
@@ -311,22 +283,23 @@ class OrphanController extends Controller
         $orphan->pendapatan_ibu = $validateData['pendapatan_ibu']; 
 
         $updateOrphan = $orphan->update();
-         
+
+        // MESEJ KEMASKINI - SWEETALERT
         if ($updateOrphan) {
                 Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
-                return redirect('/admin/orphan');
+                return redirect('/admin-orphan');
         }
         else {
                 Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
-                return redirect('/admin/orphan');
+                return redirect('/admin-orphan');
         }
-     }
+    }
 
     public function destroy(Application $orphan)
     {
         $orphan->delete();
         Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
-        return redirect('/admin/orphan');
+        return redirect('/admin-orphan');
     }
 
 

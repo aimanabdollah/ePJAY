@@ -6,19 +6,21 @@ use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ApplicationController extends Controller
 {
     public function index()
     {
-         $application = Application::where('id_pemohon', Auth::id())->get();
+         $application = Application::where('id_pemohon', Auth::id())->orderBy('created_at','desc')->get();
+
          return view('parent.application.application-list', compact('application'));
     }
 
     public function viewApplication()
     {
-         $application = Application::whereNotNull('id_pemohon')->get();
+         $application = Application::whereNotNull('id_pemohon')->orderBy('created_at','desc')->get();
          return view('staff.application.application-list', compact('application'));
 
     }
@@ -58,32 +60,32 @@ class ApplicationController extends Controller
      {
          $validateData = $request->validate([
 
-             'nama_penuh_pemohon' => '',
-             'no_tel_pemohon'   => '',
-             'email_pemohon'   => '',
-             'hubungan_pemohon'   => '',
-             'pekerjaan_pemohon'   => '',
+             'nama_penuh_pemohon' => 'required',
+             'no_tel_pemohon'   => 'required',
+             'email_pemohon'   => 'required',
+             'hubungan_pemohon'   => 'required',
+             'pekerjaan_pemohon'   => 'required',
           
-            'nama_penuh' => '',
-             'nama_sekolah'   => '',
-             'tarikh_lahir' => '',
-             'umur'   => 'numeric|min:0|max:99999999',
-             'alamat'   => '',
-             'poskod'   => '',
-             'bandar'   => '',
-             'negeri'   => '',
+            'nama_penuh' => 'required',
+             'nama_sekolah'   => 'required',
+             'tarikh_lahir' => 'required',
+             'umur'   => 'required|numeric|min:1',
+             'alamat'   => 'required',
+             'poskod'   => 'required|digits:5',
+             'bandar'   => 'required',
+             'negeri'   => 'required',
 
              'no_kad_pengenalan' => 'digits:12',
              'no_telefon'    => '',
-             'jantina'   => '',
-             'status'   => '',          
+             'jantina'   => 'required',
+             'status'   => 'required',          
           
              'tarikh_daftar'   => '',
             //  'tarikh_keluar'   => '',
 
             //'gambar' => 'required',
             // 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-             'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+             'gambar' => 'required|image|mimes:jpg,png,jpeg|max:2048',
             //'gambar' =>'',
       
              'sijil_lahir' => 'required|mimes:pdf|max:2048',
@@ -92,17 +94,17 @@ class ApplicationController extends Controller
             //  'id_anak_jagaan'   => '',
             //  'id_pemohon'   => '',   
 
-             'nama_penuh_ayah' => '',
+             'nama_penuh_ayah' => 'required',
              'no_kad_pengenalan_ayah' => 'digits:12',
              'no_telefon_ayah'    => '',
              'pekerjaan_ayah'   => '',
-             'pendapatan_ayah'   => 'numeric|min:0|max:99999999',
+             'pendapatan_ayah'   => '',
 
-             'nama_penuh_ibu' => '',
+             'nama_penuh_ibu' => 'required',
              'no_kad_pengenalan_ibu' => 'digits:12',
              'no_telefon_ibu'    => '',
              'pekerjaan_ibu'   => '',
-             'pendapatan_ibu'   => 'numeric|min:0|max:99999999',
+             'pendapatan_ibu'   => '',
 
          ]);
 
@@ -189,10 +191,20 @@ class ApplicationController extends Controller
         $application->no_telefon_ibu = $validateData['no_telefon_ibu'];
         $application->pekerjaan_ibu = $validateData['pekerjaan_ibu'];
         $application->pendapatan_ibu = $validateData['pendapatan_ibu']; 
+        
         $application->save();
  
         return redirect('application')
-          ->with('message', "Permohonan berjaya dihantar");
+          ->with('message', "Permohonan anda telah dihantar");
+        
+        // if ($saveApplication) {
+        //         Alert::success('Berjaya', 'Permohonan anda telah dihantar');
+        //         return redirect('home');
+        // }
+        // else {
+        //         Alert::error('Gagal', 'Permohonan anda tidak dapat dihantar');
+        //         return redirect('home');
+        // }
      }
 
     public function show(Application $application)
@@ -234,9 +246,21 @@ class ApplicationController extends Controller
         $application->ulasan = $validateData['ulasan'];
         $application->tarikh_masuk = date("Y-m-d");
  
-        $application->update();
+        // $application->update();
 
-        return redirect('/admin/application')
-         ->with('message', "Rekod berjaya dikemaskini");
+        // return redirect('/admin-application')
+        //  ->with('message', "Rekod berjaya dikemaskini");
+
+        $updateApplication = $application->update();
+
+        // MESEJ KEMASKINI - SWEETALERT
+        if ($updateApplication) {
+                Alert::success('Berjaya', 'Permohonan telah dikemaskini');
+                return redirect('/admin-application');
+        }
+        else {
+                Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
+                return redirect('/admin-application');
+        }
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.staff-main', ['title' => 'Anak Jagaan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Permohonan</li>
                 </ol>
             </div>
@@ -148,7 +148,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

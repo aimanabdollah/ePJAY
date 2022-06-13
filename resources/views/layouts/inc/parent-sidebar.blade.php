@@ -35,7 +35,7 @@
                    <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                    <li class="nav-item">
-                       <a href="{{ url('home') }}" class="nav-link">
+                       <a href="{{ url('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-th"></i>
                            <p>
                                Dashboard
@@ -44,7 +44,7 @@
 
                    </li>
 
-                   <li class="nav-item">
+                   {{-- <li class="nav-item">
                        <a href="#" class="nav-link">
                            <i class="nav-icon fas fa-inbox"></i>
                            <p>
@@ -66,11 +66,32 @@
                                </a>
                            </li>
                        </ul>
+                   </li> --}}
+
+                   <li class="nav-item">
+                       <a href="{{ url('add-application') }}"
+                           class="nav-link {{ Request::is('add-application*') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-inbox"></i>
+                           <p>
+                               Permohonan Baharu
+                           </p>
+                       </a>
+                   </li>
+
+                   <li class="nav-item">
+                       <a href="{{ url('application') }}"
+                           class="nav-link {{ Request::is('application*') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-inbox"></i>
+                           <p>
+                               Semakan Permohonan
+                           </p>
+                       </a>
                    </li>
 
 
                    <li class="nav-item">
-                       <a href="{{ url('list-orphan') }}" class="nav-link">
+                       <a href="{{ url('list-orphan') }}"
+                           class="nav-link {{ Request::is('list-orphan*') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-user-alt"></i>
                            <p>
                                Anak Jagaan

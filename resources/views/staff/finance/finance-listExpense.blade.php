@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.staff-main', ['title' => 'Anak Jagaan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Perbelanjaan</li>
                 </ol>
             </div>
@@ -27,7 +27,7 @@
                         <div class="mr-auto">
                             <h5>Senarai Perbelanjaan</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/expense/add-expense') }}"
+                        <div class=""> <a href="{{ url('admin-expense/add-expense') }}"
                                 class="btn btn-success">
                                 <i class="nav-icon fas fa-plus-circle"></i> Tambah Perbelanjaan
                             </a></div>
@@ -80,7 +80,7 @@
                                         <td class="align-middle">{{ $expense->tarikh }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <a href="{{ url('admin/expense/' . $expense->id) }}"
+                                                <a href="{{ url('admin-expense/' . $expense->id) }}"
                                                     class="btn btn-primary  m-1"> <i class="nav-icon fas fa-eye"></i>
                                                 </a>
 
@@ -131,7 +131,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

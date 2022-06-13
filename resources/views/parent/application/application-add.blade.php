@@ -1,4 +1,4 @@
-@extends('layouts.parent-main', ['title'=>'Permohonan'])
+@extends('layouts.parent-main', ['title' => 'Permohonan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -27,9 +27,12 @@
                     <div class="card-header d-flex align-items-center">
                         <div class="mr-auto">
                             <h5>Tambah Permohonan</h5>
+                            <em>
+                                <h6>Maklumat bertanda <i style="color: red">(*)</i> wajib dimasukkan</h6>
+                            </em>
                         </div>
-                        {{-- <div class=""> <a href="{{ url('admin/orphan') }}" class="btn btn-primary">
-                                <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div> --}}
+                        <div class=""> <a href="{{ url('home') }}" class="btn btn-primary">
+                                <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -53,7 +56,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="nama_penuh_pemohon">Nama Penuh Pemohon</label>
+                                                <label for="nama_penuh_pemohon">Nama Penuh Pemohon<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('nama_penuh_pemohon') is-invalid @enderror"
                                                     id="nama_penuh_pemohon" name="nama_penuh_pemohon"
@@ -70,7 +74,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="hubungan_pemohon">Hubungan Anak dengan Pemohon</label>
+                                                <label for="hubungan_pemohon">Hubungan Anak dengan Pemohon<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('hubungan_pemohon') is-invalid @enderror"
                                                     id="hubungan_pemohon" name="hubungan_pemohon"
@@ -83,7 +88,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="pekerjaan_pemohon">Pekerjaan Pemohon</label>
+                                                <label for="pekerjaan_pemohon">Pekerjaan Pemohon<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('pekerjaan_pemohon') is-invalid @enderror"
                                                     id="pekerjaan_pemohon" name="pekerjaan_pemohon"
@@ -101,8 +107,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="email_pemohon">Email</label>
-                                                <input type="text"
+                                                <label for="email_pemohon">Email<i style="color: red">*</i></label>
+                                                <input type="email"
                                                     class="form-control @error('email_pemohon') is-invalid @enderror"
                                                     id="email_pemohon" name="email_pemohon"
                                                     value="{{ old('email_pemohon') }}" placeholder="Masukkan Email">
@@ -113,8 +119,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="no_tel_pemohon">No. Telefon</label>
-                                                <input type="text"
+                                                <label for="no_tel_pemohon">No. Telefon<i style="color: red">*</i></label>
+                                                <input type="number"
                                                     class="form-control @error('no_tel_pemohon') is-invalid @enderror"
                                                     id="no_tel_pemohon" name="no_tel_pemohon"
                                                     value="{{ old('no_tel_pemohon') }}"
@@ -158,7 +164,7 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="nama_penuh">Nama Penuh</label>
+                                        <label for="nama_penuh">Nama Penuh<i style="color: red">*</i></label>
                                         <input type="text" class="form-control @error('nama_penuh') is-invalid @enderror"
                                             id="nama_penuh" name="nama_penuh" value="{{ old('nama_penuh') }}"
                                             placeholder="Masukkan Nama Penuh">
@@ -168,7 +174,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="nama_sekolah">Nama Sekolah</label>
+                                        <label for="nama_sekolah">Nama Sekolah<i style="color: red">*</i></label>
                                         <input type="text" class="form-control @error('nama_sekolah') is-invalid @enderror"
                                             id="nama_sekolah" name="nama_sekolah" value="{{ old('nama_sekolah') }}"
                                             placeholder="Masukkan Nama Sekolah">
@@ -181,7 +187,7 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="tarikh_lahir">Tarikh Lahir</label>
+                                                <label for="tarikh_lahir">Tarikh Lahir<i style="color: red">*</i></label>
                                                 <input type="date"
                                                     class="form-control @error('tarikh_lahir') is-invalid @enderror"
                                                     id="tarikh_lahir" name="tarikh_lahir"
@@ -193,10 +199,11 @@
                                             </div>
                                         </div>
 
+
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="umur">Umur</label>
-                                                <input type="number" step="1"
+                                                <label for="umur">Umur<i style="color: red">*</i></label>
+                                                <input type="number" step="1" min=1
                                                     class="form-control @error('umur') is-invalid @enderror" id="umur"
                                                     name="umur" value="{{ old('umur') }}" placeholder="Masukkan Umur">
                                                 @error('umur')
@@ -208,7 +215,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="alamat">Alamat Tempat Tinggal</label>
+                                        <label for="alamat">Alamat Tempat Tinggal<i style="color: red">*</i></label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                                             id="alamat" name="alamat" value="{{ old('alamat') }}"
                                             placeholder="Masukkan Alamat">
@@ -257,26 +264,40 @@
                                                     {{ old('negeri') == 'W.P Putrajaya' ? 'selected' : '' }}>
                                                     W.P Putrajaya</option>
 
-                                                {{-- <option value="Johor">Johor</option>
-                                                <option value="Kedah">Kedah</option>
-                                                <option value="Kelantan">Kelantan</option>
-                                                <option value="Melaka">Melaka</option>
+                                                <option value="Johor" {{ old('negeri') == 'Johor' ? 'selected' : '' }}>
+                                                    Johor</option>
+                                                <option value="Kedah" {{ old('negeri') == 'Kedah' ? 'selected' : '' }}>
+                                                    Kedah</option>
+                                                <option value="Kelantan"
+                                                    {{ old('negeri') == 'Kelantan' ? 'selected' : '' }}>
+                                                    Kelantan</option>
+                                                <option value="Melaka" {{ old('negeri') == 'Melaka' ? 'selected' : '' }}>
+                                                    Melaka</option>
 
-                                                <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                                <option value="Pahang">Pahang</option>
-                                                <option value="Perak">Perak</option>
-                                                <option value="Perlis">Perlis</option>
+                                                <option value="Negeri Sembilan"
+                                                    {{ old('negeri') == 'Negeri Sembilan' ? 'selected' : '' }}>
+                                                    Negeri Sembilan</option>
+                                                <option value="Pahang" {{ old('negeri') == 'Pahang' ? 'selected' : '' }}>
+                                                    Pahang</option>
+                                                <option value="Perak" {{ old('negeri') == 'Perak' ? 'selected' : '' }}>
+                                                    Perak</option>
+                                                <option value="Perlis" {{ old('negeri') == 'Perlis' ? 'selected' : '' }}>
+                                                    Perlis</option>
 
-                                                <option value="Pulau Pinang">Pulau Pinang</option>
-                                                <option value="Sabah">Sabah</option>
-                                                <option value="Sarawak">Sarawak</option>
-                                                <option value="Selangor">Selangor</option> --}}
-
-
+                                                <option value="Pulau Pinang"
+                                                    {{ old('negeri') == 'Pulau Pinang' ? 'selected' : '' }}>
+                                                    Pulau Pinang</option>
+                                                <option value="Sabah" {{ old('negeri') == 'Sabah' ? 'selected' : '' }}>
+                                                    Sabah</option>
+                                                <option value="Sarawak"
+                                                    {{ old('negeri') == 'Sarawak' ? 'selected' : '' }}>
+                                                    Sarawak</option>
+                                                <option value="Selangor"
+                                                    {{ old('negeri') == 'Selangor' ? 'selected' : '' }}>
+                                                    Selangor</option>
                                                 <option value="Terengganu"
                                                     {{ old('negeri') == 'Terengganu' ? 'selected' : '' }}>
                                                     Terengganu</option>
-
 
                                             </select>
                                             @error('negeri')
@@ -294,7 +315,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="no_kad_pengenalan">No. Kad Pengenalan</label>
+                                                <label for="no_kad_pengenalan">No. Kad Pengenalan <i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('no_kad_pengenalan') is-invalid @enderror"
                                                     id="no_kad_pengenalan" name="no_kad_pengenalan"
@@ -323,7 +345,7 @@
 
 
                                         <div class="col-md-6" style="margin-bottom: 12pt">
-                                            <label for="exampleInputEmail1">Jantina</label>
+                                            <label for="exampleInputEmail1">Jantina<i style="color: red">*</i></label>
                                             <select class="form-control" name="jantina" id="jantina"
                                                 aria-label="Default select example">
                                                 <option selected>Sila Pilih Jantina</option>
@@ -343,7 +365,7 @@
 
 
                                         <div class="col-md-6" style="margin-bottom: 12pt">
-                                            <label for="exampleInputEmail1">Status</label>
+                                            <label for="exampleInputEmail1">Status<i style="color: red">*</i></label>
                                             <select class="form-control" name="status" id="status"
                                                 aria-label="Default select example">
                                                 <option selected>Sila Pilih Status</option>
@@ -386,7 +408,7 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="exampleInputFile">Gambar</label>
+                                                <label for="exampleInputFile">Gambar<i style="color: red">*</i></label>
                                                 <div id="file_input">
                                                     <input type="file" name="gambar" value="{{ old('gambar') }}"
                                                         class="form-control" placeholder="Sila Pilih Gambar" id="gambar">
@@ -429,7 +451,7 @@
 
 
                                     <div class="form-group">
-                                        <label for="nama_penuh_ayah">Nama Penuh Ayah</label>
+                                        <label for="nama_penuh_ayah">Nama Penuh Ayah<i style="color: red">*</i></label>
                                         <input type="text"
                                             class="form-control @error('nama_penuh_ayah') is-invalid @enderror"
                                             id="nama_penuh_ayah" name="nama_penuh_ayah"
@@ -443,7 +465,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="no_kad_pengenalan_ayah">No. Kad Pengenalan Ayah</label>
+                                                <label for="no_kad_pengenalan_ayah">No. Kad Pengenalan Ayah<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('no_kad_pengenalan_ayah') is-invalid @enderror"
                                                     id="no_kad_pengenalan_ayah" name="no_kad_pengenalan_ayah"
@@ -491,7 +514,7 @@
 
                                             <div class="form-group">
                                                 <label for="pendapatan_ayah">Pendapatan Ayah</label>
-                                                <input type="number" step=0.01
+                                                <input type="number" step=0.01 min=0
                                                     class="form-control @error('pendapatan_ayah') is-invalid @enderror"
                                                     id="pendapatan_ayah" name="pendapatan_ayah"
                                                     value="{{ old('pendapatan_ayah') }}"
@@ -512,7 +535,7 @@
 
 
                                     <div class="form-group">
-                                        <label for="nama_penuh_ibu">Nama Penuh Ibu</label>
+                                        <label for="nama_penuh_ibu">Nama Penuh Ibu<i style="color: red">*</i></label>
                                         <input type="text"
                                             class="form-control @error('nama_penuh_ibu') is-invalid @enderror"
                                             id="nama_penuh_ibu" name="nama_penuh_ibu" value="{{ old('nama_penuh_ibu') }}"
@@ -526,7 +549,8 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="no_kad_pengenalan_ibu">No. Kad Pengenalan Ibu</label>
+                                                <label for="no_kad_pengenalan_ibu">No. Kad Pengenalan Ibu<i
+                                                        style="color: red">*</i></label>
                                                 <input type="text"
                                                     class="form-control @error('no_kad_pengenalan_ibu') is-invalid @enderror"
                                                     id="no_kad_pengenalan_ibu" name="no_kad_pengenalan_ibu"
@@ -574,7 +598,7 @@
 
                                             <div class="form-group">
                                                 <label for="pendapatan_ibu">Pendapatan Ibu</label>
-                                                <input type="number" step=0.01
+                                                <input type="number" step=0.01 min=0
                                                     class="form-control @error('pendapatan_ibu') is-invalid @enderror"
                                                     id="pendapatan_ibu" name="pendapatan_ibu"
                                                     value="{{ old('pendapatan_ibu') }}"
@@ -602,7 +626,7 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Sijil Lahir Anak</label>
+                                        <label for="exampleInputFile">Sijil Lahir Anak<i style="color: red">*</i></label>
                                         <div id="file_input">
                                             <input type="file" name="sijil_lahir" value="{{ old('sijil_lahir') }}"
                                                 class="form-control" placeholder="Sila Pilih Sijil Lahir"
@@ -618,7 +642,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Sijil Kematian</label>
+                                        <label for="exampleInputFile">Sijil Kematian<i style="color: red">*</i></label>
                                         <div id="file_input">
                                             <input type="file" name="sijil_kematian" value="{{ old('sijil_kematian') }}"
                                                 class="form-control" placeholder="Sila Pilih Sijil Kematian"
@@ -663,7 +687,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

@@ -34,8 +34,10 @@
                    data-accordion="false">
                    <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                   <li class="nav-item">
-                       <a href="{{ url('admin/home') }}" class="nav-link">
+
+                   <li class="nav-item ">
+                       <a href="{{ url('admin-home') }}"
+                           class="nav-link {{ Request::is('admin-home') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-th"></i>
                            <p>
                                Dashboard
@@ -44,7 +46,8 @@
 
                    </li>
                    <li class="nav-item">
-                       <a href="{{ url('admin/application') }}" class="nav-link">
+                       <a href="{{ url('admin-application') }}"
+                           class="nav-link {{ Request::is('admin-application*') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-inbox"></i>
                            <p>
                                Permohonan
@@ -52,8 +55,9 @@
                        </a>
                    </li>
 
-                   <li class="nav-item" {{ Request::is('orphan*') ? 'active' : '' }}>
-                       <a href="{{ url('admin/orphan') }}" class="nav-link">
+                   <li class="nav-item">
+                       <a href="{{ url('admin-orphan') }}"
+                           class="nav-link {{ Request::is('admin-orphan*') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-user-alt"></i>
                            <p>
                                Anak Jagaan
@@ -62,6 +66,26 @@
                    </li>
 
                    <li class="nav-item">
+                       <a href="{{ url('admin-income') }}"
+                           class="nav-link {{ Request::is('admin-income*') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-money-bill"></i>
+                           <p>
+                               Pendapatan
+                           </p>
+                       </a>
+                   </li>
+
+                   <li class="nav-item">
+                       <a href="{{ url('admin-expense') }}"
+                           class="nav-link {{ Request::is('admin-expense*') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-money-bill"></i>
+                           <p>
+                               Perbelanjaan
+                           </p>
+                       </a>
+                   </li>
+
+                   {{-- <li class="nav-item">
                        <a href="#" class="nav-link">
                            <i class="nav-icon fas fa-money-bill-wave-alt"></i>
                            <p>
@@ -71,28 +95,29 @@
                        </a>
                        <ul class="nav nav-treeview">
                            <li class="nav-item">
-                               <a href="{{ url('admin/income') }}" class="nav-link">
+                               <a href="{{ url('admin-income') }}"
+                                   class="nav-link {{ Request::is('admin-income*') ? 'active' : '' }}">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Pendapatan</p>
                                </a>
                            </li>
                            <li class="nav-item">
-                               <a href="{{ url('admin/expense') }}" class="nav-link">
+                               <a href="{{ url('admin-expense') }}" class="nav-link">
                                    <i class="far fa-circle nav-icon"></i>
                                    <p>Perbelanjaan</p>
                                </a>
                            </li>
                        </ul>
-                   </li>
+                   </li> --}}
 
-                   <li class="nav-item" {{ Request::is('user*') ? 'active' : '' }}>
+                   {{-- <li class="nav-item" {{ Request::is('user*') ? 'active' : '' }}>
                        <a href="{{ url('admin/user') }}" class="nav-link">
                            <i class="nav-icon fas fa-user-alt"></i>
                            <p>
                                Pengguna
                            </p>
                        </a>
-                   </li>
+                   </li> --}}
 
 
                    <li class="nav-item">

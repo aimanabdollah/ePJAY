@@ -63,27 +63,27 @@
                     <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-6 invoice-col">
-                            Daripada:
+                            <b>Daripada:</b>
                             <address>
-                                <strong>Rumah Bakti Dato' Harun</strong><br>
+                                Rumah Bakti Dato' Harun<br>
                                 KM 11, Jln, Ulu Kelang<br>
                                 68000 Ampang Jaya, Selangor<br>
-                                Phone: 0342568880<br>
-                                Email: rumahbaktidatoharun@gmail.com
+                                <b>No. Tel:</b> 03-42568880<br>
+                                <b>Email:</b> rumahbaktidatoharun@gmail.com
                             </address>
 
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6 invoice-col">
-                            Kepada:
+                            <b>Kepada:</b>
                             <address>
-                                <strong>{{ $application->nama_penuh_pemohon }}</strong><br>
+                                {{ $application->nama_penuh_pemohon }}<br>
                                 {{ $application->alamat }}<br>
                                 {{ $application->poskod }},
                                 {{ $application->bandar }},
                                 {{ $application->negeri }}<br>
-                                Phone: {{ $application->no_tel_pemohon }}<br>
-                                Email: {{ $application->email_pemohon }}
+                                <b>No. Tel:</b> {{ $application->no_tel_pemohon }}<br>
+                                <b>Email:</b> {{ $application->email_pemohon }}
                             </address>
                         </div>
                         <!-- /.col -->
@@ -130,7 +130,7 @@
                         amatlah dihargai dan kami dahulukan dengan jutaan terima kasih.
                     </p>
 
-                    <p>Sekian,
+                    <p>Sekian, harap maklum.
                     </p>
 
                     <p><b>"BERKHIDMAT UNTUK NEGARA"</b>
@@ -145,8 +145,11 @@
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-12">
-                            <button class="btn btn-default" onclick=" window.print()"><i class="fas fa-print"></i>
+                            <button class="btn btn-default" onclick="window.print()"><i class="fas fa-print"></i>
                                 Cetak</button>
+
+                            <div><button onClick="window.print()">Print this page
+                                </button></div>
 
                             {{-- <a href="{{ 'tawaran-print' }}" rel="noopener" target="_blank" class="btn btn-default"><i
                                     class="fas fa-print"></i> Print</a> --}}

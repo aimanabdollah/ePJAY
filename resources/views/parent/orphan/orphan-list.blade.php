@@ -1,4 +1,4 @@
-@extends('layouts.parent-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.parent-main', ['title' => 'Anak Jagaan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -105,7 +105,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

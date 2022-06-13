@@ -68,26 +68,27 @@
                     <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-6 invoice-col">
-                            Daripada:
+                            <b>Daripada:</b>
                             <address>
-                                <strong>Rumah Bakti Dato' Harun</strong><br>
+                                Rumah Bakti Dato' Harun<br>
                                 KM 11, Jln, Ulu Kelang<br>
                                 68000 Ampang Jaya, Selangor<br>
-                                Phone: 0342568880<br>
-                                Email: rumahbaktidatoharun@gmail.com
+                                <b>No. Tel:</b> 03-42568880<br>
+                                <b>Email:</b> rumahbaktidatoharun@gmail.com
                             </address>
+
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6 invoice-col">
-                            Kepada:
+                            <b>Kepada:</b>
                             <address>
-                                <strong>{{ $application->nama_penuh_pemohon }}</strong><br>
+                                {{ $application->nama_penuh_pemohon }}<br>
                                 {{ $application->alamat }}<br>
                                 {{ $application->poskod }},
                                 {{ $application->bandar }},
                                 {{ $application->negeri }}<br>
-                                Phone: {{ $application->no_tel_pemohon }}<br>
-                                Email: {{ $application->email_pemohon }}
+                                <b>No. Tel:</b> {{ $application->no_tel_pemohon }}<br>
+                                <b>Email:</b> {{ $application->email_pemohon }}
                             </address>
                         </div>
                         <!-- /.col -->

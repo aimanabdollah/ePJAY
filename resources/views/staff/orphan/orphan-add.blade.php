@@ -1,4 +1,4 @@
-@extends('layouts.staff-main', ['title'=>'Anak Jagaan'])
+@extends('layouts.staff-main', ['title' => 'Anak Jagaan'])
 
 @section('content-header')
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Anak Jagaan</li>
                 </ol>
             </div>
@@ -32,7 +32,7 @@
                                 </em>
                             </h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/orphan') }}" class="btn btn-primary">
+                        <div class=""> <a href="{{ url('admin-orphan') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
                     <!-- /.card-header -->
@@ -64,7 +64,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="nama_sekolah">Nama Sekolah</label>
+                                        <label for="nama_sekolah">Nama Sekolah<i style="color: red">*</i></label>
                                         <input type="text" class="form-control @error('nama_sekolah') is-invalid @enderror"
                                             id="nama_sekolah" name="nama_sekolah" value="{{ old('nama_sekolah') }}"
                                             placeholder="Masukkan Nama Sekolah">
@@ -91,7 +91,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="umur">Umur<i style="color: red">*</i></label>
-                                                <input type="number" step="1"
+                                                <input type="number" step="1" min=1
                                                     class="form-control @error('umur') is-invalid @enderror" id="umur"
                                                     name="umur" value="{{ old('umur') }}" placeholder="Masukkan Umur">
                                                 @error('umur')
@@ -403,7 +403,7 @@
 
                                             <div class="form-group">
                                                 <label for="pendapatan_ayah">Pendapatan Ayah</label>
-                                                <input type="number" step=0.01
+                                                <input type="number" step=0.01 min=0
                                                     class="form-control @error('pendapatan_ayah') is-invalid @enderror"
                                                     id="pendapatan_ayah" name="pendapatan_ayah"
                                                     value="{{ old('pendapatan_ayah') }}"
@@ -487,7 +487,7 @@
 
                                             <div class="form-group">
                                                 <label for="pendapatan_ibu">Pendapatan Ibu</label>
-                                                <input type="number" step=0.01
+                                                <input type="number" step=0.01 min=0
                                                     class="form-control @error('pendapatan_ibu') is-invalid @enderror"
                                                     id="pendapatan_ibu" name="pendapatan_ibu"
                                                     value="{{ old('pendapatan_ibu') }}"
@@ -576,7 +576,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

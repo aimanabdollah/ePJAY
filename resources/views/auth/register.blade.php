@@ -41,7 +41,7 @@
                 </h6>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Pendaftaran Akaun</p>
+                <p class="login-box-msg"><b>Pendaftaran Akaun</b></p>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
