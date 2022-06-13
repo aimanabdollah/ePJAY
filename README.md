@@ -10,7 +10,7 @@ Penjaga
 
 -   Menghantar Permohonan Kemasukan
 -   Menyemak Status Permohonan
--   Membuat Turun Surat Tawaran
+-   Memuat Turun Surat Tawaran
 -   Melihat Maklumat Anak Jagaan
 -   Melihat Paparan Dashboard
 
