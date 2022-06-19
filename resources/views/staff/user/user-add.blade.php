@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Pengguna</li>
                 </ol>
             </div>
@@ -28,7 +28,7 @@
                         <div class="mr-auto">
                             <h5>Tambah Maklumat Pengguna</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/user') }}" class="btn btn-primary">
+                        <div class=""> <a href="{{ url('admin-user') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
                     <!-- /.card-header -->
@@ -95,7 +95,7 @@
 
                                     <div class="form-group">
                                         <label for="num_phone">Kata Laluan</label>
-                                        <input type="text" class="form-control @error('password') is-invalid @enderror"
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
                                             id="password" name="password" value="{{ old('password') }}"
                                             placeholder="Masukkan No. Telefon">
                                         @error('password')
@@ -145,7 +145,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 

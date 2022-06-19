@@ -185,27 +185,6 @@
         </div><!-- /.card-body -->
     </div> --}}
 
-    <div class="card card-primary">
-        <div class="card-header">
-            <h3 class="card-title">Analisis Maklumat Permohonan</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-
-        <div class="card-body">
-            <div class="row">
-                <div class="col-6" id="chartApplication" style="height: 200pt"></div>
-                <div class="col-6" id="piechart4"></div>
-            </div>
-
-        </div>
-    </div>
 
     <div class="card card-primary">
         <div class="card-header">
@@ -222,15 +201,35 @@
 
         <div class="card-body">
             <div class="row">
-                <div class="col-6" id="ageCategory" style="height: 200pt"></div>
-                {{-- <div class="col-4" id="piechart"></div> --}}
-                <div class="col-6" id="piechart3"></div>
+                <div class="col-6" id="kategoriUmur" style="height: 200pt"></div>
+                <div class="col-6" id="kategoriJantina"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Analisis Maklumat Permohonan</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6" id="jumlahPermohonan" style="height: 200pt"></div>
+                <div class="col-6" id="statusPermohonan"></div>
             </div>
 
         </div>
     </div>
-
-
 
     <div class="card card-primary">
         <div class="card-header">
@@ -247,9 +246,9 @@
 
         <div class="card-body">
             <div class="row">
-                <div class="col-4" id="curve_chart" style="height: 200pt"></div>
-                <div class="col-4" id="piechart"></div>
-                <div class="col-4" id="piechart2"></div>
+                <div class="col-4" id="pendapatanDanPerbelanjaan" style="height: 200pt"></div>
+                <div class="col-4" id="kategoriPendapatan"></div>
+                <div class="col-4" id="kategoriPerbelanjaan"></div>
             </div>
 
         </div>
@@ -305,16 +304,22 @@
             });
         });
 
-        // LINE CHART FOR TOTAL SALES BY MONTH
+
+        // =============================================================================================
+        // ================= [ LAPORAN ANALISIS MAKLUMAT PENDAPATAN DAN PERBELANJAAN ] =================
+        // ============================================================================================= 
+
+        // LINE CHART - JUMLAH PENDAPATAN DAN PERBELANJAAN MENGIKUT BULAN ==============================
+
         google.charts.load('current', {
             packages: ['corechart', 'line']
         });
-        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart_jumlahPerbelanjaanPendapatan);
 
-        function drawChart1() {
+        function drawChart_jumlahPerbelanjaanPendapatan() {
             var data = google.visualization.arrayToDataTable([
                 ['Bulan', 'Pendapatan', 'Perbelanjaan'],
-                <?php echo $amountLine; ?>
+                <?php echo $jumlahPendapatanDanPerbelanjaan; ?>
             ]);
             var options = {
                 title: 'Jumlah Pendapatan dan Perbelanjaan Mengikut Bulan',
@@ -331,21 +336,21 @@
                     easing: 'out'
                 }
             };
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            var chart = new google.visualization.LineChart(document.getElementById('pendapatanDanPerbelanjaan'));
             chart.draw(data, options);
         }
 
+        // PIE CHART - JUMLAH PENDAPATAN MENGIKUT KATEGORI ==========================================
 
         google.charts.load('current', {
             'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart_jumlahKategoriPendapatan);
 
-        function drawChart() {
-
+        function drawChart_jumlahKategoriPendapatan() {
             var data = google.visualization.arrayToDataTable([
                 ['Kategori', 'Jumlah'],
-                <?php echo $incomeCate; ?>
+                <?php echo $kategoriPendapatan; ?>
             ]);
 
             var options = {
@@ -353,21 +358,23 @@
                 pieHole: 0.3
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            var chart = new google.visualization.PieChart(document.getElementById('kategoriPendapatan'));
 
             chart.draw(data, options);
         }
 
+        // PIE CHART - JUMLAH PERBELANJAAN MENGIKUT KATEGORI ==========================================
+
         google.charts.load('current', {
             'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(drawChart2);
+        google.charts.setOnLoadCallback(drawChart_jumlahKategoriPerbelanjaan);
 
-        function drawChart2() {
+        function drawChart_jumlahKategoriPerbelanjaan() {
 
             var data = google.visualization.arrayToDataTable([
                 ['Kategori', 'Jumlah'],
-                <?php echo $expenseCate; ?>
+                <?php echo $kategoriPerbelanjaan; ?>
             ]);
 
             var options = {
@@ -375,21 +382,28 @@
                 pieHole: 0.3
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+            var chart = new google.visualization.PieChart(document.getElementById('kategoriPerbelanjaan'));
 
             chart.draw(data, options);
         }
 
+
+        // =============================================================================================
+        // ================= [ LAPORAN ANALISIS MAKLUMAT ANAK JAGAAN ] =================================
+        // ============================================================================================= 
+
+        // PIE CHART - JUMLAH ANAK JAGAAN MENGIKUT JANTINA =============================================
+
         google.charts.load('current', {
             'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(drawChart3);
+        google.charts.setOnLoadCallback(drawChart_jumlahKategoriJantina);
 
-        function drawChart3() {
+        function drawChart_jumlahKategoriJantina() {
 
             var data = google.visualization.arrayToDataTable([
                 ['Jantina', 'Jumlah'],
-                <?php echo $genderCate; ?>
+                <?php echo $kategoriJantina; ?>
             ]);
 
             var options = {
@@ -397,23 +411,23 @@
                 pieHole: 0.3
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
-
+            var chart = new google.visualization.PieChart(document.getElementById('kategoriJantina'));
             chart.draw(data, options);
         }
 
-
+        // BAR CHART - JUMLAH ANAK JAGAAN MENGIKUT UMUR ===============================================
 
         google.charts.load('current', {
             packages: ['corechart', 'bar']
         });
-        google.charts.setOnLoadCallback(ageCategory);
+        google.charts.setOnLoadCallback(drawChart_jumlahKategoriUmur);
 
-        function ageCategory() {
+        function drawChart_jumlahKategoriUmur() {
             var data = google.visualization.arrayToDataTable([
                 ['Umur', 'Jumlah'],
-                <?php echo $ageCate; ?>
+                <?php echo $kategoriUmur; ?>
             ]);
+
             var options = {
                 title: 'Jumlah Anak Jagaan Mengikut Umur',
                 animation: {
@@ -433,21 +447,27 @@
                     title: ''
                 }
             };
-            var chart = new google.visualization.BarChart(document.getElementById('ageCategory'));
+            var chart = new google.visualization.BarChart(document.getElementById('kategoriUmur'));
             chart.draw(data, options);
         }
 
 
+        // =============================================================================================
+        // ================= [ LAPORAN ANALISIS MAKLUMAT PERMOHONAN ] ==================================
+        // ============================================================================================= 
+
+        // PIE CHART - JUMLAH PERMOHONAN MENGIKUT STATUS ===============================================
+
         google.charts.load('current', {
             'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(statusCategory);
+        google.charts.setOnLoadCallback(drawChart_jumlahStatusPermohonan);
 
-        function statusCategory() {
+        function drawChart_jumlahStatusPermohonan() {
 
             var data = google.visualization.arrayToDataTable([
                 ['Status', 'Jumlah'],
-                <?php echo $statusCate; ?>
+                <?php echo $statusPermohonan; ?>
             ]);
 
             var options = {
@@ -455,21 +475,22 @@
                 pieHole: 0.3
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+            var chart = new google.visualization.PieChart(document.getElementById('statusPermohonan'));
 
             chart.draw(data, options);
         }
 
+        // BAR CHART - JUMLAH PERMOHONAN MENGIKUT BULAN ===============================================
 
         google.charts.load('current', {
             packages: ['corechart', 'bar']
         });
-        google.charts.setOnLoadCallback(chartApplication);
+        google.charts.setOnLoadCallback(drawChart_jumlahPermohonan);
 
-        function chartApplication() {
+        function drawChart_jumlahPermohonan() {
             var data = google.visualization.arrayToDataTable([
                 ['Bulan', 'Jumlah'],
-                <?php echo $chartApplication; ?>
+                <?php echo $jumlahPermohonan; ?>
             ]);
             var options = {
                 title: 'Jumlah Permohonan Diterima Mengikut Bulan',
@@ -490,7 +511,7 @@
                     title: 'Jumlah'
                 }
             };
-            var chart = new google.visualization.ColumnChart(document.getElementById('chartApplication'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('jumlahPermohonan'));
             chart.draw(data, options);
         }
     </script>

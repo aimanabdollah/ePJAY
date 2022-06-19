@@ -110,8 +110,9 @@
                        </ul>
                    </li> --}}
 
-                   {{-- <li class="nav-item" {{ Request::is('user*') ? 'active' : '' }}>
-                       <a href="{{ url('admin/user') }}" class="nav-link">
+                   {{-- <li class="nav-item">
+                       <a href="{{ url('admin-user') }}"
+                           class="nav-link  {{ Request::is('admin-user*') ? 'active' : '' }}">
                            <i class="nav-icon fas fa-user-alt"></i>
                            <p>
                                Pengguna

@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Models\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
    
 class HomeController extends Controller
@@ -84,50 +85,22 @@ class HomeController extends Controller
 
     public function adminHome()
     {
+
+        // ================= [ JUMLAH KESELURUHAN PERMOHONAN, ANAK JAGAAN, PENDAPATAN & PERBELANJAAN ] =================
+
+        $application = Application::whereNotNull('id_pemohon')->count();
+        $orphan = Application::where('status_permohonan', 'Berjaya')->count();
         $income = Transaction::where('jenis', 'Pendapatan')->sum('jumlah_tpn');
         $expense = Transaction::where('jenis', 'Perbelanjaan')->sum('jumlah_tbj');
-        $orphan = Application::where('status_permohonan', 'Berjaya')->count();
-        $application = Application::whereNotNull('id_pemohon')->count();
+
+        
+        // ================= [ JUMLAH STATISTIK PERMOHONAN, ANAK JAGAAN, PENDAPATAN & PERBELANJAAN ] ==================
 
 
-         $amountByMonth = DB::select(DB::raw('select DATE_FORMAT(tarikh, "%m/%Y") AS day_date, SUM(jumlah_tpn) AS jumlah_tpn, SUM(jumlah_tbj) AS jumlah_tbj
-         FROM transactions GROUP BY day_date ORDER BY day_date ASC'));
+        // 1. STATISTIK BAGI MODUL ANAK JAGAAN
 
-         $data1 = "";
-         foreach ($amountByMonth as $val) {
-             $data1.="['".$val->day_date."', ".$val->jumlah_tpn.", ".$val->jumlah_tbj."],";
-         }
-         $amountLine = $data1;
-
-         
-
-        $groupIncome = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tpn) as jumlah_tpn from transactions where jenis = "Pendapatan" GROUP BY kategori'));
-        $data2 = "";
-        foreach ($groupIncome as $val) {
-             $data2.="['".$val->kategori."', ".$val->jumlah_tpn."],";
-         }
-         $incomeCate = $data2;
-
-        $groupExpense = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tbj) as jumlah_tbj from transactions where jenis = "Perbelanjaan" GROUP BY kategori'));
-        $data3 = "";
-        foreach ($groupExpense as $val) {
-             $data3.="['".$val->kategori."', ".$val->jumlah_tbj."],";
-         }
-         $expenseCate = $data3;
-
-         //dd($expenseCate);
-
-        $groupGender = DB::select(DB::raw('SELECT jantina, COUNT(jantina) AS jumlah 
-                                           FROM applications WHERE status_permohonan="Berjaya" 
-                                           AND deleted_at IS NULL GROUP BY jantina'));
-        $data4 = "";
-        foreach ($groupGender as $val) {
-              $data4.="['".$val->jantina."', ".$val->jumlah."],";
-        }
-        $genderCate = $data4;
-
- 
-        $groupAge = DB::select(DB::raw(' SELECT CASE WHEN umur < 7 THEN "A: 6 Tahun dan ke bawah"
+        // SQL - JUMLAH ANAK JAGAAN MENGIKUT UMUR
+        $SQL_kategoriUmur = DB::select(DB::raw(' SELECT CASE WHEN umur < 7 THEN "A: 6 Tahun dan ke bawah"
                                                      WHEN umur >= 7 && umur <=12  THEN "B: 7 - 12 Tahun"
                                                      WHEN umur >= 13 && umur <=17 THEN "C: 13 - 17 Tahun"
                                                      ELSE "D: 18 Tahun dan ke atas"
@@ -136,37 +109,82 @@ class HomeController extends Controller
                                          AND deleted_at IS NULL GROUP BY kategori
                                          ORDER BY kategori ASC'));
 
-        $data5 = "";
-        foreach ($groupAge as $val) {
-              $data5.="['".$val->kategori."', ".$val->jumlah."],";
+        $data_kategoriUmur = "";
+        foreach ($SQL_kategoriUmur as $val) {
+              $data_kategoriUmur.="['".$val->kategori."', ".$val->jumlah."],";
         }
-        $ageCate = $data5; 
-        
-        $groupStatus = DB::select(DB::raw(' SELECT CASE WHEN status_permohonan = "Dalam_Proses" THEN "Dalam Proses"
+        $kategoriUmur = $data_kategoriUmur; 
+
+        // SQL - JUMLAH ANAK JAGAAN MENGIKUT JANTINA
+        $SQL_kategoriJantina = DB::select(DB::raw('SELECT jantina, COUNT(jantina) AS jumlah 
+                                           FROM applications WHERE status_permohonan="Berjaya" 
+                                           AND deleted_at IS NULL GROUP BY jantina'));
+        $data_kategoriJantina = "";
+        foreach ($SQL_kategoriJantina as $val) {
+              $data_kategoriJantina.="['".$val->jantina."', ".$val->jumlah."],";
+        }
+        $kategoriJantina = $data_kategoriJantina;
+
+
+        // 2. STATISTIK BAGI MODUL PERMOHONAN
+
+        // SQL - JUMLAH PERMOHONAN DITERIMA MENGIKUT BULAN
+        $SQL_jumlahPermohonan = DB::select(DB::raw('select DATE_FORMAT(created_at, "%m/%Y") AS day_date, COUNT(status_permohonan) AS jumlah
+        FROM applications WHERE id_permohonan IS NOT NULL GROUP BY day_date'));
+
+        $data_jumlahPermohonan = "";
+        foreach ($SQL_jumlahPermohonan as $val) {
+               $data_jumlahPermohonan.="['".$val->day_date."', ".$val->jumlah."],";
+        }
+        $jumlahPermohonan = $data_jumlahPermohonan;
+
+        // SQL - JUMLAH PERMOHONAN MENGIKUT STATUS
+        $SQL_statusPermohonan = DB::select(DB::raw(' SELECT CASE WHEN status_permohonan = "Dalam_Proses" THEN "Dalam Proses"
                                                         WHEN status_permohonan = "Tidak_Berjaya"  THEN "Tidak Berjaya"  
                                                         ELSE "Berjaya"
                                          END AS status_permohonan, COUNT(status_permohonan) AS jumlah 
                                          FROM applications WHERE id_permohonan IS NOT NULL
                                          GROUP BY status_permohonan'));
 
-        $data6 = "";
-        foreach ($groupStatus as $val) {
-              $data6.="['".$val->status_permohonan."', ".$val->jumlah."],";
+        $data_statusPermohonan = "";
+        foreach ($SQL_statusPermohonan as $val) {
+              $data_statusPermohonan.="['".$val->status_permohonan."', ".$val->jumlah."],";
         }
-        $statusCate = $data6;
+        $statusPermohonan = $data_statusPermohonan;
 
-         $amountApplication = DB::select(DB::raw('select DATE_FORMAT(created_at, "%m/%Y") AS day_date, COUNT(status_permohonan) AS jumlah
-         FROM applications WHERE id_permohonan IS NOT NULL GROUP BY day_date'));
 
-         $data7 = "";
-         foreach ($amountApplication as $val) {
-               $data7.="['".$val->day_date."', ".$val->jumlah."],";
+        // 3. STATISTIK BAGI MODUL PENDAPATAN DAN PERBELANJAAN
+
+        // SQL - JUMLAN PENDAPATAN DAN PERBELANJAAN MENGIKUT BULAN
+        $SQL_pendapatanPerbelanjaan = DB::select(DB::raw('select DATE_FORMAT(tarikh, "%m/%Y") AS day_date, SUM(jumlah_tpn) AS jumlah_tpn, SUM(jumlah_tbj) AS jumlah_tbj
+        FROM transactions GROUP BY day_date ORDER BY day_date ASC'));
+
+        $data_pendapatanPerbelanjaan = "";
+        foreach ($SQL_pendapatanPerbelanjaan as $val) {
+             $data_pendapatanPerbelanjaan.="['".$val->day_date."', ".$val->jumlah_tpn.", ".$val->jumlah_tbj."],";
+        }
+        $jumlahPendapatanDanPerbelanjaan = $data_pendapatanPerbelanjaan;
+
+        // SQL - JUMLAN PENDAPATAN MENGIKUT KATEGORI 
+        $SQL_kategoriPendapatan = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tpn) as jumlah_tpn from transactions where jenis = "Pendapatan" GROUP BY kategori'));
+        $data_kategoriPendapatan = "";
+        foreach ($SQL_kategoriPendapatan as $val) {
+             $data_kategoriPendapatan.="['".$val->kategori."', ".$val->jumlah_tpn."],";
          }
-         $chartApplication = $data7;
+         $kategoriPendapatan = $data_kategoriPendapatan;
 
-        //dd($chartApplication);
+        // SQL - JUMLAH PERBELANJAAN MENGIKUT KATEGORI
+        $SQL_kategoriPerbelanjaan = DB::select(DB::raw('select kategori as kategori, sum(jumlah_tbj) as jumlah_tbj from transactions where jenis = "Perbelanjaan" GROUP BY kategori'));
+        $data_kategoriPerbelanjaan = "";
+        foreach ($SQL_kategoriPerbelanjaan as $val) {
+             $data_kategoriPerbelanjaan.="['".$val->kategori."', ".$val->jumlah_tbj."],";
+         }
+        $kategoriPerbelanjaan = $data_kategoriPerbelanjaan;
 
-        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 'amountLine', 'incomeCate', 'expenseCate', 'genderCate', 'ageCate', 'statusCate', 'chartApplication'));
+
+        return view('staff.dashboard', compact('income', 'expense', 'orphan', 'application', 
+        'jumlahPendapatanDanPerbelanjaan', 'kategoriPendapatan', 'kategoriPerbelanjaan', 
+        'kategoriJantina', 'kategoriUmur', 'statusPermohonan', 'jumlahPermohonan'));
     }
 
     public function userList()
@@ -187,7 +205,7 @@ class HomeController extends Controller
              'name' => 'required',
              'email'    => 'required',
              'num_phone'   => 'required',
-             'password'   => 'required',
+             'password'   => ['required', 'min:6', 'max:10'],
          ]);
 
         // CARA ELOQUENT ORM
@@ -197,17 +215,17 @@ class HomeController extends Controller
           $user->name = $validateData['name'];
           $user->email = $validateData['email'];
           $user->num_phone = $validateData['num_phone'];
-          $user->password = $validateData['password'];
+          $user->password =  Hash::make($validateData['password']);
     
           $saveUser = $user->save();
          
           if ($saveUser) {
                 Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
-                return redirect('/admin/user');
+                return redirect('/admin-user');
           }
           else {
                 Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
-                return redirect('/admin/user');
+                return redirect('/admin-user');
            }
      }
 

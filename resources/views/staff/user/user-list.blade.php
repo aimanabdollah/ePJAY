@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ url('admin/home') }}">Halaman Utama</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin-home') }}">Halaman Utama</a></li>
                     <li class="breadcrumb-item active">Pengguna</li>
                 </ol>
             </div>
@@ -27,7 +27,7 @@
                         <div class="mr-auto">
                             <h5>Senarai Pengguna</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin/user/add-user') }}" class="btn btn-success">
+                        <div class=""> <a href="{{ url('admin-user/add-user') }}" class="btn btn-success">
                                 <i class="nav-icon fas fa-plus-circle"></i> Tambah Pengguna
                             </a></div>
 
@@ -141,7 +141,6 @@
             background-color: blue;
             color: white;
         }
-
     </style>
 @endpush
 
