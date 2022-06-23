@@ -66,6 +66,7 @@ Route::patch('admin-expense/{expense}', [ExpenseController::class,'update'])->na
 Route::delete('admin-expense/{expense}', [ExpenseController::class,'destroy'])->name('expense.destroy')->middleware('is_admin');
 
 Route::get('admin-orphan', [OrphanController::class, 'index'])->name('orphan.index')->middleware('is_admin');
+Route::get('admin-orphan/print-orphan', [OrphanController::class, 'printLaporan'])->name('orphan.print')->middleware('is_admin');
 Route::get('admin-orphan/add-orphan', [OrphanController::class, 'create'])->name('orphan.create')->middleware('is_admin');
 Route::post('admin-orphan', [OrphanController::class, 'store'])->name('orphan.store')->middleware('is_admin');
 Route::get('admin-orphan/{orphan}', [OrphanController::class, 'show'])->name('orphan.show')->middleware('is_admin');

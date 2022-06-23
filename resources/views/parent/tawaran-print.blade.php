@@ -1,4 +1,4 @@
-@extends('layouts.parent-main', ['title'=>'Tawaran Permohonan'])
+@extends('layouts.parent-main', ['title' => 'Tawaran Permohonan'])
 
 {{-- @section('content-header')
     <div class="container-fluid">
@@ -21,13 +21,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                {{-- <div class="callout callout-info">
-                    <h5><i class="fas fa-info"></i> Tahniah!</h5>
-
-                    Permohonan anda sudah diluluskan. Pastikan anda cetak tawaran ini untuk dibawa bersama pada hari
-                    pendaftaran.
-                </div> --}}
-
 
                 <!-- Main content -->
                 <div class="invoice p-3 mb-3">
@@ -64,15 +57,6 @@
                                 Email: john.doe@example.com
                             </address>
                         </div>
-                        <!-- /.col -->
-                        {{-- <div class="col-sm-4 invoice-col">
-                            <b>Invoice #007612</b><br>
-                            <br>
-                            <b>Order ID:</b> 4F3S8J<br>
-                            <b>Payment Due:</b> 2/22/2014<br>
-                            <b>Account:</b> 968-34567
-                        </div> --}}
-                        <!-- /.col -->
                     </div>
                     <!-- /.row -->
                     <hr>

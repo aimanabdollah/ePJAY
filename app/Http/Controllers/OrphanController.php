@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 // use Illuminate\Support\Facades\File;
 
@@ -19,6 +20,60 @@ class OrphanController extends Controller
     public function create()
     {
         return view('staff.orphan.orphan-add');
+    }
+
+    public function printLaporan()
+    {
+        $orphan = Application::where('status_permohonan', 'Berjaya')->orderBy('created_at','desc')->get();
+
+        $jumlahKeseluruhan = Application::where('status_permohonan', 'Berjaya')->count();
+        $jumlahLelaki = Application::where('status_permohonan', 'Berjaya')->where('jantina', 'Lelaki')->count();
+        $jumlahPerempuan = Application::where('status_permohonan', 'Berjaya')->where('jantina', 'Perempuan')->count();
+
+        $umurBawah7thn = DB::select(DB::raw(' SELECT COUNT(umur) AS jumlah 
+                                                 FROM applications WHERE status_permohonan="Berjaya" AND umur < 7
+                                                 AND deleted_at IS NULL'));
+        $d7thn = "";
+        foreach ($umurBawah7thn as $val) {
+              $d7thn=$val->jumlah;
+        }
+        $umurBawah7thn = $d7thn; 
+
+        $umur7h12 = DB::select(DB::raw(' SELECT COUNT(umur) AS jumlah 
+                                                 FROM applications WHERE status_permohonan="Berjaya" AND umur >= 7 && umur <=12
+                                                 AND deleted_at IS NULL'));
+        $d7h12 = "";
+        foreach ($umur7h12 as $val) {
+              $d7h12=$val->jumlah;
+        }
+        $umur7h12 = $d7h12; 
+       
+        $umur13h17 = DB::select(DB::raw(' SELECT COUNT(umur) AS jumlah 
+                                                 FROM applications WHERE status_permohonan="Berjaya" AND umur >= 13 && umur <=17
+                                                 AND deleted_at IS NULL'));
+        $d13h17 = "";
+        foreach ($umur13h17 as $val) {
+              $d13h17=$val->jumlah;
+        }
+        $umur13h17 = $d13h17; 
+
+        $umur18 = DB::select(DB::raw(' SELECT COUNT(umur) AS jumlah 
+                                                 FROM applications WHERE status_permohonan="Berjaya" AND umur > 17
+                                                 AND deleted_at IS NULL'));
+        $d18 = "";
+        foreach ($umur18 as $val) {
+              $d18=$val->jumlah;
+        }
+        $umur18 = $d18; 
+
+
+        $kehilanganAyah = Application::where('status_permohonan', 'Berjaya')->where('status', 'Kehilangan Ayah')->count();
+        $kehilanganIbu = Application::where('status_permohonan', 'Berjaya')->where('status', 'Kehilangan Ibu')->count();
+        $kehilanganIbuAyah = Application::where('status_permohonan', 'Berjaya')->where('status', 'Kehilangan Ibu dan Ayah')->count();
+
+        return view('staff.orphan.orphan-print', compact('orphan', 'jumlahKeseluruhan', 'jumlahLelaki', 'jumlahPerempuan', 
+        'umurBawah7thn', 'umur7h12', 'umur13h17', 'umur18',
+        'kehilanganAyah', 'kehilanganIbu', 'kehilanganIbuAyah'));
     }
 
     public function store(Request $request, Application $orphan)

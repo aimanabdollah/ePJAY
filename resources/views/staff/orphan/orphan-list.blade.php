@@ -27,13 +27,15 @@
                         <div class="mr-auto">
                             <h5>Senarai Anak Jagaan</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin-orphan/add-orphan') }}"
-                                class="btn btn-success">
+
+                        <div class=""> <a href="{{ url('admin-orphan/print-orphan') }}"
+                                class="btn btn-secondary m-2">
+                                <i class="nav-icon fas fa-print"></i> Laporan
+                            </a></div>
+
+                        <div class=""> <a href="{{ url('admin-orphan/add-orphan') }}" class="btn btn-success">
                                 <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
                             </a></div>
-                        {{-- <div class=""> <a href="" class="btn btn-success">
-                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
-                            </a></div> --}}
 
                     </div>
                     <!-- /.card-header -->
@@ -48,12 +50,12 @@
 
 
                             <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert"
-                                    aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h5><i class="icon fas fa-check"></i> Mesej!</h5>
                                 {{ session()->get('message') }}
                             </div>
                         @endif
+
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -140,7 +142,7 @@
                 "lengthChange": false,
                 "autoWidth": false,
                 "searching": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "buttons": ["copy", "csv", "excel"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
