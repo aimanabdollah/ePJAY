@@ -55,25 +55,25 @@
 
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" value="{{ old('email') ?? $user->email }}">
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="num_phone">No. Telefon</label>
-                                            <input type="text" class="form-control @error('num_phone') is-invalid @enderror"
-                                                id="num_phone" name="num_phone"
-                                                value="{{ old('num_phone') ?? $user->num_phone }}"
-                                                placeholder="Masukkan No Telefon">
-                                            @error('num_phone')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+
+                                    <div class="form-group">
+                                        <label for="num_phone">No. Telefon</label>
+                                        <input type="text" class="form-control @error('num_phone') is-invalid @enderror"
+                                            id="num_phone" name="num_phone"
+                                            value="{{ old('num_phone') ?? $user->num_phone }}"
+                                            placeholder="Masukkan No Telefon">
+                                        @error('num_phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
+
 
                                 </div>
                                 <div class="col-md-6">
@@ -81,24 +81,24 @@
 
                                     <div class="form-group">
                                         <label for="name">Nama</label>
-                                        <input type="date" class="form-control @error('name') is-invalid @enderror"
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             id="name" name="name" value="{{ old('name') ?? $user->name }}">
                                         @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="password">Kata Laluan</label>
+                                    {{-- <div class="form-group">
+                                        <label for="password">Kata Laluan Baharu</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control @error('password') is-invalid @enderror"
-                                                id="password" name="password"
-                                                value="{{ old('password') ?? $user->password }}">
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror" id="password"
+                                                name="password" value="{{ old('password') ?? $user->password }}">
                                             @error('password')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
 

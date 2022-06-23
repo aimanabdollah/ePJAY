@@ -86,6 +86,28 @@
                    </li>
 
                    {{-- <li class="nav-item">
+                       <a href="{{ url('admin-user') }}"
+                           class="nav-link {{ Request::is('admin-user') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-user-alt"></i>
+                           <p>
+                               Pengguna
+                           </p>
+                       </a>
+                   </li>
+
+                   <li class="nav-item">
+                       <a href="{{ url('admin-user/add-user') }}"
+                           class="nav-link {{ Request::is('admin-user/add-user') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-user-alt"></i>
+                           <p>
+                               Tambah Pengguna
+                           </p>
+                       </a>
+                   </li> --}}
+
+
+
+                   {{-- <li class="nav-item">
                        <a href="#" class="nav-link">
                            <i class="nav-icon fas fa-money-bill-wave-alt"></i>
                            <p>

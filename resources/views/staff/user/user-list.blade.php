@@ -47,8 +47,7 @@
 
 
                             <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert"
-                                    aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h5><i class="icon fas fa-check"></i> Mesej!</h5>
                                 {{ session()->get('message') }}
                             </div>
@@ -86,33 +85,18 @@
                                                 @endif
                                             </div>
                                         </td>
-                                        <td class="align-middle"></td>
-
-                                        {{-- <td>
+                                        <td class="align-middle">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <a href="{{ url('admin/user/' . $user->id) }}"
-                                                    class="btn btn-primary  m-1"> <i class="nav-icon fas fa-eye"></i>
-                                                </a>
+
 
                                                 <a href="{{ route('user.edit', ['user' => $user->id]) }}"
                                                     class="btn btn-warning  m-1"> <i class="nav-icon fas fa-edit"></i></a>
 
-                                                <form action="{{ route('user.destroy', ['user' => $user->id]) }}"
-                                                    method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger ml-1"
-                                                        onclick="return confirm('Adakah anda pasti untuk menghapus rekod ini?')"><i
-                                                            class="nav-icon fas fa-trash"></i></button>
-
-                                                </form>
 
                                             </div>
+                                        </td>
 
 
-
-
-                                        </td> --}}
                                     </tr>
                                 @empty
                                     <td colspan="6" class="text-center">Tiada rekod pengguna</td>

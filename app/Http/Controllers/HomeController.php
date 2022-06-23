@@ -221,13 +221,60 @@ class HomeController extends Controller
          
           if ($saveUser) {
                 Alert::success('Berjaya', 'Rekod telah berjaya ditambah');
-                return redirect('/admin-user');
+                return redirect('/admin-home');
           }
           else {
                 Alert::error('Gagal', 'Rekod tidak berjaya ditambah');
-                return redirect('/admin-user');
+                return redirect('/admin-home');
            }
      }
+
+    public function userEdit(User $user)
+    {
+        return view('staff.user.user-edit',['user' => $user]);
+    }
+
+    public function userUpdate(Request $request, User $user)
+    {
+       // dump($request->all());
+       // dump($income);
+
+        
+         $validateData = $request->validate([
+             'kategori' => 'required',
+             'name' => 'required',
+             'email'    => 'required',
+             'num_phone'   => 'required',
+            //  'password'   => ['required', 'min:6', 'max:10'],
+         ]);
+
+        
+          $user->kategori = $validateData['kategori'];
+          $user->name = $validateData['name'];
+          $user->email = $validateData['email'];
+          $user->num_phone = $validateData['num_phone'];
+        //   $user->password =  Hash::make($validateData['password']);
+
+          $updateUser = $user->update();
+
+          dump($updateUser);
+
+          if ($updateUser) {
+                Alert::success('Berjaya', 'Rekod telah berjaya dikemaskini');
+                return redirect('/admin-home');
+          }
+          else {
+                Alert::error('Gagal', 'Rekod tidak berjaya dikemaskini');
+                return redirect('/admin-home');
+          }
+    }
+
+    public function userDestroy(User $user)
+    {
+        $user->delete();
+        Alert::success('Berjaya', 'Rekod telah berjaya dihapus');
+        return redirect('/admin-home');
+    }
 
     public function adminAddIncome()
     {
