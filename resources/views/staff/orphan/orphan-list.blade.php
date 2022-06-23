@@ -28,8 +28,7 @@
                             <h5>Senarai Anak Jagaan</h5>
                         </div>
 
-                        <div class=""> <a href="{{ url('admin-orphan/print-orphan') }}"
-                                class="btn btn-secondary m-2">
+                        <div class=""> <a href="{{ url('admin-orphan/print-orphan') }}" class="btn btn-info m-2">
                                 <i class="nav-icon fas fa-print"></i> Laporan
                             </a></div>
 

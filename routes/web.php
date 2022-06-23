@@ -79,6 +79,7 @@ Route::get('admin-application', [ApplicationController::class, 'viewApplication'
 
 Route::get('admin-application/{application}/edit', [ApplicationController::class, 'edit'])->name('application.edit')->middleware('is_admin');
 Route::patch('admin-application/{application}', [ApplicationController::class,'update'])->name('application.update')->middleware('is_admin');
+Route::get('admin-application/print-application', [ApplicationController::class, 'printLaporan'])->name('application.print')->middleware('is_admin');
 
 
 

@@ -27,10 +27,11 @@
                         <div class="mr-auto">
                             <h5>Senarai Permohonan</h5>
                         </div>
-                        {{-- <div class=""> <a href="{{ url('admin/application/add-application') }}"
-                                class="btn btn-success">
-                                <i class="nav-icon fas fa-plus-circle"></i> Tambah Anak Jagaan
-                            </a></div> --}}
+
+                        <div class=""> <a href="{{ url('admin-application/print-application') }}"
+                                class="btn btn-info m-2">
+                                <i class="nav-icon fas fa-print"></i> Laporan
+                            </a></div>
 
                     </div>
                     <!-- /.card-header -->
@@ -45,8 +46,7 @@
 
 
                             <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert"
-                                    aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h5><i class="icon fas fa-check"></i> Mesej!</h5>
                                 {{ session()->get('message') }}
                             </div>

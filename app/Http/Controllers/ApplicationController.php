@@ -50,6 +50,22 @@ class ApplicationController extends Controller
 
     }
 
+    public function printLaporan()
+    {
+        $application = Application::whereNotNull('id_pemohon')->orderBy('created_at','desc')->get();
+
+        $jumlahPermohonan = Application::whereNotNull('id_pemohon')->count();
+        $berjaya = Application::whereNotNull('id_pemohon')->where('status_permohonan', 'Berjaya')->count();
+        $tidakBerjaya = Application::whereNotNull('id_pemohon')->where('status_permohonan', 'Tidak_Berjaya')->count();
+        $dalamProses = Application::whereNotNull('id_pemohon')->where('status_permohonan', 'Dalam_Proses')->count();
+
+
+
+
+
+         return view('staff.application.application-print', compact('application', 'jumlahPermohonan', 'berjaya', 'tidakBerjaya', 'dalamProses'));
+    }
+
     public function create()
     {
         return view('parent.application.application-add');
