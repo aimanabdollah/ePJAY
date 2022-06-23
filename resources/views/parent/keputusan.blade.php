@@ -148,8 +148,7 @@
                             <button class="btn btn-default" onclick="window.print()"><i class="fas fa-print"></i>
                                 Cetak</button>
 
-                            <div><button onClick="window.print()">Print this page
-                                </button></div>
+
 
                             {{-- <a href="{{ 'tawaran-print' }}" rel="noopener" target="_blank" class="btn btn-default"><i
                                     class="fas fa-print"></i> Print</a> --}}

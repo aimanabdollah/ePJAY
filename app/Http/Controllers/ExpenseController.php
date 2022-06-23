@@ -16,6 +16,24 @@ class ExpenseController extends Controller
 
     }
 
+    public function printLaporanExpense()
+    {
+  
+        $expense = Transaction::where('jenis', 'Perbelanjaan')->orderBy('created_at','desc')->get();
+
+        $jumlah = Transaction::where('jenis', 'Perbelanjaan')->sum('jumlah_tbj');
+        $kediaman = Transaction::where('kategori', 'Sewaan Kediaman')->sum('jumlah_tbj');
+        $pengangkutan = Transaction::where('kategori', 'Pengangkutan')->sum('jumlah_tbj');
+        $kesihatan = Transaction::where('kategori', 'Kesihatan')->sum('jumlah_tbj');
+        $utiliti = Transaction::where('kategori', 'Utiliti')->sum('jumlah_tbj');
+        $mknminum = Transaction::where('kategori', 'Makanan dan minuman')->sum('jumlah_tbj');
+
+        //dd($sumbangan);
+     
+
+        return view('staff.finance.print-expense', compact('expense', 'kediaman', 'pengangkutan', 'kesihatan', 'utiliti', 'mknminum', 'jumlah'));
+    }
+
     public function create()
     {
         return view('staff.finance.finance-addExpense');

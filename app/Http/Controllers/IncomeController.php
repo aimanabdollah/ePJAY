@@ -16,6 +16,23 @@ class IncomeController extends Controller
 
     }
 
+    public function printLaporanIncome()
+    {
+  
+        $income = Transaction::where('jenis', 'Pendapatan')->orderBy('created_at','desc')->get();
+
+        $jumlah = Transaction::where('jenis', 'Pendapatan')->sum('jumlah_tpn');
+        $sumbangan = Transaction::where('kategori', 'Sumbangan')->sum('jumlah_tpn');
+        $elaun = Transaction::where('kategori', 'Elaun')->sum('jumlah_tpn');
+        $jualan = Transaction::where('kategori', 'Komisyen Jualan')->sum('jumlah_tpn');
+        $tunai = Transaction::where('kategori', 'Simpanan Tunai')->sum('jumlah_tpn');
+
+        //dd($sumbangan);
+     
+
+        return view('staff.finance.print-income', compact('income', 'sumbangan', 'elaun', 'jualan', 'tunai', 'jumlah'));
+    }
+
     public function create()
     {
         return view('staff.finance.finance-addIncome');
@@ -76,6 +93,7 @@ class IncomeController extends Controller
        // dump($request->all());
        // dump($income);
 
+    
         
          $validateData = $request->validate([
              'kategori' => 'required',

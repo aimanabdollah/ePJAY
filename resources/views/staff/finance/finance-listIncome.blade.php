@@ -27,8 +27,12 @@
                         <div class="mr-auto">
                             <h5>Senarai Pendapatan</h5>
                         </div>
-                        <div class=""> <a href="{{ url('admin-income/add-income') }}"
-                                class="btn btn-success">
+
+                        <div class=""> <a href="{{ url('print-income') }}" class="btn btn-info m-2">
+                                <i class="nav-icon fas fa-print"></i> Laporan
+                            </a></div>
+
+                        <div class=""> <a href="{{ url('admin-income/add-income') }}" class="btn btn-success">
                                 <i class="nav-icon fas fa-plus-circle"></i> Tambah Pendapatan
                             </a></div>
 
@@ -48,8 +52,7 @@
 
 
                             <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert"
-                                    aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h5><i class="icon fas fa-check"></i> Mesej!</h5>
                                 {{ session()->get('message') }}
                             </div>
@@ -70,6 +73,14 @@
                             </thead>
                             <tbody>
                                 @forelse ($income as $income)
+                                    @php
+                                        $myvalue = $income->tarikh;
+                                        
+                                        $datetime = new DateTime($myvalue);
+                                        $date = $datetime->format('d-m-Y');
+                                        $time = $datetime->format('H:i');
+                                        
+                                    @endphp
                                     <tr>
 
                                         <td class="align-middle">{{ $loop->iteration }}</td>
@@ -77,7 +88,7 @@
                                         <td class="align-middle">{{ $income->kategori }}</td>
                                         <td class="align-middle">{{ $income->catatan }}</td>
                                         <td class="align-middle">RM {{ $income->jumlah_tpn }}</td>
-                                        <td class="align-middle">{{ $income->tarikh }}</td>
+                                        <td class="align-middle">{{ $date }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ url('admin-income/' . $income->id) }}"
@@ -143,7 +154,7 @@
                 "lengthChange": false,
                 "autoWidth": false,
                 "searching": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "buttons": ["copy", "csv", "excel"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>

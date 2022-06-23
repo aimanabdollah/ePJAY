@@ -56,6 +56,7 @@ Route::get('admin-income/{income}', [IncomeController::class, 'show'])->name('in
 Route::get('admin-income/{income}/edit', [IncomeController::class, 'edit'])->name('income.edit')->middleware('is_admin');
 Route::patch('admin-income/{income}', [IncomeController::class,'update'])->name('income.update')->middleware('is_admin');
 Route::delete('admin-income/{income}', [IncomeController::class,'destroy'])->name('income.destroy')->middleware('is_admin');
+Route::get('print-income', [IncomeController::class, 'printLaporanIncome'])->name('income.print')->middleware('is_admin');
 
 Route::get('admin-expense', [ExpenseController::class, 'index'])->name('expense.index')->middleware('is_admin');
 Route::get('admin-expense/add-expense', [ExpenseController::class, 'create'])->name('expense.create')->middleware('is_admin');
@@ -64,6 +65,7 @@ Route::get('admin-expense/{expense}', [ExpenseController::class, 'show'])->name(
 Route::get('admin-expense/{expense}/edit', [ExpenseController::class, 'edit'])->name('expense.edit')->middleware('is_admin');
 Route::patch('admin-expense/{expense}', [ExpenseController::class,'update'])->name('expense.update')->middleware('is_admin');
 Route::delete('admin-expense/{expense}', [ExpenseController::class,'destroy'])->name('expense.destroy')->middleware('is_admin');
+Route::get('print-expense', [ExpenseController::class, 'printLaporanExpense'])->name('expense.print')->middleware('is_admin');
 
 Route::get('admin-orphan', [OrphanController::class, 'index'])->name('orphan.index')->middleware('is_admin');
 Route::get('admin-orphan/print-orphan', [OrphanController::class, 'printLaporan'])->name('orphan.print')->middleware('is_admin');

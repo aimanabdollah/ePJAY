@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laporan Maklumat Permohonan</title>
+    <title>Laporan Maklumat Perbelanjaan</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -32,7 +32,7 @@
                         </center>
 
                         <center>
-                            <h2 class="mt-3"><b>Laporan Maklumat Permohonan</b></h2>
+                            <h2 class="mt-3"><b>Laporan Maklumat Perbelanjaan</b></h2>
                         </center>
                     </h4>
 
@@ -43,7 +43,7 @@
 
             <hr>
 
-            <h5><b>A. Jumlah Statistik Permohonan</b></h5>
+            <h5><b>A. Jumlah Statistik Perbelanjaan</b></h5>
 
             <!-- Table row -->
             <div class="row">
@@ -62,28 +62,17 @@
 
                             <tr>
                                 <td>1.</td>
-                                <td>Jumlah Keseluruhan Permohonan</td>
-                                <td>13 permohonan</td>
+                                <td>Jumlah Keseluruhan Perbelanjaan</td>
+                                <td>RM {{ $jumlah }}</td>
                             </tr>
                             <tr>
                                 <td>2.</td>
-                                <td>Jumlah Permohonan Dalam Proses</td>
-                                <td>4 permohonan
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3.</td>
-                                <td>Jumlah Permohonan Berjaya</td>
-                                <td>4 permohonan<br>
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>3.</td>
-                                <td>Jumlah Permohonan Tidak Berjaya</td>
-                                <td>4 permohonan<br>
-
+                                <td>Jumlah Perbelanjaan Mengikut Kategori</td>
+                                <td>Sewaan Kediaman: RM{{ $kediaman }}<br>
+                                    Pengangkutan: RM{{ $pengangkutan }}<br>
+                                    Kesihatan: RM{{ $kesihatan }}<br>
+                                    Utiliti: RM{{ $utiliti }}<br>
+                                    Makanan dan minuman: RM{{ $mknminum }}
                                 </td>
                             </tr>
 
@@ -95,7 +84,7 @@
             <!-- /.row -->
 
             <hr>
-            <h5><b>B. Senarai Maklumat Permohonan</b></h5>
+            <h5><b>B. Senarai Maklumat Perbelanjaan</b></h5>
 
             <!-- Table row -->
             <div class="row">
@@ -104,17 +93,17 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>ID Permohonan</th>
-                                <th>Nama Pemohon</th>
-                                <th>No. Telefon</th>
-                                <th>Tarikh Permohonan</th>
-                                <th>Status Permohonan</th>
+                                <th>ID Transaksi</th>
+                                <th>Kategori</th>
+                                <th>Catatan</th>
+                                <th>Jumlah</th>
+                                <th>Tarikh</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($application as $application)
+                            @forelse ($expense as $expense)
                                 @php
-                                    $myvalue = $application->created_at;
+                                    $myvalue = $expense->tarikh;
                                     
                                     $datetime = new DateTime($myvalue);
                                     $date = $datetime->format('d-m-Y');
@@ -123,23 +112,15 @@
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}.</td>
-                                    <td>{{ $application->id_permohonan }}</td>
-                                    <td>{{ $application->nama_penuh_pemohon }}</td>
-                                    <td>{{ $application->no_tel_pemohon }}</td>
+                                    <td>{{ $expense->id_trans_tbj }}</td>
+                                    <td>{{ $expense->kategori }}</td>
+                                    <td>{{ $expense->catatan }}</td>
+                                    <td>RM {{ $expense->jumlah_tbj }}</td>
                                     <td>{{ $date }}</td>
-                                    <td>
-                                        @if ($application->status_permohonan == 'Dalam_Proses')
-                                            Dalam Proses
-                                        @elseif ($application->status_permohonan == 'Berjaya')
-                                            Berjaya
-                                        @elseif ($application->status_permohonan == 'Tidak_Berjaya')
-                                            Tidak Berjaya
-                                        @endif
-                                    </td>
 
                                 </tr>
                             @empty
-                                <td colspan="6" class="text-center">Tiada rekod anak jagaan</td>
+                                <td colspan="6" class="text-center">Tiada rekod perbelanjaan</td>
                             @endforelse
                         </tbody>
                     </table>

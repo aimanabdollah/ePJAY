@@ -59,10 +59,6 @@ class ApplicationController extends Controller
         $tidakBerjaya = Application::whereNotNull('id_pemohon')->where('status_permohonan', 'Tidak_Berjaya')->count();
         $dalamProses = Application::whereNotNull('id_pemohon')->where('status_permohonan', 'Dalam_Proses')->count();
 
-
-
-
-
          return view('staff.application.application-print', compact('application', 'jumlahPermohonan', 'berjaya', 'tidakBerjaya', 'dalamProses'));
     }
 

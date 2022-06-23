@@ -160,7 +160,7 @@
                 "lengthChange": false,
                 "autoWidth": false,
                 "searching": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "buttons": ["copy", "csv", "excel"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
