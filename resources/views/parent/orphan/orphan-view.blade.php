@@ -43,13 +43,13 @@
                                                 <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
                                                     href="#custom-tabs-one-home" role="tab"
                                                     aria-controls="custom-tabs-one-home" aria-selected="true">Bahagian A:
-                                                    Maklumat Kanak-Kanak</a>
+                                                    Maklumat Anak Yatim</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                                     href="#custom-tabs-one-profile" role="tab"
                                                     aria-controls="custom-tabs-one-profile" aria-selected="false">Bahagian
-                                                    B: Maklumat Perkembangan Kanak-Kanak</a>
+                                                    B: Maklumat Perkembangan Diri</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill"

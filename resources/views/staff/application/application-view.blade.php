@@ -38,7 +38,7 @@
 
                             <div class="btn btn-flat col-12" style="background-color: #138496">
                                 <div class="mr-auto" style="color: white">
-                                    <h6><b>Bahagian A: Maklumat Permohonan</b></h6>
+                                    <h6><b>Bahagian A: Maklumat Pemohon</b></h6>
                                 </div>
                             </div>
 
@@ -112,7 +112,7 @@
 
                             <div class="btn btn-flat col-12" style="background-color: #138496">
                                 <div class="mr-auto" style="color: white">
-                                    <h6><b>Bahagian A: Maklumat Kanak-Kanak</b></h6>
+                                    <h6><b>Bahagian A: Maklumat Anak Yatim</b></h6>
                                 </div>
                             </div>
 

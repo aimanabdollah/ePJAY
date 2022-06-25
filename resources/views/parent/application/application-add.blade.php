@@ -154,7 +154,7 @@
 
                         <div class="btn btn-flat col-12" style="background-color: #138496">
                             <div class="mr-auto" style="color: white">
-                                <h6><b>Bahagian B: Maklumat Kanak-Kanak</b></h6>
+                                <h6><b>Bahagian B: Maklumat Anak Yatim</b></h6>
                             </div>
                         </div>
 
@@ -175,7 +175,8 @@
 
                                     <div class="form-group">
                                         <label for="nama_sekolah">Nama Sekolah<i style="color: red">*</i></label>
-                                        <input type="text" class="form-control @error('nama_sekolah') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('nama_sekolah') is-invalid @enderror"
                                             id="nama_sekolah" name="nama_sekolah" value="{{ old('nama_sekolah') }}"
                                             placeholder="Masukkan Nama Sekolah">
                                         @error('nama_sekolah')
@@ -204,8 +205,9 @@
                                             <div class="form-group">
                                                 <label for="umur">Umur<i style="color: red">*</i></label>
                                                 <input type="number" step="1" min=1
-                                                    class="form-control @error('umur') is-invalid @enderror" id="umur"
-                                                    name="umur" value="{{ old('umur') }}" placeholder="Masukkan Umur">
+                                                    class="form-control @error('umur') is-invalid @enderror"
+                                                    id="umur" name="umur" value="{{ old('umur') }}"
+                                                    placeholder="Masukkan Umur">
                                                 @error('umur')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -229,8 +231,9 @@
 
                                             <div class="form-group">
                                                 <input type="text"
-                                                    class="form-control @error('poskod') is-invalid @enderror" id="poskod"
-                                                    name="poskod" value="{{ old('poskod') }}" placeholder="Poskod">
+                                                    class="form-control @error('poskod') is-invalid @enderror"
+                                                    id="poskod" name="poskod" value="{{ old('poskod') }}"
+                                                    placeholder="Poskod">
                                                 @error('poskod')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -240,8 +243,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="text"
-                                                    class="form-control @error('bandar') is-invalid @enderror" id="bandar"
-                                                    name="bandar" value="{{ old('bandar') }}" placeholder="Bandar">
+                                                    class="form-control @error('bandar') is-invalid @enderror"
+                                                    id="bandar" name="bandar" value="{{ old('bandar') }}"
+                                                    placeholder="Bandar">
                                                 @error('bandar')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -271,17 +275,20 @@
                                                 <option value="Kelantan"
                                                     {{ old('negeri') == 'Kelantan' ? 'selected' : '' }}>
                                                     Kelantan</option>
-                                                <option value="Melaka" {{ old('negeri') == 'Melaka' ? 'selected' : '' }}>
+                                                <option value="Melaka"
+                                                    {{ old('negeri') == 'Melaka' ? 'selected' : '' }}>
                                                     Melaka</option>
 
                                                 <option value="Negeri Sembilan"
                                                     {{ old('negeri') == 'Negeri Sembilan' ? 'selected' : '' }}>
                                                     Negeri Sembilan</option>
-                                                <option value="Pahang" {{ old('negeri') == 'Pahang' ? 'selected' : '' }}>
+                                                <option value="Pahang"
+                                                    {{ old('negeri') == 'Pahang' ? 'selected' : '' }}>
                                                     Pahang</option>
                                                 <option value="Perak" {{ old('negeri') == 'Perak' ? 'selected' : '' }}>
                                                     Perak</option>
-                                                <option value="Perlis" {{ old('negeri') == 'Perlis' ? 'selected' : '' }}>
+                                                <option value="Perlis"
+                                                    {{ old('negeri') == 'Perlis' ? 'selected' : '' }}>
                                                     Perlis</option>
 
                                                 <option value="Pulau Pinang"
@@ -411,7 +418,8 @@
                                                 <label for="exampleInputFile">Gambar<i style="color: red">*</i></label>
                                                 <div id="file_input">
                                                     <input type="file" name="gambar" value="{{ old('gambar') }}"
-                                                        class="form-control" placeholder="Sila Pilih Gambar" id="gambar">
+                                                        class="form-control" placeholder="Sila Pilih Gambar"
+                                                        id="gambar">
                                                 </div>
                                                 @error('gambar')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -502,7 +510,8 @@
                                                 <input type="text"
                                                     class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
                                                     id="pekerjaan_ayah" name="pekerjaan_ayah"
-                                                    value="{{ old('pekerjaan_ayah') }}" placeholder="Masukkan Pekerjaan">
+                                                    value="{{ old('pekerjaan_ayah') }}"
+                                                    placeholder="Masukkan Pekerjaan">
                                                 @error('pekerjaan_ayah')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -538,8 +547,8 @@
                                         <label for="nama_penuh_ibu">Nama Penuh Ibu<i style="color: red">*</i></label>
                                         <input type="text"
                                             class="form-control @error('nama_penuh_ibu') is-invalid @enderror"
-                                            id="nama_penuh_ibu" name="nama_penuh_ibu" value="{{ old('nama_penuh_ibu') }}"
-                                            placeholder="Masukkan Nama Penuh">
+                                            id="nama_penuh_ibu" name="nama_penuh_ibu"
+                                            value="{{ old('nama_penuh_ibu') }}" placeholder="Masukkan Nama Penuh">
                                         @error('nama_penuh_ibu')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -586,7 +595,8 @@
                                                 <input type="text"
                                                     class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
                                                     id="pekerjaan_ibu" name="pekerjaan_ibu"
-                                                    value="{{ old('pekerjaan_ibu') }}" placeholder="Masukkan Pekerjaan">
+                                                    value="{{ old('pekerjaan_ibu') }}"
+                                                    placeholder="Masukkan Pekerjaan">
                                                 @error('pekerjaan_ibu')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -644,9 +654,9 @@
                                     <div class="form-group">
                                         <label for="exampleInputFile">Sijil Kematian<i style="color: red">*</i></label>
                                         <div id="file_input">
-                                            <input type="file" name="sijil_kematian" value="{{ old('sijil_kematian') }}"
-                                                class="form-control" placeholder="Sila Pilih Sijil Kematian"
-                                                id="sijil_kematian">
+                                            <input type="file" name="sijil_kematian"
+                                                value="{{ old('sijil_kematian') }}" class="form-control"
+                                                placeholder="Sila Pilih Sijil Kematian" id="sijil_kematian">
                                         </div>
                                         @error('sijil_kematian')
                                             <div class="text-danger">{{ $message }}</div>
