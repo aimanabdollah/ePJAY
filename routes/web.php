@@ -69,6 +69,7 @@ Route::get('print-expense', [ExpenseController::class, 'printLaporanExpense'])->
 
 Route::get('admin-orphan', [OrphanController::class, 'index'])->name('orphan.index')->middleware('is_admin');
 Route::get('admin-orphan/print-orphan', [OrphanController::class, 'printLaporan'])->name('orphan.print')->middleware('is_admin');
+Route::get('report-orphan/{orphan}', [OrphanController::class, 'report'])->name('orphan.report')->middleware('is_admin');
 Route::get('admin-orphan/add-orphan', [OrphanController::class, 'create'])->name('orphan.create')->middleware('is_admin');
 Route::post('admin-orphan', [OrphanController::class, 'store'])->name('orphan.store')->middleware('is_admin');
 Route::get('admin-orphan/{orphan}', [OrphanController::class, 'show'])->name('orphan.show')->middleware('is_admin');
@@ -93,6 +94,7 @@ Route::get('add-application', [ApplicationController::class, 'create'])->name('a
 Route::post('application', [ApplicationController::class, 'store'])->name('application.store');
 Route::get('application/{application}', [ApplicationController::class, 'applicationShow'])->name('application.show');
 
+
 Route::get('application/tawaran/{application}', [ApplicationController::class, 'viewTawaran'])->name('application.tawaran');
 //Route::get('tawaran', [ApplicationController::class, 'viewTawaran'])->name('application.tawaran');
 Route::get('tawaran-print', [ApplicationController::class, 'printTawaran'])->name('application.printtawaran');
@@ -102,6 +104,7 @@ Route::get('application/keputusan/{application}', [ApplicationController::class,
 
 Route::get('list-orphan', [ApplicationController::class, 'orphanList'])->name('application.orphanList');
 Route::get('list-orphan/{orphan}', [ApplicationController::class, 'orphanShow'])->name('application.orphanShow');
+Route::get('laporan-orphan/{orphan}', [ApplicationController::class, 'laporanOrphan'])->name('laporanorphan.print');
 
 
 

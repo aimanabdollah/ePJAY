@@ -28,6 +28,12 @@
                         <div class="mr-auto">
                             <h5>Maklumat Anak Jagaan</h5>
                         </div>
+
+                        <div class=""> <a href="{{ url('laporan-orphan/' . $application->id) }}"
+                                class="btn btn-info m-2">
+                                <i class="nav-icon fas fa-print"></i> Cetak
+                            </a></div>
+
                         <div class=""> <a href="{{ url('list-orphan') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>

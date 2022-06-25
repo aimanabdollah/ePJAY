@@ -28,6 +28,11 @@
                         <div class="mr-auto">
                             <h5>Maklumat Anak Jagaan</h5>
                         </div>
+
+                        <div class=""> <a href="{{ url('report-orphan/' . $orphan->id) }}" class="btn btn-info m-2">
+                                <i class="nav-icon fas fa-print"></i> Cetak
+                            </a></div>
+
                         <div class=""> <a href="{{ url('admin-orphan') }}" class="btn btn-primary">
                                 <i class="nav-icon fas fa-arrow-circle-left"></i> Kembali</a></div>
                     </div>
@@ -116,7 +121,8 @@
                                                             <div class="col-md-6" style="margin-bottom: 12pt">
                                                                 <div class="form-group">
 
-                                                                    <div class="form-control">{{ $orphan->negeri }}</div>
+                                                                    <div class="form-control">{{ $orphan->negeri }}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

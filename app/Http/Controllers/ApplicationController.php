@@ -231,6 +231,15 @@ class ApplicationController extends Controller
          return view('parent.orphan.orphan-view',['application' => $orphan]);
     }
 
+
+    public function laporanOrphan(Application $orphan)
+    {
+        return view('parent.orphan.laporan-orphan',['orphan' => $orphan]);
+    }
+
+
+
+
     public function applicationShow(Application $application)
     {
          return view('parent.application.application-view',['application' => $application]);

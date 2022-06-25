@@ -211,6 +211,11 @@ class OrphanController extends Controller
         return view('staff.orphan.orphan-view',['orphan' => $orphan]);
     }
 
+    public function report(Application $orphan)
+    {
+        return view('staff.orphan.orphan-report',['orphan' => $orphan]);
+    }
+
     public function edit(Application $orphan)
     {
         return view('staff.orphan.orphan-edit',['orphan' => $orphan]);
