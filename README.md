@@ -41,7 +41,7 @@ Pihak Kakitangan
      <td>Dashboard Penjaga</td>
   </tr>
   <tr>
-    <td><img src="public/assets/interface/dashboard-kakitangan.png"></td>
+    <td><img src="public/assets/interface/dashboard-staf.png"></td>
     <td><img src="public/assets/interface/dashboard-penjaga.png"></td>
   </tr>
  </table>
