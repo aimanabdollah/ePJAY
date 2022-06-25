@@ -231,7 +231,7 @@ class OrphanController extends Controller
              'bandar'   => '',
              'negeri'   => '',
 
-             'no_kad_pengenalan' => 'required|digits:12|unique:applications,no_kad_pengenalan,'.$orphan->id,
+             'no_kad_pengenalan' => 'required|digits:12',
              'no_telefon'    => '',
              'jantina'   => '',
              'status'   => '',          

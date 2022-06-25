@@ -455,8 +455,8 @@
                                     <label for="exampleInputEmail1">Ulasan</label>
 
                                     <input type="text" class="form-control @error('ulasan') is-invalid @enderror"
-                                        id="ulasan" name="ulasan" value="{{ old('ulasan') ?? $application->ulasan }}"
-                                        placeholder="">
+                                        id="ulasan" name="ulasan"
+                                        value="{{ old('ulasan') ?? $application->ulasan }}" placeholder="">
                                     @error('ulasan')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
