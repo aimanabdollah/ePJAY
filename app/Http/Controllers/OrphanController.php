@@ -80,6 +80,8 @@ class OrphanController extends Controller
     {
          $validateData = $request->validate([
 
+             // VALIDATION MAKLUMAT ANAK JAGAAN
+
              'nama_penuh' => 'required',
              'nama_sekolah'   => 'required',
              'tarikh_lahir' => 'required',
@@ -88,25 +90,28 @@ class OrphanController extends Controller
              'poskod'   => 'required|digits:5',
              'bandar'   => 'required',
              'negeri'   => 'required',
-
              'no_kad_pengenalan' => 'required|digits:12|unique:applications,no_kad_pengenalan,'.$orphan->id,
              'no_telefon'    => '',
              'jantina'   => 'required',
-             'status'   => 'required', 
-          
+             'status'   => 'required',           
              'tarikh_daftar'   => 'required',
-            //  'tarikh_keluar'   => '',
-
-            //'gambar' => 'required',
-            // 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
              'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            //'gambar' =>'',
+
       
+             // VALIDATION DOKUMEN SOKONGAN
+
              'sijil_lahir' => 'required|mimes:pdf|max:2048',
              'sijil_kematian' => 'required|mimes:pdf|max:2048',  
+
+             // VALIDATION MAKLUMAT PERKEMBANGAN            
              
-            //  'id_anak_jagaan'   => '',
-            //  'id_pemohon'   => '',   
+             'komunikasi' => '',
+             'matematik'   => '',
+             'deria' => '',
+             'fizikal' => '',
+             'kreativiti'   => '',
+
+             // VALIDATION MAKLUMAT IBU BAPA
 
              'nama_penuh_ayah' => 'required',
              'no_kad_pengenalan_ayah' => 'digits:12',
@@ -122,14 +127,6 @@ class OrphanController extends Controller
 
          ]);
 
-        // $name = $request->file('image')->getClientOriginalName();
-        // $path = $request->file('image')->store('uploads');
-        //$name = $request->file('gambar')->getClientOriginalName();
-       // $path = $request->file('gambar')->store('public/images');
-
-  
-
-        // CARA ELOQUENT ORM
         $orphan = new Application();
 
         if($request->hasFile('gambar'))
@@ -177,19 +174,13 @@ class OrphanController extends Controller
         $orphan->no_telefon = $validateData['no_telefon'];
         $orphan->jantina = $validateData['jantina'];
         $orphan->status = $validateData['status'];
-       // $orphan->gambar = $imageName;
-       // $orphan->gambar_path = '/storage/'.$path;
-        //$orphan->gambar = $name;
-       // $orphan->path_gambar = $path;
-
-
         $orphan->tarikh_daftar = $validateData['tarikh_daftar'];
-        // $orphan->tarikh_keluar = $validateData['tarikh_keluar'];
-        // $orphan->sijil_lahir = $validateData['sijil_lahir'];
-        // $orphan->sijil_kematian = $validateData['sijil_kematian'];
 
-        // $orphan->id_anak_jagaan = $validateData['id_anak_jagaan'];
-        // $orphan->id_pemohon = $validateData['id_pemohon'];
+        $orphan->komunikasi = $validateData['komunikasi'];
+        $orphan->matematik = $validateData['matematik'];
+        $orphan->deria = $validateData['deria'];
+        $orphan->fizikal = $validateData['fizikal'];
+        $orphan->kreativiti = $validateData['kreativiti'];
 
         $orphan->nama_penuh_ayah = $validateData['nama_penuh_ayah'];
         $orphan->no_kad_pengenalan_ayah = $validateData['no_kad_pengenalan_ayah'];
@@ -227,9 +218,6 @@ class OrphanController extends Controller
 
     public function update(Request $request, Application $orphan)
     {
-       // dump($request->all());
-       // dump($orphan);
-
         $validateData = $request->validate([
 
             // VALIDATION MAKLUMAT ANAK JAGAAN
@@ -251,6 +239,14 @@ class OrphanController extends Controller
              'tarikh_daftar'   => '',
              'tarikh_keluar'   => '',
 
+             // VALIDATION MAKLUMAT PERKEMBANGAN
+
+             'komunikasi' => '',
+             'matematik'   => '',
+             'deria' => '',
+             'fizikal' => '',
+             'kreativiti'   => '',
+     
              // VALIDATION MAKLUMAT IBU BAPA
 
              'nama_penuh_ayah' => '',
@@ -324,6 +320,12 @@ class OrphanController extends Controller
         $orphan->status = $validateData['status'];
         $orphan->tarikh_daftar = $validateData['tarikh_daftar'];
         $orphan->tarikh_keluar = $validateData['tarikh_keluar'];
+
+        $orphan->komunikasi = $validateData['komunikasi'];
+        $orphan->matematik = $validateData['matematik'];
+        $orphan->deria = $validateData['deria'];
+        $orphan->fizikal = $validateData['fizikal'];
+        $orphan->kreativiti = $validateData['kreativiti'];
        
         $orphan->nama_penuh_ayah = $validateData['nama_penuh_ayah'];
         $orphan->no_kad_pengenalan_ayah = $validateData['no_kad_pengenalan_ayah'];

@@ -65,7 +65,8 @@
 
                                     <div class="form-group">
                                         <label for="nama_sekolah">Nama Sekolah<i style="color: red">*</i></label>
-                                        <input type="text" class="form-control @error('nama_sekolah') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('nama_sekolah') is-invalid @enderror"
                                             id="nama_sekolah" name="nama_sekolah" value="{{ old('nama_sekolah') }}"
                                             placeholder="Masukkan Nama Sekolah">
                                         @error('nama_sekolah')
@@ -117,8 +118,9 @@
 
                                             <div class="form-group">
                                                 <input type="text"
-                                                    class="form-control @error('poskod') is-invalid @enderror" id="poskod"
-                                                    name="poskod" value="{{ old('poskod') }}" placeholder="Poskod">
+                                                    class="form-control @error('poskod') is-invalid @enderror"
+                                                    id="poskod" name="poskod" value="{{ old('poskod') }}"
+                                                    placeholder="Poskod">
                                                 @error('poskod')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -128,8 +130,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="text"
-                                                    class="form-control @error('bandar') is-invalid @enderror" id="bandar"
-                                                    name="bandar" value="{{ old('bandar') }}" placeholder="Bandar">
+                                                    class="form-control @error('bandar') is-invalid @enderror"
+                                                    id="bandar" name="bandar" value="{{ old('bandar') }}"
+                                                    placeholder="Bandar">
                                                 @error('bandar')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -159,17 +162,20 @@
                                                 <option value="Kelantan"
                                                     {{ old('negeri') == 'Kelantan' ? 'selected' : '' }}>
                                                     Kelantan</option>
-                                                <option value="Melaka" {{ old('negeri') == 'Melaka' ? 'selected' : '' }}>
+                                                <option value="Melaka"
+                                                    {{ old('negeri') == 'Melaka' ? 'selected' : '' }}>
                                                     Melaka</option>
 
                                                 <option value="Negeri Sembilan"
                                                     {{ old('negeri') == 'Negeri Sembilan' ? 'selected' : '' }}>
                                                     Negeri Sembilan</option>
-                                                <option value="Pahang" {{ old('negeri') == 'Pahang' ? 'selected' : '' }}>
+                                                <option value="Pahang"
+                                                    {{ old('negeri') == 'Pahang' ? 'selected' : '' }}>
                                                     Pahang</option>
                                                 <option value="Perak" {{ old('negeri') == 'Perak' ? 'selected' : '' }}>
                                                     Perak</option>
-                                                <option value="Perlis" {{ old('negeri') == 'Perlis' ? 'selected' : '' }}>
+                                                <option value="Perlis"
+                                                    {{ old('negeri') == 'Perlis' ? 'selected' : '' }}>
                                                     Perlis</option>
 
                                                 <option value="Pulau Pinang"
@@ -282,7 +288,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="tarikh_daftar">Tarikh Daftar<i style="color: red">*</i></label>
+                                                <label for="tarikh_daftar">Tarikh Daftar<i
+                                                        style="color: red">*</i></label>
                                                 <input type="date"
                                                     class="form-control @error('tarikh_daftar') is-invalid @enderror"
                                                     id="tarikh_daftar" name="tarikh_daftar"
@@ -300,7 +307,8 @@
                                                 <label for="exampleInputFile">Gambar<i style="color: red">*</i></label>
                                                 <div id="file_input">
                                                     <input type="file" name="gambar" value="{{ old('gambar') }}"
-                                                        class="form-control" placeholder="Sila Pilih Gambar" id="gambar">
+                                                        class="form-control" placeholder="Sila Pilih Gambar"
+                                                        id="gambar">
                                                 </div>
                                                 @error('gambar')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -319,9 +327,6 @@
 
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -329,7 +334,237 @@
 
                         <div class="btn btn-flat col-12" style="background-color: #138496">
                             <div class="mr-auto" style="color: white">
-                                <h6><b>Bahagian B: Maklumat Ibu Bapa</b></h6>
+                                <h6><b>Bahagian B: Maklumat Perkembangan Kanak-Kanak</b></h6>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Kategori</th>
+                                            <th>Catatan</th>
+                                            <th>Penguasaan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle">1.</td>
+                                            <td class="align-middle">Komunikasi dan Literasi</td>
+                                            <td class="align-middle">Berkeupayaan untuk berkomunikasi secara lisan dan
+                                                bukan lisan dengan menggunakan bahasa yang dapat difahami</td>
+                                            <td class="align-middle">
+                                                <select class="form-control" name="komunikasi" id="komunikasi"
+                                                    aria-label="Default select example">
+                                                    <option selected>Sila Pilih Tahap Penguasaan</option>
+                                                    <option value="5-Cemerlang"
+                                                        {{ old('komunikasi') == '5-Cemerlang' ? 'selected' : '' }}>
+                                                        5-Cemerlang
+                                                    </option>
+                                                    <option value="4-Baik"
+                                                        {{ old('komunikasi') == '4-Baik' ? 'selected' : '' }}>
+                                                        4-Baik
+                                                    </option>
+                                                    <option value="3-Sederhana"
+                                                        {{ old('komunikasi') == '3-Sederhana' ? 'selected' : '' }}>
+                                                        3-Sederhana
+                                                    </option>
+                                                    <option value="2-Memuaskan"
+                                                        {{ old('komunikasi') == '2-Memuaskan"' ? 'selected' : '' }}>
+                                                        2-Memuaskan
+                                                    </option>
+                                                    <option value="1-Lemah"
+                                                        {{ old('komunikasi') == '1-Lemah' ? 'selected' : '' }}>
+                                                        1-Lemah
+                                                    </option>
+                                                    <option value="Tiada"
+                                                        {{ old('komunikasi') == 'Tiada' ? 'selected' : '' }}>
+                                                        Tiada
+                                                    </option>
+                                                </select>
+                                                @error('komunikasi')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle">2.</td>
+                                            <td class="align-middle">Matematik dan Pemikiran Logik</td>
+                                            <td class="align-middle">Berkebolehan untuk membina konsep asas matematik
+                                                melalui proses membanding, menganggar, menyusun serta mampu untuk
+                                                menyelesaikan
+                                                masalah operasi nombor</td>
+                                            <td class="align-middle">
+                                                <select class="form-control" name="matematik" id="matematik"
+                                                    aria-label="Default select example">
+                                                    <option selected>Sila Pilih Tahap Penguasaan</option>
+                                                    <option value="5-Cemerlang"
+                                                        {{ old('matematik') == '5-Cemerlang' ? 'selected' : '' }}>
+                                                        5-Cemerlang
+                                                    </option>
+                                                    <option value="4-Baik"
+                                                        {{ old('matematik') == '4-Baik' ? 'selected' : '' }}>
+                                                        4-Baik
+                                                    </option>
+                                                    <option value="3-Sederhana"
+                                                        {{ old('matematik') == '3-Sederhana' ? 'selected' : '' }}>
+                                                        3-Sederhana
+                                                    </option>
+                                                    <option value="2-Memuaskan"
+                                                        {{ old('matematik') == '2-Memuaskan"' ? 'selected' : '' }}>
+                                                        2-Memuaskan
+                                                    </option>
+                                                    <option value="1-Lemah"
+                                                        {{ old('matematik') == '1-Lemah' ? 'selected' : '' }}>
+                                                        1-Lemah
+                                                    </option>
+                                                    <option value="Tiada"
+                                                        {{ old('matematik') == 'Tiada' ? 'selected' : '' }}>
+                                                        Tiada
+                                                    </option>
+                                                </select>
+                                                @error('matematik')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle">3.</td>
+                                            <td class="align-middle">Deria dan Persekitaran</td>
+                                            <td class="align-middle">Dapat menguasai deria penglihatan, pendengaran, bau,
+                                                rasa dan sentuh berdasarkan aktiviti persekitaran</td>
+                                            <td class="align-middle">
+                                                <select class="form-control" name="deria" id="deria"
+                                                    aria-label="Default select example">
+                                                    <option selected>Sila Pilih Tahap Penguasaan</option>
+                                                    <option value="5-Cemerlang"
+                                                        {{ old('deria') == '5-Cemerlang' ? 'selected' : '' }}>
+                                                        5-Cemerlang
+                                                    </option>
+                                                    <option value="4-Baik"
+                                                        {{ old('deria') == '4-Baik' ? 'selected' : '' }}>
+                                                        4-Baik
+                                                    </option>
+                                                    <option value="3-Sederhana"
+                                                        {{ old('deria') == '3-Sederhana' ? 'selected' : '' }}>
+                                                        3-Sederhana
+                                                    </option>
+                                                    <option value="2-Memuaskan"
+                                                        {{ old('deria') == '2-Memuaskan"' ? 'selected' : '' }}>
+                                                        2-Memuaskan
+                                                    </option>
+                                                    <option value="1-Lemah"
+                                                        {{ old('deria') == '1-Lemah' ? 'selected' : '' }}>
+                                                        1-Lemah
+                                                    </option>
+                                                    <option value="Tiada"
+                                                        {{ old('deria') == 'Tiada' ? 'selected' : '' }}>
+                                                        Tiada
+                                                    </option>
+                                                </select>
+                                                @error('deria')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle">4.</td>
+                                            <td class="align-middle">Fizikal dan Psikomotor</td>
+                                            <td class="align-middle">Berkebolehan untuk mengkoordinasi leher, kaki, tangan
+                                                dan badan seperti berjalan, berlari, merangkak, mengeleng atau melompat</td>
+                                            <td class="align-middle">
+                                                <select class="form-control" name="fizikal" id="fizikal"
+                                                    aria-label="Default select example">
+                                                    <option selected>Sila Pilih Tahap Penguasaan</option>
+                                                    <option value="5-Cemerlang"
+                                                        {{ old('fizikal') == '5-Cemerlang' ? 'selected' : '' }}>
+                                                        5-Cemerlang
+                                                    </option>
+                                                    <option value="4-Baik"
+                                                        {{ old('fizikal') == '4-Baik' ? 'selected' : '' }}>
+                                                        4-Baik
+                                                    </option>
+                                                    <option value="3-Sederhana"
+                                                        {{ old('fizikal') == '3-Sederhana' ? 'selected' : '' }}>
+                                                        3-Sederhana
+                                                    </option>
+                                                    <option value="2-Memuaskan"
+                                                        {{ old('fizikal') == '2-Memuaskan"' ? 'selected' : '' }}>
+                                                        2-Memuaskan
+                                                    </option>
+                                                    <option value="1-Lemah"
+                                                        {{ old('fizikal') == '1-Lemah' ? 'selected' : '' }}>
+                                                        1-Lemah
+                                                    </option>
+                                                    <option value="Tiada"
+                                                        {{ old('fizikal') == 'Tiada' ? 'selected' : '' }}>
+                                                        Tiada
+                                                    </option>
+                                                </select>
+                                                @error('fizikal')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle">5.</td>
+                                            <td class="align-middle">Kreativiti dan Estetika</td>
+                                            <td class="align-middle">Berkeupayaan untuk mencipta, mewujud atau menghasilkan
+                                                sesuatu yang baru atau mengubah suai yang sedia ada untuk dijadikan inovasi
+                                            </td>
+                                            <td class="align-middle">
+                                                <select class="form-control" name="kreativiti" id="kreativiti"
+                                                    aria-label="Default select example">
+                                                    <option selected>Sila Pilih Tahap Penguasaan</option>
+                                                    <option value="5-Cemerlang"
+                                                        {{ old('kreativiti') == '5-Cemerlang' ? 'selected' : '' }}>
+                                                        5-Cemerlang
+                                                    </option>
+                                                    <option value="4-Baik"
+                                                        {{ old('kreativiti') == '4-Baik' ? 'selected' : '' }}>
+                                                        4-Baik
+                                                    </option>
+                                                    <option value="3-Sederhana"
+                                                        {{ old('kreativiti') == '3-Sederhana' ? 'selected' : '' }}>
+                                                        3-Sederhana
+                                                    </option>
+                                                    <option value="2-Memuaskan"
+                                                        {{ old('kreativiti') == '2-Memuaskan"' ? 'selected' : '' }}>
+                                                        2-Memuaskan
+                                                    </option>
+                                                    <option value="1-Lemah"
+                                                        {{ old('kreativiti') == '1-Lemah' ? 'selected' : '' }}>
+                                                        1-Lemah
+                                                    </option>
+                                                    <option value="Tiada"
+                                                        {{ old('kreativiti') == 'Tiada' ? 'selected' : '' }}>
+                                                        Tiada
+                                                    </option>
+                                                </select>
+                                                @error('kreativiti')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="btn btn-flat col-12" style="background-color: #138496">
+                            <div class="mr-auto" style="color: white">
+                                <h6><b>Bahagian C: Maklumat Ibu Bapa</b></h6>
                             </div>
                         </div>
 
@@ -391,7 +626,8 @@
                                                 <input type="text"
                                                     class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
                                                     id="pekerjaan_ayah" name="pekerjaan_ayah"
-                                                    value="{{ old('pekerjaan_ayah') }}" placeholder="Masukkan Pekerjaan">
+                                                    value="{{ old('pekerjaan_ayah') }}"
+                                                    placeholder="Masukkan Pekerjaan">
                                                 @error('pekerjaan_ayah')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -427,8 +663,8 @@
                                         <label for="nama_penuh_ibu">Nama Penuh Ibu<i style="color: red">*</i></label>
                                         <input type="text"
                                             class="form-control @error('nama_penuh_ibu') is-invalid @enderror"
-                                            id="nama_penuh_ibu" name="nama_penuh_ibu" value="{{ old('nama_penuh_ibu') }}"
-                                            placeholder="Masukkan Nama Penuh">
+                                            id="nama_penuh_ibu" name="nama_penuh_ibu"
+                                            value="{{ old('nama_penuh_ibu') }}" placeholder="Masukkan Nama Penuh">
                                         @error('nama_penuh_ibu')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -475,7 +711,8 @@
                                                 <input type="text"
                                                     class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
                                                     id="pekerjaan_ibu" name="pekerjaan_ibu"
-                                                    value="{{ old('pekerjaan_ibu') }}" placeholder="Masukkan Pekerjaan">
+                                                    value="{{ old('pekerjaan_ibu') }}"
+                                                    placeholder="Masukkan Pekerjaan">
                                                 @error('pekerjaan_ibu')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -504,9 +741,13 @@
                         <!-- /.card-body -->
 
 
+
+
+
+
                         <div class="btn btn-flat col-12" style="background-color: #138496">
                             <div class="mr-auto" style="color: white">
-                                <h6><b>Bahagian C: Dokumen Sokongan</b></h6>
+                                <h6><b>Bahagian D: Dokumen Sokongan</b></h6>
                             </div>
                         </div>
 
@@ -533,9 +774,9 @@
                                     <div class="form-group">
                                         <label for="exampleInputFile">Sijil Kematian<i style="color: red">*</i></label>
                                         <div id="file_input">
-                                            <input type="file" name="sijil_kematian" value="{{ old('sijil_kematian') }}"
-                                                class="form-control" placeholder="Sila Pilih Sijil Kematian"
-                                                id="sijil_kematian">
+                                            <input type="file" name="sijil_kematian"
+                                                value="{{ old('sijil_kematian') }}" class="form-control"
+                                                placeholder="Sila Pilih Sijil Kematian" id="sijil_kematian">
                                         </div>
                                         @error('sijil_kematian')
                                             <div class="text-danger">{{ $message }}</div>
