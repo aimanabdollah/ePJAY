@@ -37,12 +37,12 @@ Pihak Kakitangan
  </table>
  <table>
   <tr>
-     <td>Dashboard</td>
-     <td>Kemaskini Maklumat Anak Jagaan</td>
+     <td>Dashboard Kakitangan</td>
+     <td>Dashboard Penjaga</td>
   </tr>
   <tr>
-    <td><img src="public/assets/interface/dashboard.png"></td>
-    <td><img src="public/assets/interface/kemaskini-anak-jagaan.png"></td>
+    <td><img src="public/assets/interface/dashboard-kakitangan.png"></td>
+    <td><img src="public/assets/interface/dashboard-penjaga.png"></td>
   </tr>
  </table>
   <table>
@@ -53,6 +53,16 @@ Pihak Kakitangan
   <tr>
    <td><img src="public/assets/interface/senarai-permohonan.png"></td>
     <td><img src="public/assets/interface/keputusan-permohonan.png"></td>
+  </tr>
+ </table>
+  <table>
+  <tr>
+      <td>Maklumat Anak Jagaan</td>
+     <td>Laporan Senarai Anak Jagaan</td>
+  </tr>
+  <tr>
+   <td><img src="public/assets/interface/maklumat-anak-jagaan.png"></td>
+    <td><img src="public/assets/interface/laporan-anak-jagaan.png"></td>
   </tr>
  </table>
 
