@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -62,12 +64,44 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    // protected function create(array $data)
+    // {
+    //     return User::create([
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+    // }
+
+    function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+            $validateData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+         ]);
+
+
+        $user = new User();
+
+        $user->name = $validateData['name'];
+        $user->email = $validateData['email'];
+        $user->password = Hash::make($validateData['password']);
+     
+        
+        $saveUser = $user->save();
+
+        if ($saveUser) {
+            session()->flash('success', 'Akaun anda berjaya didaftarkan');
+            return redirect()->route('login');
+        }
+        else {
+            session()->flash('error', 'Pendaftaran Akaun Gagal. Sila cuba lagi');
+            return redirect()->route('login');
+        }
+     
+
     }
 }
+
