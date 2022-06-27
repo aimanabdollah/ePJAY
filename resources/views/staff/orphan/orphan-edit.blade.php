@@ -196,22 +196,44 @@
                                                                     {{ old('negeri') ?? $orphan->negeri == 'W.P Putrajaya' ? 'selected' : '' }}>
                                                                     W.P Putrajaya</option>
 
-                                                                {{-- <option value="Johor">Johor</option>
-                                                <option value="Kedah">Kedah</option>
-                                                <option value="Kelantan">Kelantan</option>
-                                                <option value="Melaka">Melaka</option>
+                                                                <option value="Johor"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Johor' ? 'selected' : '' }}>
+                                                                    Johor</option>
+                                                                <option value="Kedah"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Kedah' ? 'selected' : '' }}>
+                                                                    Kedah</option>
+                                                                <option value="Kelantan"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Kelantan' ? 'selected' : '' }}>
+                                                                    Kelantan</option>
+                                                                <option value="Melaka"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Melaka' ? 'selected' : '' }}>
+                                                                    Melaka</option>
 
-                                                <option value="Negeri Sembilan">Negeri Sembilan</option>
-                                                <option value="Pahang">Pahang</option>
-                                                <option value="Perak">Perak</option>
-                                                <option value="Perlis">Perlis</option>
+                                                                <option value="Negeri Sembilan"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Negeri Sembilan' ? 'selected' : '' }}>
+                                                                    Negeri Sembilan</option>
+                                                                <option value="Pahang"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Pahang' ? 'selected' : '' }}>
+                                                                    Pahang</option>
+                                                                <option value="Perak"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Perak' ? 'selected' : '' }}>
+                                                                    Perak</option>
+                                                                <option value="Perlis"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Perlis' ? 'selected' : '' }}>
+                                                                    Perlis</option>
 
-                                                <option value="Pulau Pinang">Pulau Pinang</option>
-                                                <option value="Sabah">Sabah</option>
-                                                <option value="Sarawak">Sarawak</option>
-                                                <option value="Selangor">Selangor</option> --}}
-
-
+                                                                <option value="Pulau Pinang"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Pulau Pinang' ? 'selected' : '' }}>
+                                                                    Pulau Pinang</option>
+                                                                <option value="Sabah"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Sabah' ? 'selected' : '' }}>
+                                                                    Sabah</option>
+                                                                <option value="Sarawak"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Sarawak' ? 'selected' : '' }}>
+                                                                    Sarawak</option>
+                                                                <option value="Selangor"
+                                                                    {{ old('negeri') ?? $orphan->negeri == 'Selangor' ? 'selected' : '' }}>
+                                                                    Selangor</option>
                                                                 <option value="Terengganu"
                                                                     {{ old('negeri') ?? $orphan->negeri == 'Terengganu' ? 'selected' : '' }}>
                                                                     Terengganu</option>
