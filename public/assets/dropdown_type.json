@@ -1,0 +1,36 @@
+{
+    "transactions": ["Pendapatan", "Perbelanjaan"],
+    "genders": ["Lelaki", "Perempuan"],
+    "roles": [
+        {
+            "value": 1,
+            "label": "Admin"
+        },
+        {
+            "value": 2,
+            "label": "Staf"
+        },
+        {
+            "value": 3,
+            "label": "Penjaga / Waris"
+        }
+    ],
+    "states": [
+        "Johor",
+        "Kedah",
+        "Kelantan",
+        "Melaka",
+        "Negeri Sembilan",
+        "Pahang",
+        "Perak",
+        "Perlis",
+        "Pulau Pinang",
+        "Sabah",
+        "Sarawak",
+        "Selangor",
+        "Terengganu",
+        "Wilayah Persekutuan Kuala Lumpur",
+        "Wilayah Persekutuan Labuan",
+        "Wilayah Persekutuan Putrajaya"
+    ]
+}
