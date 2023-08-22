@@ -4,6 +4,7 @@
         Developed by Aiman Abdollah
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2020-2023.</strong> All rights reserved.
+    <strong>Copyright &copy; {{ date('Y') }}.</strong> All rights reserved.
+
 </footer>
 </div>
