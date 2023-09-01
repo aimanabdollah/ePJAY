@@ -43,7 +43,9 @@ class ExpenseSeeder extends Seeder
             $record = [
                 'id_trax_perbelanjaan' => $randomIdTraxPerbelanjaan,
                 'jumlah_tbj' => $randomJumlahTbj,
-                'tarikh' => $randomDate, // Use random date for each record
+                'resit' => 'resit_perbelanjaan_sample.png',
+                'catatan' => 'Ini adalah data perbelanjaan yang dijana secara rawak',
+                'tarikh' => $randomDate,
                 'id_kategori' => $kategoriIds[$randomKategoriIndex],
                 'created_at' => Carbon::now(),
             ];

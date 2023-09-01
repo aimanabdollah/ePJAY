@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_trax_pendapatan')->nullable();
             $table->string('catatan')->nullable();
+              $table->string('resit')->nullable();
             $table->decimal('jumlah_tpn', 8,2)->nullable();
             $table->date('tarikh')->nullable();
             $table->unsignedBigInteger('id_kategori');

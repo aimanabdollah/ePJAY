@@ -39,6 +39,7 @@ class ExpenseController extends Controller
                 'tarikh' => 'required|date|date_format:Y-m-d',
                 'catatan' => 'nullable',
                 'jumlah' => 'required',
+                'resit' => 'nullable|mimes:jpg,png,jpeg,pdf|max:2048',
                 // Add other validation rules as needed for expense attributes
             ]);
 
@@ -47,13 +48,23 @@ class ExpenseController extends Controller
             } while (Expense::where('id_trax_perbelanjaan', $generatedId)->exists());
 
             // Create and save a new Expense instance to the database
-            Expense::create([
-                'id_kategori' => $expenseData['kategori'],
-                'catatan' => $expenseData['catatan'],
-                'jumlah_tbj' => $expenseData['jumlah'],
-                'tarikh' => $expenseData['tarikh'],
-                'id_trax_perbelanjaan' => $generatedId,
-            ]);
+            $expense = new Expense();
+
+            if ($request->hasFile('resit')) {
+                $file = $request->file('resit');
+                $ext = $file->getClientOriginalExtension();
+                $filename = $generatedId . '_' . time() . '.' . $ext;
+                $file->move('assets/resit_perbelanjaan', $filename);
+                $expense->resit = $filename;
+            }
+
+            $expense->id_trax_perbelanjaan = $generatedId;
+            $expense->id_kategori = $expenseData['kategori'];
+            $expense->catatan = $expenseData['catatan'];
+            $expense->jumlah_tbj = $expenseData['jumlah'];
+            $expense->tarikh = $expenseData['tarikh'];
+
+            $expense->save();
 
             DB::commit();
 
@@ -108,6 +119,7 @@ class ExpenseController extends Controller
                 'tarikh' => 'required|date|date_format:Y-m-d',
                 'catatan' => 'nullable',
                 'jumlah' => 'required',
+                'resit' => 'nullable|mimes:jpg,png,jpeg,pdf|max:2048',
                 // Add other validation rules as needed for expense attributes
             ]);
 
@@ -116,6 +128,14 @@ class ExpenseController extends Controller
             $expense->catatan = $validatedData['catatan'];
             $expense->jumlah_tbj = $validatedData['jumlah'];
             $expense->tarikh = $validatedData['tarikh'];
+
+            if ($request->hasFile('resit')) {
+                $file = $request->file('resit');
+                $ext = $file->getClientOriginalExtension();
+                $filename = $expense->id_trax_perbelanjaan . '_' . time() . '.' . $ext;
+                $file->move('assets/resit_perbelanjaan', $filename);
+                $expense->resit = $filename;
+            }
 
             // Save the updated expense record to the database
             $updateExpense = $expense->save();

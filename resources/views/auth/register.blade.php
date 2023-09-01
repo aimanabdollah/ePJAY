@@ -66,6 +66,26 @@
                         @enderror
 
                     </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                        <input id="nama_panggilan" type="text"
+                            class="form-control @error('nama_panggilan') is-invalid @enderror" name="nama_panggilan"
+                            value="{{ old('nama_panggilan') }}" required autocomplete="nama_panggilan" autofocus
+                            placeholder="Nama Panggilan">
+
+                        @error('nama_panggilan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                    </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <div class="input-group-text">

@@ -42,7 +42,8 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('income.update', ['income' => $income->id]) }}" method="POST">
+                    <form action="{{ route('income.update', ['income' => $income->id]) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
 
@@ -104,37 +105,45 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                    <div class="form-group">
+                                        <label for="resit">Resit/Invois/Bukti Pendapatan</label>
+                                        <div class="row">
+                                            @if ($income->resit != null)
+                                                <div class="col-md-6"> <input type="file" name="resit"
+                                                        value="{{ old('resit') }}"
+                                                        class="form-control remove-error-on-input"
+                                                        placeholder="Sila Pilih Resit" id="resit">
+                                                </div>
+                                                <div class="col-md-6"> <a
+                                                        href="{{ asset('assets/resit_pendapatan/' . $income->resit) }}"
+                                                        class="btn-link text-secondary" target="_blank"><i
+                                                            class="nav-icon fas fa-file"></i>
+                                                        {{ $income->resit }}</a>
+                                                </div>
+                                            @else
+                                                <div class="col-md-12"> <input type="file" name="resit"
+                                                        value="{{ old('resit') }}"
+                                                        class="form-control remove-error-on-input"
+                                                        placeholder="Sila Pilih Resit" id="resit">
+                                                </div>
+                                            @endif
 
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
 
-
                         </div>
-
-                        <!-- /.card-body -->
-
                         <div class="card-footer d-flex justify-content-end">
                             <button type="submit" class="btn btn-success"> <i class="nav-icon fas fa-edit"></i>
                                 Kemaksini</button>
                         </div>
                     </form>
-
                 </div>
             </div>
-            <!-- /.card-body -->
-
-            <!-- /.card -->
         </div>
-
-
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-
-
-
-
-    <!-- /.card -->
 @endsection
 
 

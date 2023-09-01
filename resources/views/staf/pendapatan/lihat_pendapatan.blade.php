@@ -82,32 +82,45 @@
                                         </div>
                                         <div class="form-control">{{ $income->jumlah_tpn }}</div>
                                     </div>
-
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Resit/Invois/Bukti Pendapatan</label>
+                                    <div id="file_input">
+                                        @if ($income->resit != null)
+                                            <a href="{{ asset('assets/resit_pendapatan/' . $income->resit) }}"
+                                                class="btn-link text-secondary" target="_blank">
+                                                <i class="nav-icon fas fa-file"></i> {{ $income->resit }}</a>
+                                        @else
+                                            Tiada
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
 
-
                     </div>
 
-                    <!-- /.card-body -->
 
-                    {{-- <div class="card-footer d-flex justify-content-end">
+                </div>
+
+                <!-- /.card-body -->
+
+                {{-- <div class="card-footer d-flex justify-content-end">
                             <button type="submit" class="btn btn-success"> <i class="nav-icon fas fa-plus-circle"></i>
                                 Tambah</button>
                         </div> --}}
 
-                </div>
             </div>
-            <!-- /.card-body -->
-
-            <!-- /.card -->
         </div>
+        <!-- /.card-body -->
+
+        <!-- /.card -->
+    </div>
 
 
-        <!-- /.col -->
+    <!-- /.col -->
     </div>
     <!-- /.row -->
 

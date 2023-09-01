@@ -87,7 +87,7 @@
                     <div class="row">
                         <!-- Box 4 -->
                         <div class="col-md-6">
-                            <div class="card">
+                            <div class="card income">
                                 <div class="card-header ui-sortable-handle" style="cursor: move;">
                                     <h3 class="card-title">
                                         <i class="fas fa-th mr-1"></i>
@@ -211,6 +211,14 @@
         </div>
     </div>
 @endsection
+
+@push('css')
+    <style>
+        div.income {
+            height: 100px;
+        }
+    </style>
+@endpush
 
 
 

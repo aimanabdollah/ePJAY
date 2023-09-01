@@ -81,7 +81,7 @@ class OrphanSeeder extends Seeder
                 'pekerjaan_ibu' => NULL,
                 'pendapatan_ibu' => NULL,
 
-                'gambar' => 'seed1.jpg',
+                'gambar' => 'seed2.jpg',
                 'sijil_lahir' => '001_sijil_lahir.pdf',
                 'sijil_kematian' => '001_sijil_kematian.pdf',
             ],
@@ -117,7 +117,7 @@ class OrphanSeeder extends Seeder
                 'pekerjaan_ibu' => NULL,
                 'pendapatan_ibu' => NULL,
 
-                'gambar' => 'seed1.jpg',
+                'gambar' => 'seed2.jpg',
                 'sijil_lahir' => '001_sijil_lahir.pdf',
                 'sijil_kematian' => '001_sijil_kematian.pdf',
             ],

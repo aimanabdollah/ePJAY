@@ -82,7 +82,19 @@
                                         </div>
                                         <div class="form-control">{{ $expense->jumlah_tbj }}</div>
                                     </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Resit/Invois/Bukti Perbelanjaan</label>
+                                    <div id="file_input">
+                                        @if ($expense->resit != null)
+                                            <a href="{{ asset('assets/resit_perbelanjaan/' . $expense->resit) }}"
+                                                class="btn-link text-secondary" target="_blank">
+                                                <i class="nav-icon fas fa-file"></i> {{ $expense->resit }}</a>
+                                        @else
+                                            Tiada
+                                        @endif
+                                    </div>
                                 </div>
 
                             </div>

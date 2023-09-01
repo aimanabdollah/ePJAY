@@ -43,7 +43,9 @@ class IncomeSeeder extends Seeder
             $record = [
                 'id_trax_pendapatan' => $randomIdTraxPendapatan,
                 'jumlah_tpn' => $randomJumlahTpn,
-                'tarikh' => $randomDate, // Use random date for each record
+                'resit' => 'resit_pendapatan_sample.png',
+                'catatan' => 'Ini adalah data pendapatan yang dijana secara rawak',
+                'tarikh' => $randomDate, 
                 'id_kategori' => $kategoriIds[$randomKategoriIndex],
                 'created_at' => Carbon::now(),
             ];

@@ -39,6 +39,7 @@ class IncomeController extends Controller
                 'tarikh' => 'required|date|date_format:Y-m-d',
                 'catatan' => 'nullable',
                 'jumlah' => 'required',
+                'resit' => 'nullable|mimes:jpg,png,jpeg,pdf|max:2048',
                 // Add other validation rules as needed for income attributes
             ]);
 
@@ -46,14 +47,25 @@ class IncomeController extends Controller
                 $generatedId = 'TPN' . rand(111111, 999999);
             } while (Income::where('id_trax_pendapatan', $generatedId)->exists());
 
+
             // Create and save a new Income instance to the database
-            Income::create([
-                'id_kategori' => $incomeData['kategori'],
-                'catatan' => $incomeData['catatan'],
-                'jumlah_tpn' => $incomeData['jumlah'],
-                'tarikh' => $incomeData['tarikh'],
-                'id_trax_pendapatan' => $generatedId,
-            ]);
+            $income = new Income();
+
+            if ($request->hasFile('resit')) {
+                $file = $request->file('resit');
+                $ext = $file->getClientOriginalExtension();
+                $filename = $generatedId . '_' . time() . '.' . $ext;
+                $file->move('assets/resit_pendapatan', $filename);
+                $income->resit = $filename;
+            }
+
+            $income->id_trax_pendapatan = $generatedId;
+            $income->id_kategori = $incomeData['kategori'];
+            $income->catatan = $incomeData['catatan'];
+            $income->jumlah_tpn = $incomeData['jumlah'];
+            $income->tarikh = $incomeData['tarikh'];
+
+            $income->save();
 
             DB::commit();
 
@@ -108,6 +120,7 @@ class IncomeController extends Controller
                 'tarikh' => 'required|date|date_format:Y-m-d',
                 'catatan' => 'nullable',
                 'jumlah' => 'required',
+                'resit' => 'nullable|mimes:jpg,png,jpeg,pdf|max:2048',
                 // Add other validation rules as needed for income attributes
             ]);
 
@@ -116,6 +129,14 @@ class IncomeController extends Controller
             $income->catatan = $validatedData['catatan'];
             $income->jumlah_tpn = $validatedData['jumlah'];
             $income->tarikh = $validatedData['tarikh'];
+
+            if ($request->hasFile('resit')) {
+                $file = $request->file('resit');
+                $ext = $file->getClientOriginalExtension();
+                $filename = $income->id_trax_pendapatan . '_' . time() . '.' . $ext;
+                $file->move('assets/resit_pendapatan', $filename);
+                $income->resit = $filename;
+            }
 
             // Save the updated income record to the database
             $updateIncome = $income->save();

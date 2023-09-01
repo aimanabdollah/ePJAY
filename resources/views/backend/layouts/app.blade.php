@@ -78,7 +78,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="nav-icon fas fa-user-alt mr-1"></i>
-                        @if (Auth::user()->role == 1)
+                        {{-- @if (Auth::user()->role == 1)
                             <b>
                                 Admin</b>
                         @endif
@@ -91,7 +91,10 @@
                         @if (Auth::user()->role == 3)
                             <b>
                                 Penjaga / Waris</b>
-                        @endif
+                        @endif --}}
+
+                        <b>
+                            {{ Auth::user()->nama_panggilan }}</b>
                         <i class='fas fa-angle-down'></i>
 
                     </a>

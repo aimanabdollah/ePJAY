@@ -115,55 +115,88 @@
                                                         value="{{ old('name') ?? $user->name }}">
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="email">Emel<i style="color: red">*</i></label>
-                                                    <input type="text"
-                                                        class="form-control remove-error-on-input @error('email') is-invalid @enderror"
-                                                        id="email" name="email"
-                                                        value="{{ old('email') ?? $user->email }}">
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label for="no_tel">No Telefon<i style="color: red">*</i></label>
-                                                    <input type="text"
-                                                        class="form-control remove-error-on-input @error('no_tel') is-invalid @enderror"
-                                                        id="no_tel" name="no_tel"
-                                                        value="{{ old('no_tel') ?? $user->no_tel }}">
-                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="nama_panggilan">Nama Panggilan<i
+                                                                    style="color: red">*</i></label>
+                                                            <input type="text"
+                                                                class="form-control remove-error-on-input @error('nama_panggilan') is-invalid @enderror"
+                                                                id="nama_panggilan" name="nama_panggilan"
+                                                                value="{{ old('nama_panggilan') ?? $user->nama_panggilan }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Jantina<i
+                                                                    style="color: red">*</i></label>
+                                                            <select
+                                                                class="form-control remove-error-on-input @error('jantina') is-invalid @enderror"
+                                                                name="jantina" id="jantina"
+                                                                aria-label="Default select example">
+                                                                <option selected value="">Sila Pilih Jantina
+                                                                </option>
+                                                                <option value="Lelaki"
+                                                                    {{ old('jantina') ?? $user->jantina == 'Lelaki' ? 'selected' : '' }}>
+                                                                    Lelaki
+                                                                </option>
+                                                                <option value="Perempuan"
+                                                                    {{ old('jantina') ?? $user->jantina == 'Perempuan' ? 'selected' : '' }}>
+                                                                    Perempuan
+                                                                </option>
+                                                            </select>
+                                                        </div>
 
-                                                <div class="form-group row">
-                                                    <div
-                                                        class="mt-2 col-md-10 offset-sm-0 col-sm-12  d-flex justify-content-start">
-                                                        <button type="submit" class="btn btn-success"> <i
-                                                                class="nav-icon fas fa-edit"></i> Kemaksini</button>
                                                     </div>
                                                 </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="email">Emel<i style="color: red">*</i></label>
+                                                        <input type="text"
+                                                            class="form-control remove-error-on-input @error('email') is-invalid @enderror"
+                                                            id="email" name="email"
+                                                            value="{{ old('email') ?? $user->email }}">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="no_tel">No Telefon<i style="color: red">*</i></label>
+                                                        <input type="text"
+                                                            class="form-control remove-error-on-input @error('no_tel') is-invalid @enderror"
+                                                            id="no_tel" name="no_tel"
+                                                            value="{{ old('no_tel') ?? $user->no_tel }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div
+                                                    class="mt-2 col-md-10 offset-sm-0 col-sm-12  d-flex justify-content-start">
+                                                    <button type="submit" class="btn btn-success"> <i
+                                                            class="nav-icon fas fa-edit"></i> Kemaksini</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
+
 
 
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </form>
-    </div>
-    </div>
-    <!-- /.card-body -->
-
-    <!-- /.card -->
-    </div>
-
-
-    <!-- /.col -->
-    </div>
-    <!-- /.row -->
-
-
-
-
-    <!-- /.card -->
 @endsection
 
 

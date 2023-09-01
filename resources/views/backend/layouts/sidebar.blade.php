@@ -32,7 +32,7 @@
 
             </div>
             <div class="info">
-                <a href="#" class="d-block">Selamat Datang !</a>
+                <a href="#" class="d-block">Hi, {{ Auth::user()->nama_panggilan }}!</a>
 
             </div>
         </div>

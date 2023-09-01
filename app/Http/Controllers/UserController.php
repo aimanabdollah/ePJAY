@@ -107,6 +107,7 @@ class UserController extends Controller
         }
 
         $configuration = Configuration::first();
+
         return view('admin.pengguna.edit_profil', ['user' => $user], compact('configuration'));
     }
 
@@ -116,14 +117,18 @@ class UserController extends Controller
         // Validate user profile data
         $validateData = $request->validate([
             'name' => 'required',
+            'nama_panggilan' => 'required|max:8',
             'email' => 'required|email',
             'no_tel' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'jantina' => 'required',
         ]);
 
         // Update user profile data with validated input
         $user->name = $validateData['name'];
+        $user->nama_panggilan = $validateData['nama_panggilan'];
         $user->email = $validateData['email'];
         $user->no_tel = $validateData['no_tel'];
+        $user->jantina = $validateData['jantina'];
 
         // Handle profile image update if provided
         if ($request->hasFile('gambar')) {

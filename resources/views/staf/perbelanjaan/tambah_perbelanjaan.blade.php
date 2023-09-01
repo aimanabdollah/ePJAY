@@ -42,7 +42,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('expense.store') }}" method="POST">
+                    <form action="{{ route('expense.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="card-body">
@@ -97,7 +97,17 @@
                                                 placeholder="Masukkan Jumlah Perbelanjaan">
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Resit/Invois/Bukti Perbelanjaan</label>
+                                        <div id="file_input">
+                                            <input type="file" name="resit" value="{{ old('resit') }}"
+                                                class="form-control remove-error-on-input @error('resit') is-invalid @enderror"
+                                                placeholder="Sila Pilih Resit" id="resit">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
