@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama')->nullable();
             $table->string('jenis')->nullable();
             $table->string('catatan')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique('id');
         });

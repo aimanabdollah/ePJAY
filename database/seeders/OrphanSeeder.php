@@ -89,7 +89,6 @@ class OrphanSeeder extends Seeder
             [
                 'id_permohonan' => 'PMH000003',
                 'id_anak_jagaan' => 'AKG000013',
-                'id_pemohon' => 3,
 
                 'nama_penuh' => 'Siti binti Khalif',
                 'nama_sekolah' => 'Sekolah kebangsaan Perdana',
@@ -125,7 +124,7 @@ class OrphanSeeder extends Seeder
             [
                 'id_permohonan' => 'PMH000004',
                 'id_anak_jagaan' => 'AKG000004',
-                'id_pemohon' => 3,
+
 
                 'nama_penuh' => 'Amri bin Khalif',
                 'nama_sekolah' => 'Sekolah kebangsaan Perdana',
@@ -199,7 +198,6 @@ class OrphanSeeder extends Seeder
                 'id_permohonan' => 'PMH000006',
                 'id_anak_jagaan' => 'AKG000006',
 
-                'id_pemohon' => 3,
                 'nama_penuh' => 'Daus bin Khalif',
                 'nama_sekolah' => 'Sekolah kebangsaan Perdana',
                 'tarikh_lahir' => '2004-05-20',

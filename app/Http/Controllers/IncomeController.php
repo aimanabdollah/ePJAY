@@ -170,6 +170,7 @@ class IncomeController extends Controller
         }
     }
 
+
     // Delete an existing income record from the database
     public function destroy(Income $income)
     {

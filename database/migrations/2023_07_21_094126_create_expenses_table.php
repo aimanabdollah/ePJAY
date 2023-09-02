@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_kategori');
 
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('id_kategori')->references('id')->on('categories')->onDelete('restrict');
         });
     }

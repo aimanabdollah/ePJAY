@@ -63,8 +63,8 @@ return new class extends Migration
             $table->string('fizikal')->nullable();
             $table->string('kreativiti')->nullable();
 
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

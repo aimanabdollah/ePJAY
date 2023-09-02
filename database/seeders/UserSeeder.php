@@ -37,17 +37,6 @@ class UserSeeder extends Seeder
 
             ],
             [
-                'name' => 'Siti Aisyah Kamal',
-                'nama_panggilan' => 'Aisyah',
-                'no_tel' => '019-21121128',
-                'jantina' => 'Perempuan',
-                'email' => 'aisyah@gmail.com',
-                'password' => bcrypt('abc12345'),
-                'role' => 2,
-                'gambar' => 'female-profile-img.jpg',
-
-            ],
-            [
                 'name' => 'Khairul Hazim Khairi',
                 'nama_panggilan' => 'Khairul',
                 'no_tel' => '016-21121126',
@@ -56,6 +45,17 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('abc12345'),
                 'role' => 3,
                 'gambar' => 'male-profile-img.jpg',
+
+            ],
+                        [
+                'name' => 'Siti Aisyah Kamal',
+                'nama_panggilan' => 'Aisyah',
+                'no_tel' => '019-21121128',
+                'jantina' => 'Perempuan',
+                'email' => 'aisyah@gmail.com',
+                'password' => bcrypt('abc12345'),
+                'role' => 2,
+                'gambar' => 'female-profile-img.jpg',
 
             ],
 

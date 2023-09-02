@@ -71,8 +71,8 @@ return new class extends Migration
             $table->decimal('pendapatan_ayah', 8, 2)->nullable();
             $table->decimal('pendapatan_ibu', 8, 2)->nullable();
 
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

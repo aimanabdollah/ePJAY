@@ -167,6 +167,44 @@
                         </a>
                     </li>
 
+                    {{-- <li class="nav-item transaction">
+                        <a href="#"
+                            class="nav-link {{ Request::is('admin-category*') || Request::is('admin-income*') || Request::is('admin-expense*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-money-bill"></i>
+                            <p>
+                                Rekod Penghapusan
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ url('admin-category') }}"
+                                    class="nav-link {{ Request::is('admin-category*') ? 'active' : '' }}">
+                                    <i class="fas fa-caret-right nav-icon"></i>
+                                    <p>Kategori
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ url('admin-income') }}"
+                                    class="nav-link {{ Request::is('admin-income*') ? 'active' : '' }}">
+                                    <i class="fas fa-caret-right nav-icon"></i>
+                                    <p>Pendapatan</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ url('admin-expense') }}"
+                                    class="nav-link {{ Request::is('admin-expense*') ? 'active' : '' }}">
+                                    <i class="fas fa-caret-right nav-icon"></i>
+                                    <p>Perbelanjaan
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> --}}
+
                 @endif
 
 

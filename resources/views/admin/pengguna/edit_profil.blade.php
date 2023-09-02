@@ -54,8 +54,8 @@
                                                 alt="" style="height: 140px">
 
                                             <div class="form-group">
-                                                <input type="file" name="gambar" id="gambar" class="form-control"
-                                                    placeholder="Sila Pilih Gambar">
+                                                <input type="file" name="gambar" id="gambar"
+                                                    class="form-control mt-3" placeholder="Sila Pilih Gambar">
                                                 @error('gambar')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

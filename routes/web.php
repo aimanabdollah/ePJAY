@@ -10,6 +10,8 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RecordDeleteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,11 @@ Route::middleware('auth')->group(function () {
         Route::patch('admin-configuration-sys/{configuration}', [ConfigurationController::class, 'updateSys'])->name('configuration.updateSys');
         Route::get('admin-configuration-org/{configuration}/edit', [ConfigurationController::class, 'editOrg'])->name('configuration.editOrg');
         Route::patch('admin-configuration-org/{configuration}', [ConfigurationController::class, 'updateOrg'])->name('configuration.updateOrg');
+
+
+        // Record Delete routes
+        Route::get('record-delete/category', [RecordDeleteController::class, 'indexCategory'])->name('record-delete.indexCategory');
+        Route::delete('record-delete/category/{category}', [RecordDeleteController::class, 'deleteCategory'])->name('record-delete.deleteCategory');
     });
 
     // Routes for 'staf' middleware

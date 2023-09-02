@@ -431,7 +431,8 @@
                                                                     <label for="exampleInputFile">Sijil Lahir Anak</label>
                                                                     <div id="file_input">
                                                                         <a href="{{ asset('assets/sijil_lahir/' . $application->sijil_lahir) }}"
-                                                                            class="btn-link text-secondary"><i
+                                                                            class="btn-link text-secondary"
+                                                                            target="_blank"><i
                                                                                 class="far fa-fw fa-file-pdf"></i>{{ $application->sijil_lahir }}</a>
                                                                     </div>
                                                                 </div>
@@ -446,7 +447,8 @@
                                                                     <label for="exampleInputFile">Sijil Kematian</label>
                                                                     <div id="file_input">
                                                                         <a href="{{ asset('assets/sijil_kematian/' . $application->sijil_kematian) }}"
-                                                                            class="btn-link text-secondary"><i
+                                                                            class="btn-link text-secondary"
+                                                                            target="_blank"><i
                                                                                 class="far fa-fw fa-file-pdf"></i>{{ $application->sijil_kematian }}</a>
                                                                     </div>
                                                                 </div>
