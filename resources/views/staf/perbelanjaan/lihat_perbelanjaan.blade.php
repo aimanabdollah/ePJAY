@@ -60,7 +60,7 @@
 
                                 <div class="form-group">
                                     <label for="catatan">Catatan</label>
-                                    <div class="form-control">{{ $expense->catatan }}</div>
+                                    <textarea class="form-control" id="catatan" name="catatan" rows="4" readonly style="background-color: white">{{ $expense->catatan }}</textarea>
                                 </div>
 
                             </div>

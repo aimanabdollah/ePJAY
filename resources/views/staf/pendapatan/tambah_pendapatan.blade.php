@@ -50,7 +50,15 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label for="kategori">Kategori</label>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="d-flex justify-content-between">
+                                                    <label for="kategori">Kategori</label>
+                                                    <a href="{{ route('category.create') }}" target="_blank">Tambah
+                                                        Kategori</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <select
                                             class="form-control remove-error-on-input @error('kategori') is-invalid @enderror"
                                             name="kategori" id="kategori" aria-label="Default select example">
@@ -64,12 +72,14 @@
                                         </select>
                                     </div>
 
+
                                     <div class="form-group">
-                                        <label for="catatan">Catatan</label>
-                                        <input type="text"
-                                            class="form-control remove-error-on-input @error('catatan') is-invalid @enderror"
-                                            id="catatan" name="catatan" value="{{ old('catatan') }}"
-                                            placeholder="Masukkan Catatan">
+                                        <label for="exampleInputFile">Resit/Invois/Bukti Pendapatan</label>
+                                        <div id="file_input">
+                                            <input type="file" name="resit" value="{{ old('resit') }}"
+                                                class="form-control remove-error-on-input @error('resit') is-invalid @enderror"
+                                                placeholder="Sila Pilih Resit" id="resit">
+                                        </div>
                                     </div>
 
                                 </div>
@@ -102,12 +112,9 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Resit/Invois/Bukti Pendapatan</label>
-                                        <div id="file_input">
-                                            <input type="file" name="resit" value="{{ old('resit') }}"
-                                                class="form-control remove-error-on-input @error('resit') is-invalid @enderror"
-                                                placeholder="Sila Pilih Resit" id="resit">
-                                        </div>
+                                        <label for="catatan">Catatan</label>
+                                        <textarea class="form-control remove-error-on-input @error('catatan') is-invalid @enderror" id="catatan"
+                                            name="catatan" rows="4" placeholder="Masukkan Catatan">{{ old('catatan') }}</textarea>
                                     </div>
                                 </div>
                             </div>

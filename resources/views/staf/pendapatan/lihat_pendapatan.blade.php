@@ -57,10 +57,9 @@
                                     <label for="kategori">Kategori</label>
                                     <div class="form-control">{{ $income->category->nama }}</div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="catatan">Catatan</label>
-                                    <div class="form-control">{{ $income->catatan }}</div>
+                                    <textarea class="form-control" id="catatan" name="catatan" rows="4" readonly style="background-color: white">{{ $income->catatan }}</textarea>
                                 </div>
 
                             </div>

@@ -100,7 +100,7 @@
                                                         @php
                                                             $logoPath = 'assets/orphan-img/' . $application->gambar;
                                                             $defaultImagePath = 'assets/no-img.jpg';
-                                                            
+
                                                             if (!file_exists(public_path($logoPath)) || empty($application->gambar)) {
                                                                 $logoPath = $defaultImagePath;
                                                             }
@@ -141,7 +141,7 @@
                                                         // Assuming you have the following variables
                                                         $currentYear = date('Y'); // Get the current year
                                                         $tarikh_lahir = $application->tarikh_lahir; // Replace this with the birth date in 'YYYY-MM-DD' format
-                                                        
+
                                                         // Calculate the age
                                                         $yearOfBirth = (int) substr($tarikh_lahir, 0, 4);
                                                         $age = $currentYear - $yearOfBirth;
@@ -309,13 +309,13 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6 Dalam_Proses status" id="dalam_proses">
+                                <div class="col-md-6 dalam_proses status" id="dalam_proses">
                                     <div>
 
                                     </div>
 
                                 </div>
-                                <div class="col-md-6 Berjaya status" id="berjaya">
+                                <div class="col-md-6 berjaya status" id="berjaya">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tarikh Daftar</label>
                                         <input type="date"
@@ -328,7 +328,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 Tidak_Berjaya status" id="tidak_berjaya">
+                                <div class="col-md-6 tidak_berjaya status" id="tidak_berjaya">
                                     <label for="exampleInputEmail1">Ulasan</label>
 
                                     <input type="text" class="form-control @error('ulasan') is-invalid @enderror"
@@ -389,18 +389,33 @@
 
 @push('js')
     <script>
-        $(document).ready(function() {
-            $("#status_permohonan").change(function() {
-                $(this).find("option:selected").each(function() {
-                    var optionValue = $(this).attr("value");
-                    if (optionValue) {
-                        $(".status").not("." + optionValue).hide();
-                        $("." + optionValue).show();
-                    } else {
-                        $(".status").hide();
-                    }
-                });
-            }).change();
-        });
+        // Get references to the select element and the div elements
+        const statusSelect = document.getElementById('status_permohonan');
+        const dalamProsesDiv = document.getElementById('dalam_proses');
+        const berjayaDiv = document.getElementById('berjaya');
+        const tidakBerjayaDiv = document.getElementById('tidak_berjaya');
+
+        // Function to show/hide div elements based on selected value
+        function toggleDivs() {
+            const selectedValue = statusSelect.value;
+
+            dalamProsesDiv.style.display = 'none';
+            berjayaDiv.style.display = 'none';
+            tidakBerjayaDiv.style.display = 'none';
+
+            if (selectedValue === 'Dalam Proses') {
+                dalamProsesDiv.style.display = 'block';
+            } else if (selectedValue === 'Berjaya') {
+                berjayaDiv.style.display = 'block';
+            } else if (selectedValue === 'Tidak Berjaya') {
+                tidakBerjayaDiv.style.display = 'block';
+            }
+        }
+
+        // Attach an event listener to the select element
+        statusSelect.addEventListener('change', toggleDivs);
+
+        // Call the toggleDivs function initially to set the initial state
+        toggleDivs();
     </script>
 @endpush

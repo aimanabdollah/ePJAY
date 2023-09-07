@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $validateData = $request->validate([
             'jenis' => 'required',
             'nama' => 'required',
-            'catatan' => 'required',
+            'catatan' => 'nullable',
         ]);
 
         // Create a new Category instance
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         $validateData = $request->validate([
             'jenis' => 'required',
             'nama' => 'required',
-            'catatan' => '',
+            'catatan' => 'nullable',
         ]);
 
         // Update the category attributes with validated data

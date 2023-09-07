@@ -60,7 +60,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="kategori">Kategori</label>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="d-flex justify-content-between">
+                                                    <label for="kategori">Kategori</label>
+                                                    <a href="{{ route('category.create') }}" target="_blank">Tambah
+                                                        Kategori</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <select
                                             class="form-control remove-error-on-input @error('kategori') is-invalid @enderror"
                                             name="kategori" id="kategori">
@@ -74,14 +82,9 @@
                                         </select>
                                     </div>
 
-
-
-
                                     <div class="form-group">
                                         <label for="catatan">Catatan</label>
-                                        <input type="text"
-                                            class="form-control remove-error-on-input @error('catatan') is-invalid @enderror"
-                                            id="catatan" name="catatan" value="{{ old('catatan') ?? $expense->catatan }}">
+                                        <textarea class="form-control @error('catatan') is-invalid @enderror" id="catatan" name="catatan" rows="4">{{ old('catatan') ?? $expense->catatan }}</textarea>
                                     </div>
 
                                 </div>
