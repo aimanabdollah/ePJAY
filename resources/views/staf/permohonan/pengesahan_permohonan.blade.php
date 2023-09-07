@@ -86,16 +86,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($applications as $application)
-                                        @php
-                                            $myvalue = $application->created_at;
-
-                                            $datetime = new DateTime($myvalue);
-                                            $date = $datetime->format('d-m-Y');
-                                            $time = $datetime->format('H:i');
-
-                                        @endphp
                                         <tr>
-
                                             <td class="align-middle">{{ $loop->iteration }}</td>
                                             <td class="align-middle">{{ $application->id_permohonan }}</td>
                                             <td class="align-middle">{{ $application->nama_penuh_pemohon }}</td>
@@ -103,7 +94,7 @@
                                             {{-- <td class="align-middle">{{ $application->nama_penuh }}</td> --}}
                                             <td class="align-middle">
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    {{ $date }}
+                                                    @formatDate($application->created_at)
                                                 </div>
                                             </td>
                                             {{-- <td><span
@@ -126,7 +117,7 @@
                                                         $now = now();
                                                         $created_at = $application->created_at;
                                                         $daysDifference = $now->diffInDays($created_at);
-
+                                                        
                                                         $badgeClass = $daysDifference > 0 ? ($daysDifference >= 10 ? 'badge-danger' : 'badge-success') : 'badge-secondary';
                                                     @endphp
 

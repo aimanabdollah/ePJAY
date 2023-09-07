@@ -79,22 +79,13 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($incomes as $income)
-                                        @php
-                                            $myvalue = $income->tarikh;
-                                            
-                                            $datetime = new DateTime($myvalue);
-                                            $date = $datetime->format('d-m-Y');
-                                            $time = $datetime->format('H:i');
-                                            
-                                        @endphp
                                         <tr>
-
                                             <td class="align-middle">{{ $loop->iteration }}</td>
                                             <td class="align-middle">{{ $income->id_trax_pendapatan }}</td>
                                             <td class="align-middle">{{ $income->category->nama ?? 'N/A' }}
                                             </td>
                                             <td class="align-middle">RM {{ $income->jumlah_tpn }}</td>
-                                            <td class="align-middle">{{ $date }}</td>
+                                            <td class="align-middle"> @formatDate($income->tarikh)</td>
                                             <td>
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <a href="{{ url('admin-income/' . $income->id_trax_pendapatan) }}"

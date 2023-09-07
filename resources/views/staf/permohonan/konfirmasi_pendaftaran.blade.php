@@ -85,14 +85,6 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($applications as $application)
-                                        @php
-                                            $myvalue = $application->created_at;
-
-                                            $datetime = new DateTime($myvalue);
-                                            $date = $datetime->format('d-m-Y');
-                                            $time = $datetime->format('H:i');
-
-                                        @endphp
                                         <tr>
 
                                             <td class="align-middle">{{ $loop->iteration }}</td>
@@ -102,7 +94,7 @@
                                             <td class="align-middle">{{ $application->nama_penuh }}</td>
                                             <td class="align-middle">
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    {{ $application->tarikh_daftar }}
+                                                    @formatDate($application->tarikh_daftar)
                                                 </div>
                                             </td>
 

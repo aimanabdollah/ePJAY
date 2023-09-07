@@ -68,7 +68,7 @@
 
                                 <div class="form-group">
                                     <label for="tarikh">Tarikh</label>
-                                    <div class="form-control">{{ $income->tarikh }}</div>
+                                    <div class="form-control"> @formatDate($income->tarikh)</div>
                                 </div>
 
                                 <div class="form-group">

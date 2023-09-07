@@ -143,7 +143,7 @@
 
                     <div class="row">
                         <!-- Box 6 -->
-                        <div class="col-12 col-sm-6 col-md-6">
+                        <div class="col-12 col-sm-4 col-md-4">
                             <div class="card">
                                 <div class="card-header border-0">
                                     <h3 class="card-title">Jumlah Anak Jagaan Mengikut Jantina</h3>
@@ -160,7 +160,7 @@
                         </div>
 
                         <!-- Box 7 -->
-                        <div class="col-12 col-sm-6 col-md-6">
+                        <div class="col-12 col-sm-4 col-md-4">
                             <div class="card">
                                 <div class="card-header border-0">
                                     <h3 class="card-title">Jumlah Permohonan Mengikut Status</h3>
@@ -177,22 +177,23 @@
                         </div>
 
                         <!-- Box 8 -->
-                        {{-- <div class="col-12 col-sm-6 col-md-4">
+                        <div class="col-12 col-sm-4 col-md-4">
                             <div class="card">
                                 <div class="card-header border-0">
-                                    <h3 class="card-title">Jenis Pengguna Sistem</h3>
+                                    <h3 class="card-title">Kalendar</h3>
                                     <div class="card-tools">
                                         <a href="#" class="btn btn-sm btn-tool">
                                             <i class="fas fa-bars"></i>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="card-body" style="max-height: 250px;">
-                                    <canvas id="userByTypeChart"></canvas>
+                                <div id="calendar" class="card-body embed-responsive embed-responsive-16by9">
+                                    <iframe
+                                        src="https://calendar.google.com/calendar/embed?height=359&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FKuala_Lumpur&showPrint=1&showTitle=0&src=YWltYW5hYmRvbGxhaEBnbWFpbC5jb20&color=%23039BE5"
+                                        class="embed-responsive-item p-3"></iframe>
                                 </div>
                             </div>
-                        </div> --}}
-                    </div>
+                        </div>
                 </section>
             </div>
         </div>

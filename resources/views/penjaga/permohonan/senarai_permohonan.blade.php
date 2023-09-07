@@ -95,16 +95,16 @@
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         @if ($application->status_permohonan == 'Dalam Proses')
                                                             <a href="{{ url('application/' . $application->id) }}"
-                                                                class="btn-sm btn-primary m-1"><i
+                                                                class="btn btn-primary m-1"><i
                                                                     class="nav-icon fas fa-eye"></i>
                                                             </a>
                                                         @elseif ($application->status_permohonan == 'Berjaya')
                                                             <a href="{{ url('application/result/' . $application->id) }}"
-                                                                class="btn-sm btn-primary m-1"><i class="fas fa-print"></i>
+                                                                class="btn btn-secondary m-1"><i class="fas fa-print"></i>
                                                             </a>
                                                         @elseif ($application->status_permohonan == 'Tidak Berjaya')
                                                             <a href="{{ url('application/result/' . $application->id) }}"
-                                                                class="btn-sm btn-primary m-1"><i class="fas fa-print"></i>
+                                                                class="btn btn-secondary m-1"><i class="fas fa-print"></i>
                                                             </a>
                                                         @endif
                                                     </div>

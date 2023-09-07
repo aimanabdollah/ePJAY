@@ -100,7 +100,7 @@
                                                         @php
                                                             $logoPath = 'assets/orphan-img/' . $application->gambar;
                                                             $defaultImagePath = 'assets/no-img.jpg';
-
+                                                            
                                                             if (!file_exists(public_path($logoPath)) || empty($application->gambar)) {
                                                                 $logoPath = $defaultImagePath;
                                                             }
@@ -141,7 +141,7 @@
                                                         // Assuming you have the following variables
                                                         $currentYear = date('Y'); // Get the current year
                                                         $tarikh_lahir = $application->tarikh_lahir; // Replace this with the birth date in 'YYYY-MM-DD' format
-
+                                                        
                                                         // Calculate the age
                                                         $yearOfBirth = (int) substr($tarikh_lahir, 0, 4);
                                                         $age = $currentYear - $yearOfBirth;
@@ -329,51 +329,23 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 tidak_berjaya status" id="tidak_berjaya">
-                                    <label for="exampleInputEmail1">Ulasan</label>
-
-                                    <input type="text" class="form-control @error('ulasan') is-invalid @enderror"
-                                        id="ulasan" name="ulasan"
-                                        value="{{ old('ulasan') ?? $application->ulasan }}" placeholder="">
-                                    @error('ulasan')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-
-
+                                    <label for="ulasan">Ulasan </label>
+                                    <textarea class="form-control remove-error-on-input @error('ulasan') is-invalid @enderror" id="ulasan"
+                                        name="ulasan" rows="4" placeholder="Masukkan sebab permohonan ditolak">{{ old('ulasan') }}</textarea>
                                 </div>
-
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-end">
-                            <button type="submit" class="btn btn-success"> <i class="nav-icon fas fa-edit"></i>
-                                Kemaksini</button>
-                        </div>
-                    </form>
-
-
-
                 </div>
-
-
-                <!-- /.card-body -->
-
-
-
-
-
+                <div class="card-footer d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success"> <i class="nav-icon fas fa-edit"></i>
+                        Kemaksini</button>
+                </div>
+                </form>
             </div>
         </div>
-        <!-- /.card-body -->
-
-        <!-- /.card -->
     </div>
 
-
-    <!-- /.col -->
-
-
-
-
-    <!-- /.card -->
+    </div>
 @endsection
 
 

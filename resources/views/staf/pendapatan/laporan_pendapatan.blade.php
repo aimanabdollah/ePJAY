@@ -268,20 +268,12 @@
                                                 </thead>
                                                 <tbody>
                                                     @forelse ($income as $income)
-                                                        @php
-                                                            $myvalue = $income->tarikh;
-                                                            
-                                                            $datetime = new DateTime($myvalue);
-                                                            $date = $datetime->format('d-m-Y');
-                                                            $time = $datetime->format('H:i');
-                                                            
-                                                        @endphp
                                                         <tr>
                                                             <td>{{ $loop->iteration }}.</td>
                                                             <td>{{ $income->id_trax_pendapatan }}</td>
                                                             <td>{{ $income->category->nama }}</td>
                                                             <td>RM {{ $income->jumlah_tpn }}</td>
-                                                            <td>{{ $date }}</td>
+                                                            <td> @formatDate($income->tarikh)</td>
 
                                                         </tr>
                                                     @empty

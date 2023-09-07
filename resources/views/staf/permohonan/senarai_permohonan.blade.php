@@ -83,14 +83,6 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($applications as $application)
-                                        @php
-                                            $myvalue = $application->created_at;
-
-                                            $datetime = new DateTime($myvalue);
-                                            $date = $datetime->format('d-m-Y');
-                                            $time = $datetime->format('H:i');
-
-                                        @endphp
                                         <tr>
 
                                             <td class="align-middle">{{ $loop->iteration }}</td>
@@ -100,7 +92,7 @@
                                             {{-- <td class="align-middle">{{ $application->nama_penuh }}</td> --}}
                                             <td class="align-middle">
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    {{ $date }}
+                                                    @formatDate($application->created_at)
                                                 </div>
                                             </td>
                                             {{-- <td><span
@@ -127,7 +119,7 @@
                                                         class="btn btn-info  m-1"> <i class="nav-icon fas fa-edit"></i></a> --}}
 
                                                     <a href="{{ url('application/' . $application->id) }}"
-                                                        class="btn-sm btn-primary m-1"><i class="nav-icon fas fa-eye"></i>
+                                                        class="btn btn-primary m-1"><i class="nav-icon fas fa-eye"></i>
                                                     </a>
 
                                                     {{-- <a href="" class="btn btn-info  m-1"><i

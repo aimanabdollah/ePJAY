@@ -183,7 +183,7 @@
             </section>
 
             <div class="content">
-                <div class="container-fluid px-4">
+                <div class="container-fluid px-lg-4 px-1">
                     {{-- @php
                         $excludeRoutes = ['application.create']; // Add the route names you want to exclude here
                     @endphp
